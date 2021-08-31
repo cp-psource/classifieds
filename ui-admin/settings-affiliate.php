@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 <?php
 $cf_labels_txt = array (
 'recurring' => __( 'Affiliate payment credited for signed member (recurring payments):', $this->text_domain ),

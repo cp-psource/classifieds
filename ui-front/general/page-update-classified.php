@@ -5,7 +5,7 @@
 *
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
-if (!defined('ABSPATH')) die('No direct access allowed!');
+if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
 
 global $post, $post_ID, $CustomPress_Core;
 

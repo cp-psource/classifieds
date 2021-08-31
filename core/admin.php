@@ -100,8 +100,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 			remove_submenu_page('edit.php?post_type=classifieds', 'post-new.php?post_type=classifieds' );
 			add_submenu_page(
 			'edit.php?post_type=classifieds',
-			__( 'Add New', $this->text_domain ),
-			__( 'Add New', $this->text_domain ),
+			__( 'Neue hinzufügen', $this->text_domain ),
+			__( 'Neue hinzufügen', $this->text_domain ),
 			'create_classifieds',
 			'classifieds_add',
 			array( &$this, 'redirect_add' ) );
@@ -118,8 +118,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 		$settings_page = add_submenu_page(
 		'edit.php?post_type=classifieds',
-		__( 'Classifieds Settings', $this->text_domain ),
-		__( 'Settings', $this->text_domain ),
+		__( 'Kleinanzeigen Einstellungen', $this->text_domain ),
+		__( 'Einstellungen', $this->text_domain ),
 		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
 		'classifieds_settings',
 		array( &$this, 'handle_admin_requests' ) );
@@ -129,8 +129,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			$settings_page = add_submenu_page(
 			'edit.php?post_type=classifieds',
-			__( 'Classifieds Credits', $this->text_domain ),
-			__( 'Credits', $this->text_domain ),
+			__( 'Kleinanzeigen-Guthaben', $this->text_domain ),
+			__( 'Guthaben', $this->text_domain ),
 			'read',
 			'classifieds_credits',
 			array( &$this, 'handle_credits_requests' ) );
@@ -220,14 +220,14 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					$name = sanitize_file_name($params['new_role']);
 					$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 					$result = add_role($slug, $name, array('read' => true) );
-					if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
-					else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
+					if (empty($result) ) $this->message = __('ROLLE BESTEHT BEREITS' , $this->text_domain);
+					else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , $this->text_domain), $name);
 				}
 				if ( isset( $params['remove_role'] ) ) {
 					check_admin_referer('verify');
 					$name = $params['delete_role'];
 					remove_role($name);
-					$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
+					$this->message = sprintf(__('Rolle "%s" entfernt' , $this->text_domain), $name);
 				}
 				if ( isset( $params['save'] ) ) {
 					check_admin_referer('verify');
@@ -238,7 +238,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					);
 
 					$this->save_options( $params );
-					$this->message = __( 'Settings Saved.', $this->text_domain );
+					$this->message = __( 'Einstellungen gespeichert.', $this->text_domain );
 				}
 				/* Render admin template */
 				$this->render_admin( "settings-{$tab}" );
