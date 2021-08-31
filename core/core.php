@@ -97,18 +97,18 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 			//Default capability map for Classifieds
 			$this->capability_map = array(
-				'read_classifieds'             => __( 'View classifieds.', $this->text_domain ),
-				'read_private_classifieds'     => __( 'View private classifieds.', $this->text_domain ),
-				'publish_classifieds'          => __( 'Add classifieds.', $this->text_domain ),
-				'edit_classifieds'             => __( 'Edit classifieds.', $this->text_domain ),
-				'edit_published_classifieds'   => __( 'Edit published classifieds.', $this->text_domain ),
-				'edit_private_classifieds'     => __( 'Edit private classifieds.', $this->text_domain ),
-				'delete_classifieds'           => __( 'Delete classifieds', $this->text_domain ),
-				'delete_published_classifieds' => __( 'Delete published classifieds.', $this->text_domain ),
-				'delete_private_classifieds'   => __( 'Delete private classifieds.', $this->text_domain ),
-				'edit_others_classifieds'      => __( 'Edit others\' classifieds.', $this->text_domain ),
-				'delete_others_classifieds'    => __( 'Delete others\' classifieds.', $this->text_domain ),
-				'upload_files'                 => __( 'Upload files.', $this->text_domain ),
+				'read_classifieds'             => __( 'Kleinanzeigen ansehen.', $this->text_domain ),
+				'read_private_classifieds'     => __( 'Private Kleinanzeigen ansehen.', $this->text_domain ),
+				'publish_classifieds'          => __( 'Kleinanzeigen hinzufügen.', $this->text_domain ),
+				'edit_classifieds'             => __( 'Kleinanzeigen bearbeiten.', $this->text_domain ),
+				'edit_published_classifieds'   => __( 'Veröffentlichte Kleinanzeigen bearbeiten.', $this->text_domain ),
+				'edit_private_classifieds'     => __( 'Private Kleinanzeigen bearbeiten.', $this->text_domain ),
+				'delete_classifieds'           => __( 'Kleinanzeigen löschen', $this->text_domain ),
+				'delete_published_classifieds' => __( 'Veröffentlichte Kleinanzeigen löschen.', $this->text_domain ),
+				'delete_private_classifieds'   => __( 'Private Kleinanzeigen löschen.', $this->text_domain ),
+				'edit_others_classifieds'      => __( 'Kleinanzeigen anderer bearbeiten.', $this->text_domain ),
+				'delete_others_classifieds'    => __( 'Andere Kleinanzeigen löschen.', $this->text_domain ),
+				'upload_files'                 => __( 'Daten hochladen.', $this->text_domain ),
 			);
 
 

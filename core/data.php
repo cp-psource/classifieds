@@ -36,7 +36,7 @@ class Classifieds_Core_Data {
 			array (
 			'can_export' => true,
 			'capability_type' => 'classified',
-			'description' => 'Classifieds post type.',
+			'description' => 'Typ des Kleinanzeigenbeitrags.',
 			'has_archive' => 'classifieds',
 			'hierarchical' => false,
 			'map_meta_cap' => true,
@@ -48,16 +48,16 @@ class Classifieds_Core_Data {
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', /*'post-formats'*/ ),
 
 			'labels' => array (
-			'name'          => __('Classifieds', CF_TEXT_DOMAIN),
-			'singular_name' => __('Classified', CF_TEXT_DOMAIN),
-			'add_new'       => __('Add New', CF_TEXT_DOMAIN),
-			'add_new_item'  => __('Add New Classified', CF_TEXT_DOMAIN),
-			'edit_item'     => __('Edit Classified', CF_TEXT_DOMAIN),
-			'new_item'      => __('New Classified', CF_TEXT_DOMAIN),
-			'view_item'     => __('View Classified', CF_TEXT_DOMAIN),
-			'search_items'  => __('Search Classifieds', CF_TEXT_DOMAIN),
-			'not_found'     => __('No Classifieds Found', CF_TEXT_DOMAIN),
-			'not_found_in_trash' => __('No Classifieds Found In Trash', CF_TEXT_DOMAIN),
+			'name'          => __('Kleinanzeigen', CF_TEXT_DOMAIN),
+			'singular_name' => __('Kleinanzeige', CF_TEXT_DOMAIN),
+			'add_new'       => __('Neue hinzufügen', CF_TEXT_DOMAIN),
+			'add_new_item'  => __('Neue Kleinanzeige hinzufügen', CF_TEXT_DOMAIN),
+			'edit_item'     => __('Kleinanzeige bearbeiten', CF_TEXT_DOMAIN),
+			'new_item'      => __('Neue Kleinanzeige', CF_TEXT_DOMAIN),
+			'view_item'     => __('Kleinanzeige anzeigen', CF_TEXT_DOMAIN),
+			'search_items'  => __('Kleinanzeigen suchen', CF_TEXT_DOMAIN),
+			'not_found'     => __('Keine Kleinanzeigen gefunden', CF_TEXT_DOMAIN),
+			'not_found_in_trash' => __('Keine Kleinanzeigen im Papierkorb gefunden', CF_TEXT_DOMAIN),
 			),
 			);
 
@@ -91,18 +91,18 @@ class Classifieds_Core_Data {
 			'capabilities' => array ('assign_terms' => 'edit_classifieds'),
 
 			'labels' => array (
-			'name'          => __( 'Classified Tags', CF_TEXT_DOMAIN ),
-			'singular_name' => __( 'Classified Tag', CF_TEXT_DOMAIN ),
-			'search_items'  => __( 'Search Classified Tags', CF_TEXT_DOMAIN ),
-			'popular_items' => __( 'Popular Classified Tags', CF_TEXT_DOMAIN ),
-			'all_items'     => __( 'All Classified Tags', CF_TEXT_DOMAIN ),
-			'edit_item'     => __( 'Edit Classified Tag', CF_TEXT_DOMAIN ),
-			'update_item'   => __( 'Update Classified Tag', CF_TEXT_DOMAIN ),
-			'add_new_item'  => __( 'Add New Classified Tag', CF_TEXT_DOMAIN ),
-			'new_item_name' => __( 'New Classified Tag Name', CF_TEXT_DOMAIN ),
-			'add_or_remove_items' => __( 'Add or remove Classified tags', CF_TEXT_DOMAIN ),
-			'choose_from_most_used' => __( 'Choose from the most used Classified tags', CF_TEXT_DOMAIN ),
-			'separate_items_with_commas' => __( 'Separate Classified tags with commas', CF_TEXT_DOMAIN ),
+			'name'          => __( 'Kleinanzeigen Tags', CF_TEXT_DOMAIN ),
+			'singular_name' => __( 'Kleinanzeige Tag', CF_TEXT_DOMAIN ),
+			'search_items'  => __( 'Nach Kleinanzeigen Tags suchen', CF_TEXT_DOMAIN ),
+			'popular_items' => __( 'Beliebte Kleinanzeigen Tags', CF_TEXT_DOMAIN ),
+			'all_items'     => __( 'Alle Kleinanzeigen Tags', CF_TEXT_DOMAIN ),
+			'edit_item'     => __( 'Kleinanzeigen Tag bearbeiten', CF_TEXT_DOMAIN ),
+			'update_item'   => __( 'Kleinanzeigen Tag aktualisieren', CF_TEXT_DOMAIN ),
+			'add_new_item'  => __( 'Neues Kleinanzeigen Tag hinzufügen', CF_TEXT_DOMAIN ),
+			'new_item_name' => __( 'Neuer Kleinanzeigen Tag-Name', CF_TEXT_DOMAIN ),
+			'add_or_remove_items' => __( 'Kleinanzeigen Tags hinzufügen oder entfernen', CF_TEXT_DOMAIN ),
+			'choose_from_most_used' => __( 'Wähle aus den am häufigsten verwendeten Kleinanzeigen Tags', CF_TEXT_DOMAIN ),
+			'separate_items_with_commas' => __( 'Kleinanzeigen Tags durch Kommas trennen', CF_TEXT_DOMAIN ),
 			),
 			);
 
@@ -139,18 +139,18 @@ class Classifieds_Core_Data {
 			'capabilities' => array ( 'assign_terms' => 'edit_classifieds' ),
 
 			'labels' => array (
-			'name'          => __( 'Classified Categories', CF_TEXT_DOMAIN ),
-			'singular_name' => __( 'Classified Category', CF_TEXT_DOMAIN ),
-			'search_items'  => __( 'Search Classified Categories', CF_TEXT_DOMAIN ),
-			'popular_items' => __( 'Popular Classified Categories', CF_TEXT_DOMAIN ),
-			'all_items'     => __( 'All Classified Categories', CF_TEXT_DOMAIN ),
-			'parent_item'   => __( 'Parent Category', CF_TEXT_DOMAIN ),
-			'edit_item'     => __( 'Edit Classified Category', CF_TEXT_DOMAIN ),
-			'update_item'   => __( 'Update Classified Category', CF_TEXT_DOMAIN ),
-			'add_new_item'  => __( 'Add New Classified Category', CF_TEXT_DOMAIN ),
-			'new_item_name' => __( 'New Classified Category', CF_TEXT_DOMAIN ),
-			'parent_item_colon'   => __( 'Parent Category:', CF_TEXT_DOMAIN ),
-			'add_or_remove_items' => __( 'Add or remove Classified categories', CF_TEXT_DOMAIN ),
+			'name'          => __( 'Kleinanzeigen Kategorien', CF_TEXT_DOMAIN ),
+			'singular_name' => __( 'Kleinanzeigen Kategorie', CF_TEXT_DOMAIN ),
+			'search_items'  => __( 'Kleinanzeigen Kategorien durchsuchen', CF_TEXT_DOMAIN ),
+			'popular_items' => __( 'Beliebte Kleinanzeigen Kategorien', CF_TEXT_DOMAIN ),
+			'all_items'     => __( 'Alle Kleinanzeigen Kategorien', CF_TEXT_DOMAIN ),
+			'parent_item'   => __( 'Eltern-Kategorie', CF_TEXT_DOMAIN ),
+			'edit_item'     => __( 'Kleinanzeigen Kategorie bearbeiten', CF_TEXT_DOMAIN ),
+			'update_item'   => __( 'Kleinanzeigen Kategorie aktualisieren', CF_TEXT_DOMAIN ),
+			'add_new_item'  => __( 'Neue Kleinanzeigen Kategorie hinzufügen', CF_TEXT_DOMAIN ),
+			'new_item_name' => __( 'Neue Kleinanzeigen Kategorie', CF_TEXT_DOMAIN ),
+			'parent_item_colon'   => __( 'Eltern-Kategorie:', CF_TEXT_DOMAIN ),
+			'add_or_remove_items' => __( 'Kleinanzeigen Kategorien hinzufügen oder entfernen', CF_TEXT_DOMAIN ),
 			),
 			);
 
@@ -177,19 +177,19 @@ class Classifieds_Core_Data {
 
 			$selectbox_4cf582bd61fa4_default =
 			array (
-			'field_title' => 'Duration',
+			'field_title' => 'Dauer',
 			'field_type' => 'selectbox',
 			'field_sort_order' => 'default',
 			'field_options' =>
 			array (
 			1 => '',
-			2 => '1 Week',
-			3 => '2 Weeks',
-			4 => '3 Weeks',
-			5 => '4 Weeks',
+			2 => '1 Woche',
+			3 => '2 Wochen',
+			4 => '3 Wochen',
+			5 => '4 Wochen',
 			),
 			'field_default_option' => '1',
-			'field_description' => 'Extend the duration of this ad. ',
+			'field_description' => 'Verlängere die Laufzeit dieser Anzeige. ',
 			'object_type' => array ('classifieds'),
 			'hide_type' => array (),
 
@@ -212,11 +212,11 @@ class Classifieds_Core_Data {
 			array (
 			'object_type' => array ('classifieds'),
 			'hide_type' => array (),
-			'field_title' => 'Cost',
+			'field_title' => 'Preis',
 			'field_type' => 'text',
 			'field_sort_order' => 'default',
 			'field_default_option' => NULL,
-			'field_description' => 'The cost of the item.',
+			'field_description' => 'Die Kosten des Artikels.',
 			'field_required' => NULL,
 			'field_id' => 'text_4cfeb3eac6f1f',
 			);
