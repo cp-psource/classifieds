@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function get_credits_from_duration( $duration ) {
 
 			if ( empty( $duration ) ) {
-				$duration = '1 Week';
+				$duration = '1 Woche';
 			}
 			$options = $this->get_options( 'payments' );
 
@@ -1037,7 +1037,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 			$now      = time();
 			$interval = strtotime( "+{$duration}", $now ) - $now;
-			$weeks    = $interval / ( 60 * 60 * 24 * 7 ); // Weeks
+			$weeks    = $interval / ( 60 * 60 * 24 * 7 ); // Wochen
 
 			return round( $weeks * $options['credits_per_week'] );
 		}
@@ -1179,7 +1179,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		 * Calculate the Unix time stamp of the modified posts
 		 *
 		 * @param int|string $post_id
-		 * @param string $duration Valid value: "1 Week", "2 Weeks" ... etc
+		 * @param string $duration Valid value: "1 Woche", "2 Wochen" ... etc
 		 *
 		 * @return int Unix timestamp
 		 **/

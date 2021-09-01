@@ -532,7 +532,7 @@ class CF_Payments{
 
 						// If recurring start at the next payment
 						$key = md5(
-						'USD' .
+						'EUR' .
 						'kleinanzeigen_123' .
 						$options['payments']['recurring_cost']
 						);
@@ -542,7 +542,7 @@ class CF_Payments{
 
 							switch ($_SESSION['billing_period']) {
 								case 'Day' : $length = $_SESSION['billing_frequency']; $unit = 'days'; break;
-								case 'Week' : $length = (7 * $_SESSION['billing_frequency']);  $unit = 'days'; break;
+								case 'Woche' : $length = (7 * $_SESSION['billing_frequency']);  $unit = 'days'; break;
 								case 'Month' : $length = $_SESSION['billing_frequency'];  $unit = 'months'; break;
 								case 'Year' : $length = (12 * $_SESSION['billing_frequency']);  $unit = 'months'; break;
 							}

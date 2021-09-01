@@ -49,7 +49,7 @@
 						<td>
 							<select id="billing_period" name="billing_period"  >
 								<option value="Day" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Day' ); ?>><?php _e( 'Day', $this->text_domain ); ?></option>
-								<option value="Week" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ); ?>><?php _e( 'Week', $this->text_domain ); ?></option>
+								<option value="Woche" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Woche' ); ?>><?php _e( 'Woche', $this->text_domain ); ?></option>
 <!--
 								<option value="SemiMonth" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ); ?>><?php _e( 'Semi Monthly', $this->text_domain ); ?></option>
 -->
@@ -131,7 +131,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th><label for="credits_per_week"><?php _e( 'Credits Per Week', $this->text_domain ); ?></label></th>
+						<th><label for="credits_per_week"><?php _e( 'Credits Per Woche', $this->text_domain ); ?></label></th>
 						<td>
 							<input type="text" id="credits_per_week" name="credits_per_week" value="<?php echo ( empty( $options['credits_per_week'] ) ) ? '0' : $options['credits_per_week']; ?>" class="small-text" />
 							<span class="description"><?php _e( 'How many credits you need to publish an ad for one week.', $this->text_domain ); ?></span>
