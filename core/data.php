@@ -183,10 +183,10 @@ class Classifieds_Core_Data {
 			'field_options' =>
 			array (
 			1 => '',
-			2 => '1 Woche',
-			3 => '2 Wochen',
-			4 => '3 Wochen',
-			5 => '4 Wochen',
+			2 => '1 Week',
+			3 => '2 Weeks',
+			4 => '3 Weeks',
+			5 => '4 Weeks',
 			),
 			'field_default_option' => '1',
 			'field_description' => 'Verlängere die Laufzeit dieser Anzeige. ',
