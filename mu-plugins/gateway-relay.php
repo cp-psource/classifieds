@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Gateway Relay
-Plugin URI: http://premium.wpmudev.org/project/classifieds
+Plugin URI: http://premium.wpmudev.org/project/kleinanzeigen
 Description: Forwards IPN from Paypal and Silent Posts from Authorizenet to multiple new urls based on a prefix in certain fields.
 Version: 1.0
 Author: Arnold Bailey (Incsub)

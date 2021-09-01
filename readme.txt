@@ -1,7 +1,7 @@
 === Kleinanzeigen ===
 Contributors: DerN3rd
 Donate link:
-Tags: post types, taxonomies, custom fields, classifieds, ads, paypal, payments
+Tags: post types, taxonomies, custom fields, kleinanzeigen, ads, paypal, payments
 Requires at least: 3.0
 Tested up to: 5.0.0
 Stable tag: 2.1.6
@@ -14,7 +14,7 @@ upload images, send emails, charge your users for placing ads on your network or
 == Installation ==
 
 1. Extract the plugin archive file.
-2. Upload `classifieds` folder to the `/wp-content/plugins/` directory.
+2. Upload `kleinanzeigen` folder to the `/wp-content/plugins/` directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
@@ -22,8 +22,8 @@ upload images, send emails, charge your users for placing ads on your network or
 == Changelog ==
 
 = 2.0.0 =
-* Front-end classifieds management added.
-* Front-end classifieds management added for BuddyPress ( integrated with BP user profiles )
+* Front-end kleinanzeigen management added.
+* Front-end kleinanzeigen management added for BuddyPress ( integrated with BP user profiles )
 * Improved Admin UI.
 * Internal code architecture entirely rewritten for version 2.0 all legacy code removed.
 * Custom database tables eliminated. Replaced by core "wp" tables.
@@ -46,17 +46,17 @@ will not be available to the "v2.0.0" release.
 = Admin Content Types =
 
 When you first load the Classifieds plugin, some Content Types data will be created,
-meaning you will have one custom post type named "classifieds", two taxonomies
-named "classifieds_tags" and "classifieds_categories" and two custom fields named
+meaning you will have one custom post type named "kleinanzeigen", two taxonomies
+named "kleinanzeigen_tags" and "kleinanzeigen_categories" and two custom fields named
 "Duration" and "Cost". Each type comes with all the necessary settings.
 
-You can extend the functionality of your post type "classifieds" by going to
+You can extend the functionality of your post type "kleinanzeigen" by going to
 [Content Types]->[Post Types] and click on the post type title or on the [Edit] link
-below it. You will be able to extend your "classifieds" custom post type from there,
+below it. You will be able to extend your "kleinanzeigen" custom post type from there,
 ( you will find more information for each of the options on the Edit screen ).
 
 You can add new taxonomy or edit the existing ones by going to [Content Types]->[Taxonomies].
-You can click on the titles of "classifieds_tags" and "classifieds_categories" or on the [Edit]
+You can click on the titles of "kleinanzeigen_tags" and "kleinanzeigen_categories" or on the [Edit]
 links below to edit the taxonomies ( you will find more information for each of the options on the Edit screen ).
 
 You can add new custom field or edit the existing ones by going to [Content Types]->[Custom Fields].
@@ -92,7 +92,7 @@ buy credits or make a subscription.
 
 = Admin Dashboard =
 
-From the admin dashboard you will see all the available classifieds that you have.
+From the admin dashboard you will see all the available kleinanzeigen that you have.
 There is a [Create New Ad] button which will redirect you to the [Add New Classified]
 admin screen ( more on which in the =  = section ).
 
@@ -101,13 +101,13 @@ On the admin dashboard you will also find quick access to
 
 = Front End Classifieds Managment =
 
-Under [yourdomain.com]/[classifieds]/[my-classifieds] you will find a front-end
-UI for managing your classifieds. You can view your available credits, you can
+Under [yourdomain.com]/[kleinanzeigen]/[my-kleinanzeigen] you will find a front-end
+UI for managing your kleinanzeigen. You can view your available credits, you can
 [Edit Ad]/[End/Renew Ad][Delete Ad].
 
 = Display =
 
-Under [yourdomain.com]/[classifieds] you will find list of all classifieds published
-on the site. When you click on the author links you will get all classifieds from
+Under [yourdomain.com]/[kleinanzeigen] you will find list of all kleinanzeigen published
+on the site. When you click on the author links you will get all kleinanzeigen from
 that author. When you click on a category/tax custom taxonomy term, you will see all
-classifieds with that term.
+kleinanzeigen with that term.

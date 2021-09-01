@@ -16,7 +16,7 @@ $affiliate_settings['cost']                               = $this->get_options( 
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings', 'tab' => 'affiliate' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings', 'tab' => 'affiliate' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
 	<h1><?php _e( 'Affiliate-Einstellungen', $this->text_domain ); ?></h1>
@@ -42,7 +42,7 @@ $affiliate_settings['cost']                               = $this->get_options( 
 			</p>
 			<?php endif;?>
 
-			<?php do_action( 'classifieds_affiliate_settings', $affiliate_settings ); ?>
+			<?php do_action( 'kleinanzeigen_affiliate_settings', $affiliate_settings ); ?>
 
 		</div>
 	</div>

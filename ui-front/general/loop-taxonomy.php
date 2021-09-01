@@ -27,7 +27,7 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 
 ?>
 
-<?php if(! is_post_type_archive('classifieds') ) the_cf_breadcrumbs(); ?>
+<?php if(! is_post_type_archive('kleinanzeigen') ) the_cf_breadcrumbs(); ?>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php echo $cf->pagination( $cf->pagination_top ); ?>
@@ -101,7 +101,7 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 					<tr>
 						<th><?php _e( 'Kategorien', CF_TEXT_DOMAIN ); ?></th>
 						<td><span class="cf-terms">
-							<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
+							<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 							<?php foreach ( $taxonomies as $taxonomy ): ?>
 							<?php echo get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) . ' '; ?>
 							<?php endforeach; ?>

@@ -404,7 +404,7 @@ class CF_Payments{
 		elseif ( isset( $_REQUEST['token'])
 		&& $this->use_paypal
 		&& !isset( $_POST['confirm_payment_submit'] )
-		&& !isset( $_POST['redirect_my_classifieds'] ) ) {
+		&& !isset( $_POST['redirect_my_kleinanzeigen'] ) ) {
 
 			$_SESSION['token'] = $_REQUEST['token'];
 
@@ -528,12 +528,12 @@ class CF_Payments{
 						unset($this->_authorizenet_gateway);
 						$this->_authorizenet_gateway = null;
 
-						register_gateway_relay('CLS-', admin_url('admin-ajax.php?action=classifieds_sp'), '');
+						register_gateway_relay('CLS-', admin_url('admin-ajax.php?action=kleinanzeigen_sp'), '');
 
 						// If recurring start at the next payment
 						$key = md5(
 						'USD' .
-						'classifieds_123' .
+						'kleinanzeigen_123' .
 						$options['payments']['recurring_cost']
 						);
 
@@ -658,7 +658,7 @@ class CF_Payments{
 
 				$key = md5(
 				$options['payment_types']['paypal']['currency'] .
-				'classifieds_123' .
+				'kleinanzeigen_123' .
 				$options['payments']['recurring_cost']
 				);
 
@@ -668,7 +668,7 @@ class CF_Payments{
 				$transactions->billing_type = 'recurring';
 				$transactions->paypal = array('key' => $key);
 
-				$on_payment_url = empty($options['payment_types']['paypal']['payment_url']) ? get_permalink($Classifieds_Core->my_classifieds_page_id) : $options['payment_types']['paypal']['payment_url'];
+				$on_payment_url = empty($options['payment_types']['paypal']['payment_url']) ? get_permalink($Classifieds_Core->my_kleinanzeigen_page_id) : $options['payment_types']['paypal']['payment_url'];
 				$on_cancel_url = empty($options['payment_types']['paypal']['cancel_url']) ? get_option( 'siteurl' ) : $options['payment_types']['paypal']['cancel_url'];
 
 				$custom .= $this->session_string($_SESSION);
@@ -694,7 +694,7 @@ class CF_Payments{
 				$form .= '<input type="hidden" name="custom" value="' . esc_attr($custom) . '">';
 				$form .= '<input type="hidden" name="return" value="' . esc_attr($on_payment_url) . '">';
 				$form .= '<input type="hidden" name="cancel_return" value="' . esc_attr($on_cancel_url) . '">';
-				$form .= '<input type="hidden" name="notify_url" value="' . esc_attr(admin_url('admin-ajax.php?action=classifieds_ipn') ) . '">';
+				$form .= '<input type="hidden" name="notify_url" value="' . esc_attr(admin_url('admin-ajax.php?action=kleinanzeigen_ipn') ) . '">';
 				$form .= '<input type="hidden" name="no_shipping" value="1">';
 				$form .= '<input type="hidden" name="src" value="1">';
 				$form .= '</form>';

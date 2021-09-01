@@ -1,17 +1,17 @@
 === Classifieds ===
 Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
-Plugin Page: http://premium.wpmudev.org/project/classifieds
+Plugin Page: http://premium.wpmudev.org/project/kleinanzeigen
 
 == Changelog ==
 = 2.3.6.7
-* Fix: XSS vulnerability when saving classifieds
+* Fix: XSS vulnerability when saving kleinanzeigen
 
 = 2.3.6.6
 * WP 4.7 Compatible
-* Force to select a duration while creating classified
+* Force to select a duration while creating kleinanzeige
 * Fix: bug accident extend expire date
-* Fix: Showing comment in update classified page
-* Fix: Ping status in update classified page
+* Fix: Showing comment in update kleinanzeige page
+* Fix: Ping status in update kleinanzeige page
 * Fix: custom_fields_input shortcode breaking in page template
 * Fix: Duration being added repetadly after each update
 * Fix: Wrong classieif title in loop
@@ -22,23 +22,23 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 = 2.3.6.5
 * Fix bug invalid credit amount
 * Update CustomPress to latest version
-* Fix classified not expires
+* Fix kleinanzeige not expires
 
 = 2.3.6.4 - 2014-09-30
 * Fix BuddyPress profile links redirection
 * Fix Single Classifieds template "posted by" loading gif/redir issue
-* Fix create_classifieds capability added to everyone. Checking role config
-* Hide classifieds menu in Buddpress profile when not having capability to create new classified
+* Fix create_kleinanzeigen capability added to everyone. Checking role config
+* Hide kleinanzeigen menu in Buddpress profile when not having capability to create new kleinanzeige
 
 = 2.3.6.3 - 2014-09-23
-* Fix author classifieds template showing all classifieds
-* Fix BuddyPress profile classifieds double redirection issue
+* Fix author kleinanzeigen template showing all kleinanzeigen
+* Fix BuddyPress profile kleinanzeigen double redirection issue
 * Fix typo cf-no-imege -> cf-no-image in page templates
-* Fix wrong dimensions for default classifieds image 
+* Fix wrong dimensions for default kleinanzeigen image 
 
 = 2.3.6.2 - 2014-09-03
-* Fix contact button not showing in classified
-* Fix classifieds author page template not loading
+* Fix contact button not showing in kleinanzeige
+* Fix kleinanzeigen author page template not loading
 
 = 2.3.6.1 - 2014-09-02
 * Fix warning messages "implode(): Invalid arguments passed..."
@@ -51,15 +51,15 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 * Added: incsub partner code in paypal gateway
 
 = 2.3.5.8
-* Fixed: Removed Hard coded template part for loop-taxonomy and loop-author. Using custom_classifieds_template method.
+* Fixed: Removed Hard coded template part for loop-taxonomy and loop-author. Using custom_kleinanzeigen_template method.
 
 = 2.3.5.7
-* Fixed: testing field before accessing it to avoid errors in the single-classifieds template.
-* Fixed: declaring global $wp_query used in the page-my-classifieds.php
+* Fixed: testing field before accessing it to avoid errors in the single-kleinanzeigen template.
+* Fixed: declaring global $wp_query used in the page-my-kleinanzeigen.php
 * Fixed: Undefined index: signin_url in options array. Testing before accessing it.
 * Fixed: WPEngine issue. Registration and login form urls not the same as WP uses.
-* Changed: custom_classifieds_template method to get template hierarchy (1-theme_dir/classifieds/, 2-plugin_dir/ui-front/general/)
-* Changed: Classifieds_Core and Classifieds_Core_BuddyPress using custom_classifieds_template instead of including template file directly
+* Changed: custom_kleinanzeigen_template method to get template hierarchy (1-theme_dir/kleinanzeigen/, 2-plugin_dir/ui-front/general/)
+* Changed: Classifieds_Core and Classifieds_Core_BuddyPress using custom_kleinanzeigen_template instead of including template file directly
 * Fixed: including buddypress templates in templates hierarchy and testing for conditions where template comes with wordpress default page.php.
 
 = 2.3.5.6 - 2014-07-06 Arnold Bailey =
@@ -243,14 +243,14 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 * Fixed improper credit of signup credits.
 
 = 2.3.0.1 Arnold Bailey =
-* Added default classifieds statuses if left blank.
-* Added 'classifieds_full_access' filter. If the filter returns true it gives the user the right to enter classifieds without further payment.
+* Added default kleinanzeigen statuses if left blank.
+* Added 'kleinanzeigen_full_access' filter. If the filter returns true it gives the user the right to enter kleinanzeigen without further payment.
 
 = 2.3 Arnold Bailey 2012-10-27 =
-* New classifieds front end WYSIWYG entry screen.
-* Added control of the post status a member can save a classified as.
+* New kleinanzeigen front end WYSIWYG entry screen.
+* Added control of the post status a member can save a kleinanzeige as.
 * Expanded capabilites list
-* Added control of member roles for classifieds
+* Added control of member roles for kleinanzeigen
 * Added Authorizenet support.
 * New checkout work flow. Users can register before purchasing.
 * Field regex validation and required fields.
@@ -287,7 +287,7 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 
 = 2.2 =
 * Replaced Submodule with actual CustomPress for easier code maintenance
-* Changes default page tracking (classifieds, my-classifieds, checkout) to numeric triggers
+* Changes default page tracking (kleinanzeigen, my-kleinanzeigen, checkout) to numeric triggers
 * Added send credits
 * Lots of Buddy press fixes
 
@@ -312,7 +312,7 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
  2.1.4 =
 * Fixed problem compatibility with BBPress;
 * Fixed problem of redirection after updating values of the Post Type;
-* Added pagination for classifieds pages;
+* Added pagination for kleinanzeigen pages;
 * Ability to use WP-PageNavi plugin for pagination;
 * Added filter for replacement pagination (cf_pagination);
 
@@ -323,7 +323,7 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 
 =
  2.1.2 =
-* Fixed problem with allow user edit/delete other users classified posts;
+* Fixed problem with allow user edit/delete other users kleinanzeige posts;
 
 =
  2.1.1 =
@@ -338,7 +338,7 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 =
  2.0.9 =
 * Fixed Warning\Notice message;
-* Fixed display classifieds on 'My Classifieds' page (general);
+* Fixed display kleinanzeigen on 'My Classifieds' page (general);
 * Fixed "Purchase History";
 * Fixed some HTML\CSS
 * Added 'My Credits' page on front end;
@@ -353,13 +353,13 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 
 =
  2.0.8 =
-* fixed problem of display classifieds (under the influence of other plugins).
+* fixed problem of display kleinanzeigen (under the influence of other plugins).
 * added feature for create new ad with status as "draft" without any credits
 
 =
  2.0.7 =
 * fixed display menu credits for all user
-* fixed display page of edit classifieds
+* fixed display page of edit kleinanzeigen
 * fixed problem with deduction credits when create new ad
 * some template changes of checkout page
 * fixed problem with adding credits of checkout (when we logged)
@@ -371,8 +371,8 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
  2.0.6 =
 * fixed problem with permalink structure
 * fixed header error
-* fixed page of classified tags
-* fixed link on page of classified author
+* fixed page of kleinanzeige tags
+* fixed link on page of kleinanzeige author
 
 =
  2.0.5 =
@@ -380,7 +380,7 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 
 =
  2.0.4 =
-* Fixed problem with template of the categories page for not "classifieds" categories.
+* Fixed problem with template of the categories page for not "kleinanzeigen" categories.
 
 =
  2.0.3 =
@@ -399,9 +399,9 @@ Plugin Page: http://premium.wpmudev.org/project/classifieds
 =
  2.0.0 =
 
-* Front-end classifieds management added.
+* Front-end kleinanzeigen management added.
 
-* Front-end classifieds management added for BuddyPress ( integrated with BP user profiles )
+* Front-end kleinanzeigen management added for BuddyPress ( integrated with BP user profiles )
 
 * Improved Admin UI.
 

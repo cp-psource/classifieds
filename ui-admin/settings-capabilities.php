@@ -7,7 +7,7 @@ $options = $this->get_options('general');
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings', 'tab' => 'capabilities' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings', 'tab' => 'capabilities' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
 	<h1><?php _e( 'Einstellungen für Funktionen', $this->text_domain ); ?></h1>

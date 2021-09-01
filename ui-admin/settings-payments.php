@@ -4,7 +4,7 @@
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings', 'tab' => 'payments' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings', 'tab' => 'payments' ) ); ?>
 
 	<?php $this->render_admin( 'message' ); ?>
 

@@ -31,7 +31,7 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings','tab' => 'payment-types' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings','tab' => 'payment-types' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 	<h1><?php _e( 'Payment Types', $this->text_domain ); ?></h1>
 

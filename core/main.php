@@ -67,7 +67,7 @@ if (!class_exists('Classifieds_Core_Main')):
         {
 
             //Manage Classifieds
-            if (is_page($this->my_classifieds_page_id)) {
+            if (is_page($this->my_kleinanzeigen_page_id)) {
                 // If confirm button is pressed
                 if (isset($_POST['confirm'])) {
                     // Verify _wpnonce field
@@ -77,7 +77,7 @@ if (!class_exists('Classifieds_Core_Main')):
                             $this->process_status((int)$_POST['post_id'], 'private');
                         } // Renew action
                         elseif ($_POST['action'] == 'renew') {
-                            // The credits required to renew the classified for the selected period
+                            // The credits required to renew the kleinanzeige for the selected period
                             $duration = isset($_POST[$this->custom_fields['duration']]) ? $_POST[$this->custom_fields['duration']] : $_POST['duration'];
 
                             $credits_required = $this->get_credits_from_duration($duration);
@@ -97,15 +97,15 @@ if (!class_exists('Classifieds_Core_Main')):
                                 }
 
                             } else {
-                                $error = __('You do not have enough credits to publish your classified for the selected time period. Please select a shorter period, if available, or purchase more credits. Your ad has been saved as a Draft.', $this->text_domain);
+                                $error = __('You do not have enough credits to publish your kleinanzeige for the selected time period. Please select a shorter period, if available, or purchase more credits. Your ad has been saved as a Draft.', $this->text_domain);
                                 set_query_var('cf_error', $error);
                             }
                             //$this->process_credits()
                         } /* Delete action */
                         elseif ($_POST['action'] == 'delete') {
                             wp_delete_post($_POST['post_id']);
-                            /* Set the proper step which will be loaded by "page-my-classifieds.php" */
-                            set_query_var('cf_action', 'my-classifieds');
+                            /* Set the proper step which will be loaded by "page-my-kleinanzeigen.php" */
+                            set_query_var('cf_action', 'my-kleinanzeigen');
                         }
                     } else {
                         die(__('Security check failed!', $this->text_domain));
@@ -113,10 +113,10 @@ if (!class_exists('Classifieds_Core_Main')):
                 }
 
                 //Updating Classifieds
-            } elseif (is_page($this->add_classified_page_id) || is_page($this->edit_classified_page_id)) {
+            } elseif (is_page($this->add_kleinanzeige_page_id) || is_page($this->edit_kleinanzeige_page_id)) {
 
-                if (isset($_POST['update_classified'])) {
-                    // The credits required to renew the classified for the selected period
+                if (isset($_POST['update_kleinanzeige'])) {
+                    // The credits required to renew the kleinanzeige for the selected period
 
                     $credits_required = $this->get_credits_from_duration($_POST[$this->custom_fields['duration']]);
                     // If user have more credits of the required credits proceed with renewing the ad
@@ -125,8 +125,8 @@ if (!class_exists('Classifieds_Core_Main')):
                         $this->update_ad($_POST);
                         // Save the expiration date
                         $this->save_expiration_date($_POST['post_id']);
-                        // Set the proper step which will be loaded by "page-my-classifieds.php"
-                        set_query_var('cf_action', 'my-classifieds');
+                        // Set the proper step which will be loaded by "page-my-kleinanzeigen.php"
+                        set_query_var('cf_action', 'my-kleinanzeigen');
 
                         if (!$this->is_full_access()) {
                             // Update new credits amount
@@ -142,13 +142,13 @@ if (!class_exists('Classifieds_Core_Main')):
                     } else {
 
                         //save ad if have no credits
-                        $_POST['classified_data']['post_status'] = 'draft';
+                        $_POST['kleinanzeige_data']['post_status'] = 'draft';
                         /* Create ad */
                         $post_id = $this->update_ad($_POST);
                         set_query_var('cf_post_id', $_POST['post_id']);
-                        /* Set the proper step which will be loaded by "page-my-classifieds.php" */
+                        /* Set the proper step which will be loaded by "page-my-kleinanzeigen.php" */
                         set_query_var('cf_action', 'edit');
-                        $error = __('You do not have enough credits to publish your classified for the selected time period. Please select a shorter period, if available, or purchase more credits.<br />Your ad has been saved as a Draft.', $this->text_domain);
+                        $error = __('You do not have enough credits to publish your kleinanzeige for the selected time period. Please select a shorter period, if available, or purchase more credits.<br />Your ad has been saved as a Draft.', $this->text_domain);
                         set_query_var('cf_error', $error);
                     }
                 }
@@ -166,13 +166,13 @@ if (!class_exists('Classifieds_Core_Main')):
         {
             global $wp_query;
 
-            /* Handles request for classifieds page */
+            /* Handles request for kleinanzeigen page */
             $templates = array();
             $taxonomy = (empty($wp_query->query_vars['taxonomy'])) ? '' : $wp_query->query_vars['taxonomy'];
 
             //Check if a custom template is selected, if not or not a page, default to the one selected for the directory_listing virtual page.
             $id = get_queried_object_id();
-            if (empty($id)) $id = $this->classifieds_page_id;
+            if (empty($id)) $id = $this->kleinanzeigen_page_id;
             $slug = get_page_template_slug($id);
             if (empty($slug)) $page_template = get_page_template();
             else $page_template = locate_template(array($slug, 'page.php', 'index.php'));
@@ -181,105 +181,105 @@ if (!class_exists('Classifieds_Core_Main')):
                 return;
             } elseif ('' != get_query_var('cf_author_name') || isset($_REQUEST['cf_author']) && '' != $_REQUEST['cf_author']) {
                 $templates = array('page-author');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     $wp_query->post_count = 1;
                     add_filter('the_title', array(&$this, 'page_title_output'), 10, 2);
-                    add_filter('the_content', array(&$this, 'classifieds_content'));
+                    add_filter('the_content', array(&$this, 'kleinanzeigen_content'));
                 }
-// 			add_filter( 'template_include', array( &$this, 'custom_classifieds_template' ) );
-                $this->is_classifieds_page = true;
+// 			add_filter( 'template_include', array( &$this, 'custom_kleinanzeigen_template' ) );
+                $this->is_kleinanzeigen_page = true;
 
-            } elseif (is_post_type_archive('classifieds')) {
+            } elseif (is_post_type_archive('kleinanzeigen')) {
                 global $wp_query;
-                $p = get_post($this->classifieds_page_id);
+                $p = get_post($this->kleinanzeigen_page_id);
                 $wp_query->posts = array($p);
                 $wp_query->post_count = 1;
-                /* Set the proper step which will be loaded by "page-my-classifieds.php" */
-                $templates = array('archive-classifieds.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                /* Set the proper step which will be loaded by "page-my-kleinanzeigen.php" */
+                $templates = array('archive-kleinanzeigen.php');
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     $wp_query->post_count = 1;
                     add_filter('the_title', array(&$this, 'page_title_output'), 10, 2);
-                    add_filter('the_content', array(&$this, 'classifieds_content'));
+                    add_filter('the_content', array(&$this, 'kleinanzeigen_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
-            } elseif (is_archive() && in_array($taxonomy, array('classifieds_categories', 'classifieds_tags'))) {
-                /* Set the proper step which will be loaded by "page-my-classifieds.php" */
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
+            } elseif (is_archive() && in_array($taxonomy, array('kleinanzeigen_categories', 'kleinanzeigen_tags'))) {
+                /* Set the proper step which will be loaded by "page-my-kleinanzeigen.php" */
                 $templates = array("taxonomy-{$taxonomy}.php");
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     $wp_query->post_count = 1;
                     add_filter('the_title', array(&$this, 'page_title_output'), 10, 2);
-                    add_filter('the_content', array(&$this, 'classifieds_content'));
+                    add_filter('the_content', array(&$this, 'kleinanzeigen_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
-            } elseif (is_single() && 'classifieds' == get_query_var('post_type')) {
-                $templates = array('single-classifieds.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
+            } elseif (is_single() && 'kleinanzeigen' == get_query_var('post_type')) {
+                $templates = array('single-kleinanzeigen.php');
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     add_filter('the_content', array(&$this, 'single_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } elseif (is_page($this->my_credits_page_id)) {
                 $templates = array('page-my-credits.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     add_filter('the_content', array(&$this, 'my_credits_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } elseif (is_page($this->checkout_page_id)) {
                 $templates = array('page-checkout.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     add_filter('the_content', array(&$this, 'checkout_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } elseif (is_page($this->signin_page_id)) {
                 $templates = array('page-signin.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
                     add_filter('the_title', array(&$this, 'delete_post_title'), 11); //after wpautop
                     add_filter('the_content', array(&$this, 'signin_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } //My Classifieds page
-            elseif (is_page($this->my_classifieds_page_id)) {
-                $templates = array('page-my-classifieds.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
-                    add_filter('the_content', array(&$this, 'my_classifieds_content'));
+            elseif (is_page($this->my_kleinanzeigen_page_id)) {
+                $templates = array('page-my-kleinanzeigen.php');
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
+                    add_filter('the_content', array(&$this, 'my_kleinanzeigen_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } //Classifieds update pages
-            elseif (is_page($this->add_classified_page_id) || is_page($this->edit_classified_page_id)) {
-                $templates = array('page-update-classified.php');
-                if (!$this->classifieds_template = locate_template($templates)) {
-                    $this->classifieds_template = $page_template;
-                    add_filter('the_content', array(&$this, 'update_classified_content'));
+            elseif (is_page($this->add_kleinanzeige_page_id) || is_page($this->edit_kleinanzeige_page_id)) {
+                $templates = array('page-update-kleinanzeige.php');
+                if (!$this->kleinanzeigen_template = locate_template($templates)) {
+                    $this->kleinanzeigen_template = $page_template;
+                    add_filter('the_content', array(&$this, 'update_kleinanzeige_content'));
                 }
-                add_filter('template_include', array(&$this, 'custom_classifieds_template'));
-                $this->is_classifieds_page = true;
+                add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
+                $this->is_kleinanzeigen_page = true;
             } /* If user wants to go to My Classifieds main page  */
-            elseif (isset($_POST['go_my_classifieds'])) {
-                wp_redirect(get_permalink($this->my_classifieds_page_id));
+            elseif (isset($_POST['go_my_kleinanzeigen'])) {
+                wp_redirect(get_permalink($this->my_kleinanzeigen_page_id));
             } /* If user wants to go to checkout page  */
             elseif (isset($_POST['purchase'])) {
                 wp_redirect(get_permalink($this->checkout_page_id));
             } else {
-                /* Set the proper step which will be loaded by "page-my-classifieds.php" */
-                set_query_var('cf_action', 'my-classifieds');
+                /* Set the proper step which will be loaded by "page-my-kleinanzeigen.php" */
+                set_query_var('cf_action', 'my-kleinanzeigen');
             }
 
             //load  specific items
-            if ($this->is_classifieds_page) {
+            if ($this->is_kleinanzeigen_page) {
                 add_filter('edit_post_link', array(&$this, 'delete_edit_post_link'));
             }
         }
@@ -291,15 +291,15 @@ if (!class_exists('Classifieds_Core_Main')):
          **/
         function enqueue_scripts()
         {
-            if (is_page($this->add_classified_page_id) || is_page($this->edit_classified_page_id)) {
+            if (is_page($this->add_kleinanzeige_page_id) || is_page($this->edit_kleinanzeige_page_id)) {
                 wp_enqueue_script('thickbox');
                 wp_enqueue_style('thickbox');
             }
 
-            if (file_exists(get_template_directory() . '/style-classifieds.css')) {
-                wp_enqueue_style('style-classifieds', get_template_directory() . '/style-classifieds.css');
-            } elseif (file_exists($this->plugin_dir . 'ui-front/general/style-classifieds.css')) {
-                wp_enqueue_style('style-classifieds', $this->plugin_url . 'ui-front/general/style-classifieds.css');
+            if (file_exists(get_template_directory() . '/style-kleinanzeigen.css')) {
+                wp_enqueue_style('style-kleinanzeigen', get_template_directory() . '/style-kleinanzeigen.css');
+            } elseif (file_exists($this->plugin_dir . 'ui-front/general/style-kleinanzeigen.css')) {
+                wp_enqueue_style('style-kleinanzeigen', $this->plugin_url . 'ui-front/general/style-kleinanzeigen.css');
             }
         }
 
@@ -307,7 +307,7 @@ if (!class_exists('Classifieds_Core_Main')):
         {
             global $post;
 
-            if ($post->post_type == 'classifieds') {
+            if ($post->post_type == 'kleinanzeigen') {
                 $link = str_replace('/author/', '/cf-author/', $link);
             }
             return $link;

@@ -15,27 +15,27 @@ exit();
 //Remove Classifieds custom post types and fields
 
 $ct_custom_post_types = get_site_option( 'ct_custom_post_types' );
-unset($ct_custom_post_types['classifieds']);
+unset($ct_custom_post_types['kleinanzeigen']);
 update_site_option( 'ct_custom_post_types', $ct_custom_post_types );
 
 $ct_custom_post_types = get_option( 'ct_custom_post_types' );
-unset($ct_custom_post_types['classifieds']);
+unset($ct_custom_post_types['kleinanzeigen']);
 update_option( 'ct_custom_post_types', $ct_custom_post_types );
 
 $ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
-unset($ct_custom_taxonomies['classifieds_tags']);
+unset($ct_custom_taxonomies['kleinanzeigen_tags']);
 update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 
 $ct_custom_taxonomies = get_option('ct_custom_taxonomies');
-unset($ct_custom_taxonomies['classifieds_tags']);
+unset($ct_custom_taxonomies['kleinanzeigen_tags']);
 update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 
 $ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
-unset($ct_custom_taxonomies['classifieds_categories']);
+unset($ct_custom_taxonomies['kleinanzeigen_categories']);
 update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 
 $ct_custom_taxonomies = get_option('ct_custom_taxonomies');
-unset($ct_custom_taxonomies['classifieds_categories']);
+unset($ct_custom_taxonomies['kleinanzeigen_categories']);
 update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 
 $ct_network_custom_fields = ( get_site_option( 'ct_custom_fields' ) );

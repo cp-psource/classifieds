@@ -30,20 +30,20 @@ class Classifieds_Core_Data {
 
 		// Check whether post types are loaded
 
-		if ( ! post_type_exists('classifieds') ) {
+		if ( ! post_type_exists('kleinanzeigen') ) {
 
-			$classifieds_default =
+			$kleinanzeigen_default =
 			array (
 			'can_export' => true,
-			'capability_type' => 'classified',
+			'capability_type' => 'kleinanzeige',
 			'description' => 'Typ des Kleinanzeigenbeitrags.',
-			'has_archive' => 'classifieds',
+			'has_archive' => 'kleinanzeigen',
 			'hierarchical' => false,
 			'map_meta_cap' => true,
 			'menu_position' => '',
 			'public' => true,
 			'query_var' => true,
-			'rewrite' => array ( 'slug' => 'classified', 'with_front' => false, 'pages' => true),
+			'rewrite' => array ( 'slug' => 'kleinanzeige', 'with_front' => false, 'pages' => true),
 
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', /*'post-formats'*/ ),
 
@@ -64,11 +64,11 @@ class Classifieds_Core_Data {
 			//Update custom post types
 			if(is_network_admin()){
 				$ct_custom_post_types = get_site_option( 'ct_custom_post_types' );
-				$ct_custom_post_types['classifieds'] = $classifieds_default;
+				$ct_custom_post_types['kleinanzeigen'] = $kleinanzeigen_default;
 				update_site_option( 'ct_custom_post_types', $ct_custom_post_types );
 			} else {
 				$ct_custom_post_types = get_option( 'ct_custom_post_types' );
-				$ct_custom_post_types['classifieds'] = $classifieds_default;
+				$ct_custom_post_types['kleinanzeigen'] = $kleinanzeigen_default;
 				update_option( 'ct_custom_post_types', $ct_custom_post_types );
 			}
 
@@ -79,16 +79,16 @@ class Classifieds_Core_Data {
 		/* Check whether taxonomies data is loaded */
 
 
-		if ( ! taxonomy_exists('classifieds_tags') ){
+		if ( ! taxonomy_exists('kleinanzeigen_tags') ){
 
-			$classifieds_tags_default = array();
-			$classifieds_tags_default['object_type'] = array ( 'classifieds');
-			$classifieds_tags_default['args'] = array (
+			$kleinanzeigen_tags_default = array();
+			$kleinanzeigen_tags_default['object_type'] = array ( 'kleinanzeigen');
+			$kleinanzeigen_tags_default['args'] = array (
 			'public' => true,
 			'hierarchical' => false,
 			'rewrite' => array ( 'slug' => 'cf-tags', 'with_front' => false, 'hierarchical' => false ),
 			'query_var' => true,
-			'capabilities' => array ('assign_terms' => 'edit_classifieds'),
+			'capabilities' => array ('assign_terms' => 'edit_kleinanzeigen'),
 
 			'labels' => array (
 			'name'          => __( 'Kleinanzeigen Tags', CF_TEXT_DOMAIN ),
@@ -108,11 +108,11 @@ class Classifieds_Core_Data {
 
 			if(is_network_admin()){
 				$ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
-				$ct_custom_taxonomies['classifieds_tags'] = $classifieds_tags_default;
+				$ct_custom_taxonomies['kleinanzeigen_tags'] = $kleinanzeigen_tags_default;
 				update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			} else {
 				$ct_custom_taxonomies = get_option('ct_custom_taxonomies');
-				$ct_custom_taxonomies['classifieds_tags'] = $classifieds_tags_default;
+				$ct_custom_taxonomies['kleinanzeigen_tags'] = $kleinanzeigen_tags_default;
 				update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			}
 
@@ -121,22 +121,22 @@ class Classifieds_Core_Data {
 
 		}
 
-		if ( ! taxonomy_exists('classifieds_categories') ){
+		if ( ! taxonomy_exists('kleinanzeigen_categories') ){
 
 			if(is_multisite()){
 				$ct = get_option( 'ct_custom_taxonomies' ); // get the blog types
-				if(isset($ct['classifieds_categories'])) unset($ct['classifieds_categories']);
+				if(isset($ct['kleinanzeigen_categories'])) unset($ct['kleinanzeigen_categories']);
 				update_option( 'ct_custom_taxonomies', $ct ); //Remove from site specific and move to network options.
 			}
 
-			$classifieds_categories_default = array();
-			$classifieds_categories_default['object_type'] = array ('classifieds');
-			$classifieds_categories_default['args'] = array (
+			$kleinanzeigen_categories_default = array();
+			$kleinanzeigen_categories_default['object_type'] = array ('kleinanzeigen');
+			$kleinanzeigen_categories_default['args'] = array (
 			'public' => true,
 			'hierarchical'  => true,
 			'rewrite' => array ('slug' => 'cf-categories', 'with_front' => false, 'hierarchical' => true),
 			'query_var' => true,
-			'capabilities' => array ( 'assign_terms' => 'edit_classifieds' ),
+			'capabilities' => array ( 'assign_terms' => 'edit_kleinanzeigen' ),
 
 			'labels' => array (
 			'name'          => __( 'Kleinanzeigen Kategorien', CF_TEXT_DOMAIN ),
@@ -156,11 +156,11 @@ class Classifieds_Core_Data {
 
 			if(is_network_admin()){
 				$ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
-				$ct_custom_taxonomies['classifieds_categories'] = $classifieds_categories_default;
+				$ct_custom_taxonomies['kleinanzeigen_categories'] = $kleinanzeigen_categories_default;
 				update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			} else {
 				$ct_custom_taxonomies = get_option('ct_custom_taxonomies');
-				$ct_custom_taxonomies['classifieds_categories'] = $classifieds_categories_default;
+				$ct_custom_taxonomies['kleinanzeigen_categories'] = $kleinanzeigen_categories_default;
 				update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			}
 
@@ -190,7 +190,7 @@ class Classifieds_Core_Data {
 			),
 			'field_default_option' => '1',
 			'field_description' => 'Verlängere die Laufzeit dieser Anzeige. ',
-			'object_type' => array ('classifieds'),
+			'object_type' => array ('kleinanzeigen'),
 			'hide_type' => array (),
 
 			'field_required' => NULL,
@@ -210,7 +210,7 @@ class Classifieds_Core_Data {
 
 			$text_4cfeb3eac6f1f_default =
 			array (
-			'object_type' => array ('classifieds'),
+			'object_type' => array ('kleinanzeigen'),
 			'hide_type' => array (),
 			'field_title' => 'Preis',
 			'field_type' => 'text',
@@ -321,11 +321,11 @@ class Classifieds_Core_Data {
 
 	function rewrite_rules() {
 
-		add_rewrite_rule("classifieds/author/([^/]+)/page/?([2-9][0-9]*)",
-		"index.php?post_type=classifieds&author_name=\$matches[1]&paged=\$matches[2]", 'top');
+		add_rewrite_rule("kleinanzeigen/author/([^/]+)/page/?([2-9][0-9]*)",
+		"index.php?post_type=kleinanzeigen&author_name=\$matches[1]&paged=\$matches[2]", 'top');
 
-		add_rewrite_rule("classifieds/author/([^/]+)",
-		"index.php?post_type=classifieds&author_name=\$matches[1]", 'top');
+		add_rewrite_rule("kleinanzeigen/author/([^/]+)",
+		"index.php?post_type=kleinanzeigen&author_name=\$matches[1]", 'top');
 
 		flush_network_rewrite_rules();
 	}

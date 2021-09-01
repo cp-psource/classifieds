@@ -659,10 +659,10 @@ $countries = array (
 <?php elseif ( $step == 'free_success' ): ?>
 
 <div class="dp-submit-txt"><?php _e( 'The registration is completed successfully!', $this->text_domain ); ?></div>
-<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the classifieds submission page.', $this->text_domain ); ?></span>
+<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the kleinanzeigen submission page.', $this->text_domain ); ?></span>
 <br />
 
-<?php echo do_shortcode('[cf_my_classifieds_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
+<?php echo do_shortcode('[cf_my_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
 
 
 <form id="go-to-profile-su" action="#" method="post">
@@ -736,10 +736,10 @@ $countries = array (
 <?php elseif ( $step == 'success' ): ?>
 <!-- Begin Success -->
 <div class="dp-thank-you"><?php _e( 'Thank you for your business. Transaction processed successfully!', $this->text_domain ); ?></div>
-<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to classifieds submission page.', $this->text_domain ); ?></span>
+<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to kleinanzeigen submission page.', $this->text_domain ); ?></span>
 <br /><br />
 
-<?php echo do_shortcode('[cf_my_classifieds_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
+<?php echo do_shortcode('[cf_my_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
 
 <!-- End Success -->
 <?php endif; ?>

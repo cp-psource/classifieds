@@ -7,7 +7,7 @@ $transactions = new CF_Transactions;
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_credits','tab' => 'my-credits' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_credits','tab' => 'my-credits' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
 	<h1><?php _e( 'Mein Kleinanzeigen-Guthaben', $this->text_domain ); ?></h1>

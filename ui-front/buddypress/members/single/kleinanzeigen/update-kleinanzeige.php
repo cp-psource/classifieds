@@ -1,15 +1,16 @@
 <?php
 /**
-* The template for displaying the Add/edit classified page.
+* The template for displaying the Add/edit kleinanzeige page.
 * You can override this file in your active theme.
 *
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
 
-global $post, $post_ID, $CustomPress_Core;
+global $bp,$post, $post_ID, $CustomPress_Core;
 
-$classified_data   = '';
+
+$kleinanzeige_data   = '';
 $selected_cats  = '';
 $error = get_query_var('cf_error');
 $post_statuses = get_post_statuses(); // get the wp post status list
@@ -20,24 +21,26 @@ $allowed_statuses['moderation'] = (empty($options['moderation']) ) ? array('publ
 $allowed_statuses = array_reverse(array_intersect_key($post_statuses, $allowed_statuses['moderation']) ); //return the reduced list
 
 //Are we adding a Classified?
+
 if(! isset($_REQUEST['post_id']) ){
 
-	//Make an auto-draft so we have a post id to connect attachments to. Set global $post_ID so media editor can hook up. Watch the case
-	$post_ID = wp_insert_post( array( 'post_title' => __( 'Automatischer Entwurf' ), 'post_type' => 'classifieds', 'post_status' => 'auto-draft', 'comment_status' => 'closed', 'ping_status' => 'closed'), true );
-	$classified_data = get_post($post_ID, ARRAY_A );
-	$classified_data['post_title'] = ''; //Have to have a title to insert the auto-save but we don't want it as final.
+	//Make an auto-draft so we have a post id to connect attachments to. Set global $post_ID so media editor can hook up.
+	$post_ID = wp_insert_post( array( 'post_title' => __( 'Automatischer Entwurf' ), 'post_type' => 'kleinanzeigen', 'post_status' => 'auto-draft', 'comment_status' => 'closed', 'ping_status' => 'closed'), true );
+	$kleinanzeige_data = get_post($post_ID, ARRAY_A );
+	$kleinanzeige_data['post_title'] = ''; //Have to have a title to insert the auto-save but we don't want it as final.
 	$editing = false;
 }
-
 //Or are we editing a Classified?
 elseif( isset($_REQUEST['post_id']) ) {
-	$classified_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
-	$post_ID = $classified_data['ID'];
+	$kleinanzeige_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
+	$post_ID = $kleinanzeige_data['ID'];
 	$editing = true;
 }
 $post = get_post($post_ID);
 
-if ( isset( $_POST['classified_data'] ) ) $classified_data = $_POST['classified_data'];
+
+if ( isset( $_POST['kleinanzeige_data'] ) ) $kleinanzeige_data = $_POST['kleinanzeige_data'];
+
 
 require_once(ABSPATH . 'wp-admin/includes/template.php');
 require_once(ABSPATH . 'wp-admin/includes/media.php');
@@ -46,7 +49,7 @@ require_once(ABSPATH . 'wp-admin/includes/post.php');
 $editor_settings =   array(
 'wpautop' => true, // use wpautop?
 'media_buttons' => true, // show insert/upload button(s)
-'textarea_name' => 'classified_data[post_content]', // set the textarea name to something different, square brackets [] can be used here
+'textarea_name' => 'kleinanzeige_data[post_content]', // set the textarea name to something different, square brackets [] can be used here
 'textarea_rows' => 10, //get_option('default_post_edit_rows', 10), // rows="..."
 'tabindex' => '',
 'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the <style> tags, can use "scoped".
@@ -57,9 +60,9 @@ $editor_settings =   array(
 'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
 );
 
-$classified_content = (empty( $classified_data['post_content'] ) ) ? '' : $classified_data['post_content'];
-
+$kleinanzeige_content = (empty( $kleinanzeige_data['post_content'] ) ) ? '' : $kleinanzeige_data['post_content'];
 wp_enqueue_script('set-post-thumbnail');
+
 ?>
 
 <!-- Begin Update Classifieds -->
@@ -82,18 +85,18 @@ wp_enqueue_script('set-post-thumbnail');
 	<?php endif; ?>
 
 	<form class="standard-form base" method="post" action="#" enctype="multipart/form-data" id="cf_update_form" >
-		<input type="hidden" id="post_ID" name="classified_data[ID]" value="<?php echo ( empty( $classified_data['ID'] ) ) ? '' : $classified_data['ID']; ?>" />
-		<input type="hidden" name="post_id" value="<?php echo ( empty( $classified_data['ID'] ) ) ? '' : $classified_data['ID']; ?>" />
+		<input type="hidden" id="post_ID" name="kleinanzeige_data[ID]" value="<?php echo ( empty( $kleinanzeige_data['ID'] ) ) ? '' : $kleinanzeige_data['ID']; ?>" />
+		<input type="hidden" name="post_id" value="<?php echo ( empty( $kleinanzeige_data['ID'] ) ) ? '' : $kleinanzeige_data['ID']; ?>" />
 
-		<?php if(post_type_supports('classifieds','title') ): ?>
+		<?php if(post_type_supports('kleinanzeigen','title') ): ?>
 		<div class="editfield">
 			<label for="title"><?php _e( 'Titel', $this->text_domain ); ?></label>
-			<input class="required" type="text" id="title" name="classified_data[post_title]" value="<?php echo ( empty( $classified_data['post_title'] ) ) ? '' : esc_attr($classified_data['post_title']); ?>" />
+			<input class="required" type="text" id="title" name="kleinanzeige_data[post_title]" value="<?php echo ( empty( $kleinanzeige_data['post_title'] ) ) ? '' : esc_attr($kleinanzeige_data['post_title']); ?>" />
 			<p class="description"><?php _e( 'Gib hier den Titel ein.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
-		<?php if(post_type_supports('classifieds','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
+		<?php if(post_type_supports('kleinanzeigen','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
 		<div class="editfield">
 
 			<?php if(empty($options['media_manager']) ): ?>
@@ -124,32 +127,40 @@ wp_enqueue_script('set-post-thumbnail');
 		</div>
 		<?php endif; ?>
 
-		<?php if(post_type_supports('classifieds','editor') ): ?>
-		<label for="classifiedcontent"><?php _e( 'Beschreibung', $this->text_domain ); ?></label>
+		<?php if(post_type_supports('kleinanzeigen','editor') ): ?>
+		<label for="kleinanzeigecontent"><?php _e( 'Beschreibung', $this->text_domain ); ?></label>
 
-		<?php wp_editor( $classified_content, 'classifiedcontent', $editor_settings); ?>
+		<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
 
-		<p class="description"><?php _e( 'Der Inhalt Deiner Kleinanzeige.', $this->text_domain ); ?></p>
+		<?php wp_editor( $kleinanzeige_content, 'kleinanzeigecontent', $editor_settings); ?>
+
+		<?php else: ?>
+
+		<textarea id="kleinanzeigecontent" name="kleinanzeige_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($kleinanzeige_content); ?></textarea>
+
 		<?php endif; ?>
 
-		<?php if(post_type_supports('classifieds','excerpt') ): ?>
+		<p class="description"><?php _e( 'Beschreibe Deine Kleinanzeige.', $this->text_domain ); ?></p>
+		<?php endif; ?>
+
+		<?php if(post_type_supports('kleinanzeigen','excerpt') ): ?>
 		<div class="editfield alt">
 			<label for="excerpt"><?php _e( 'Auszug', $this->text_domain ); ?></label>
-			<textarea id="excerpt" name="classified_data[post_excerpt]" rows="2" ><?php echo (empty( $classified_data['post_excerpt'] ) ) ? '' : esc_textarea($classified_data['post_excerpt']); ?></textarea>
+			<textarea id="excerpt" name="kleinanzeige_data[post_excerpt]" rows="2" ><?php echo (empty( $kleinanzeige_data['post_excerpt'] ) ) ? '' : esc_textarea($kleinanzeige_data['post_excerpt']); ?></textarea>
 			<p class="description"><?php _e( 'Ein kurzer Auszug Deiner Anzeige.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
 		<?php
 		//get related hierarchical taxonomies
-		$taxonomies = get_object_taxonomies('classifieds', 'objects');
+		$taxonomies = get_object_taxonomies('kleinanzeigen', 'objects');
 		//Loop through the taxonomies that apply
 		foreach($taxonomies as $taxonomy):
 		if( ! $taxonomy->hierarchical) continue;
 		$tax_name = $taxonomy->name;
 		$labels = $taxonomy->labels;
 		//Get this Taxonomies terms
-		$selected_cats = array_values( wp_get_post_terms($classified_data['ID'], $tax_name, array('fields' => 'ids') ) );
+		$selected_cats = array_values( wp_get_post_terms($kleinanzeige_data['ID'], $tax_name, array('fields' => 'ids') ) );
 
 		?>
 
@@ -178,20 +189,19 @@ wp_enqueue_script('set-post-thumbnail');
 		$labels = $tag->labels;
 
 		//Get this Taxonomies terms
-		$tag_list = strip_tags(get_the_term_list( $classified_data['ID'], $tag_name, '', ',', '' ));
+		$tag_list = strip_tags(get_the_term_list( $kleinanzeige_data['ID'], $tag_name, '', ',', '' ));
 
 		?>
 
-		<div class="cf_taxonomy">
+		<div class="cf_taxonomydiv">
 			<div id="<?php echo $tag_name; ?>-checklist" class="tagchecklist">
-				<label><?php echo $labels->name; ?>
-					<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
-				</label>
-				<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
-			</div>
+				<label><?php echo $labels->name; ?></label>
+				<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
 
-			<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("füge ein Schlagwort hinzu", $this->text_domain); ?>'}); </script>
+			</div>
+			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height: '150px'}); </script>
 		<?php endforeach; ?>
 
 		<div class="clear"><br /></div>
@@ -199,11 +209,11 @@ wp_enqueue_script('set-post-thumbnail');
 		<div class="editfield" >
 			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
 			<div id="status-box">
-				<select name="classified_data[post_status]" id="classified_data[post_status]">
+				<select name="kleinanzeige_data[post_status]" id="kleinanzeige_data[post_status]">
 					<?php
 					foreach($allowed_statuses as $key => $value): ?>
 
-					<option value="<?php echo $key; ?>" <?php selected( ! empty($classified_data['post_status'] ) && $key == $classified_data['post_status'] ); ?> ><?php echo $value; ?></option>
+					<option value="<?php echo $key; ?>" <?php selected( ! empty($kleinanzeige_data['post_status'] ) && $key == $kleinanzeige_data['post_status'] ); ?> ><?php echo $value; ?></option>
 
 					<?php endforeach; ?>
 				</select>
@@ -221,15 +231,10 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
-			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_classified">
+			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_kleinanzeige">
 
-			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_classifieds_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_kleinanzeigen_page_id); ?>'">
 		</div>
 	</form>
 </div><!-- .cf_update_form -->
 <!-- End Update Classifieds -->
-<script type="text/javascript">
-	jQuery('input[name="update_classified"]').mousedown( function() {
-		tinyMCE.triggerSave();
-	});
-</script>

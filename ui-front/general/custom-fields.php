@@ -23,7 +23,7 @@ $output = false;
 
 if (is_array($custom_field['object_type'])){
 	foreach ( $custom_field['object_type'] as $custom_field_object_type ){
-		if ( $custom_field_object_type == 'classifieds' ){
+		if ( $custom_field_object_type == 'kleinanzeigen' ){
 			$output = true; break;
 		}
 	}

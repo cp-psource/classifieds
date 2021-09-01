@@ -1,6 +1,6 @@
 <?php
 /**
-* The Template for displaying all single classifieds posts.
+* The Template for displaying all single kleinanzeigen posts.
 * You can override this file in your active theme.
 *
 * @package Classifieds
@@ -14,7 +14,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 
 /**
 * $content is already filled with the database html.
-* This template just adds classifieds specfic code around it.
+* This template just adds kleinanzeigen specfic code around it.
 */
 ?>
 
@@ -60,13 +60,13 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 			<tr>
 				<th><?php _e( 'Veröffentlicht von', $this->text_domain ); ?></th>
 				<td>
-					<?php echo the_author_classifieds_link(); ?>
+					<?php echo the_author_kleinanzeigen_link(); ?>
 				</td>
 			</tr>
 			<tr>
 				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 				<td>
-					<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
+					<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 					<?php foreach ( $taxonomies as $taxonomy ): ?>
 					<?php echo get_the_term_list( $post->ID, $taxonomy, '', ', ', '' ) . ' '; ?>
 					<?php endforeach; ?>
@@ -94,7 +94,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 
 	<?php if( empty( $options['disable_contact_form'] ) ): ?>
 	<form method="post" action="#" class="contact-user-btn action-form" id="action-form">
-		<input type="submit" name="contact_user" value="<?php _e('Anbieter kontaktieren', $this->text_domain ); ?>" onclick="classifieds.toggle_contact_form(); return false;" />
+		<input type="submit" name="contact_user" value="<?php _e('Anbieter kontaktieren', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_contact_form(); return false;" />
 	</form>
 	<div class="clear"></div>
 
@@ -138,7 +138,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 			<p>
 				<?php wp_nonce_field( 'send_message' ); ?>
 				<input type="submit" class="button confirm" value="<?php _e( 'Senden', $this->text_domain ); ?>" name="contact_form_send" />
-				<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="classifieds.cancel_contact_form(); return false;" />
+				<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="kleinanzeigen.cancel_contact_form(); return false;" />
 			</p>
 		</div>
 	</form>
@@ -160,7 +160,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 			<tr>
 				<td>
 					<?php
-					//$content is already filled with the database text. This just add classified specfic code around it.
+					//$content is already filled with the database text. This just add kleinanzeige specfic code around it.
 					echo wp_kses($content, cf_wp_kses_allowed_html());
 					?>
 				</td>

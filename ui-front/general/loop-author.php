@@ -36,7 +36,7 @@ query_posts( array(
 	'paged' => $cf_page, 
 	'author_name' => get_query_var( 'cf_author_name' ), 
 	'post_status' => 'publish', 
-	'post_type' => 'classifieds',
+	'post_type' => 'kleinanzeigen',
 ) );
 
 $cf_options = $cf->get_options( 'general' );
@@ -106,7 +106,7 @@ $cf_options = $cf->get_options( 'general' );
 							<?php /* For BuddyPress compatibility */ ?>
 							<?php global $bp;
 							if ( isset( $bp ) ):
-							$obj = get_post_type_object('classifieds');
+							$obj = get_post_type_object('kleinanzeigen');
 							$rewrite_slug = ($obj->has_archive) ? $obj->has_archive : '';
 							?><a href="<?php echo bp_core_get_user_domain( get_the_author_meta('ID') ) . $rewrite_slug;?>" alt="<?php the_author(); ?> Profile" >
 							<?php endif; ?>
@@ -118,7 +118,7 @@ $cf_options = $cf->get_options( 'general' );
 					<tr>
 						<th><?php _e( 'Kategorien', CF_TEXT_DOMAIN ); ?></th>
 						<td>
-							<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
+							<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 							<?php foreach ( $taxonomies as $taxonomy ): ?>
 							<?php echo get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) . ' '; ?>
 							<?php endforeach; ?>

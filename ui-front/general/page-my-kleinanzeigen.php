@@ -19,7 +19,7 @@ $options_general = $this->get_options( 'general' );
 
 $query_args = array(
 'paged' => $paged,
-'post_type' => 'classifieds',
+'post_type' => 'kleinanzeigen',
 'author' => $current_user->ID,
 //'posts_per_page' => 1000,
 );
@@ -37,9 +37,9 @@ if(isset($_GET['saved']) ) {
 
 query_posts($query_args);
 
-$cf_path = get_permalink($this->my_classifieds_page_id);
+$cf_path = get_permalink($this->my_kleinanzeigen_page_id);
 
-remove_filter('the_content', array(&$this, 'my_classifieds_content'));
+remove_filter('the_content', array(&$this, 'my_kleinanzeigen_content'));
 
 ?>
 
@@ -62,7 +62,7 @@ echo do_shortcode('[cf_checkout_btn text="' . __('Anzeigen kaufen', $this->text_
 <?php endif; ?>
 
 <div >
-	<?php echo do_shortcode('[cf_add_classified_btn text="' . __('Neue Kleinanzeige erstellen', $this->text_domain) . '" view="loggedin"]'); ?>
+	<?php echo do_shortcode('[cf_add_kleinanzeige_btn text="' . __('Neue Kleinanzeige erstellen', $this->text_domain) . '" view="loggedin"]'); ?>
 	<?php echo do_shortcode('[cf_my_credits_btn text="' . __('Mein Guthaben', $this->text_domain) . '" view="loggedin"]'); ?>
 </div>
 
@@ -111,7 +111,7 @@ echo do_shortcode('[cf_checkout_btn text="' . __('Anzeigen kaufen', $this->text_
 						<tr>
 							<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 							<td>
-								<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
+								<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 								<?php foreach ( $taxonomies as $taxonomy ): ?>
 								<?php echo get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) . ' '; ?>
 								<?php endforeach; ?>
@@ -129,19 +129,19 @@ echo do_shortcode('[cf_checkout_btn text="' . __('Anzeigen kaufen', $this->text_
 					<input type="hidden" name="post_id" value="<?php the_ID(); ?>" />
 					<input type="hidden" name="url" value="<?php the_permalink(); ?>" />
 					<?php
-					if(current_user_can('edit_classified', get_the_ID())){
-						echo do_shortcode('[cf_edit_classified_btn text="' . __('Anzeige bearbeiten', $this->text_domain) . '" view="always" post="' . get_the_ID() . '"]');
+					if(current_user_can('edit_kleinanzeige', get_the_ID())){
+						echo do_shortcode('[cf_edit_kleinanzeige_btn text="' . __('Anzeige bearbeiten', $this->text_domain) . '" view="always" post="' . get_the_ID() . '"]');
 					}
 					?>
 
 					<?php if ( isset( $sub ) && $sub == 'active' ): ?>
-					<button type="submit" name="end" value="<?php _e('Anzeige beenden', $this->text_domain ); ?>" onclick="classifieds.toggle_end('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige beenden', $this->text_domain ); ?></button>
+					<button type="submit" name="end" value="<?php _e('Anzeige beenden', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_end('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige beenden', $this->text_domain ); ?></button>
 					<?php elseif ( isset( $sub ) && ( $sub == 'saved' || $sub == 'ended' ) ): ?>
-					<button type="submit" name="renew" value="<?php _e('Anzeige erneuern', $this->text_domain ); ?>" onclick="classifieds.toggle_renew('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige erneuern', $this->text_domain ); ?></button>
+					<button type="submit" name="renew" value="<?php _e('Anzeige erneuern', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_renew('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige erneuern', $this->text_domain ); ?></button>
 					<?php endif; ?>
 
-					<?php if(current_user_can( 'delete_classifieds' )): ?>
-					<button type="submit" name="delete" value="<?php _e('Anzeige löschen', $this->text_domain ); ?>" onclick="classifieds.toggle_delete('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige löschen', $this->text_domain ); ?></button>
+					<?php if(current_user_can( 'delete_kleinanzeigen' )): ?>
+					<button type="submit" name="delete" value="<?php _e('Anzeige löschen', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_delete('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige löschen', $this->text_domain ); ?></button>
 					<?php endif; ?>
 				</form>
 
@@ -178,7 +178,7 @@ echo do_shortcode('[cf_checkout_btn text="' . __('Anzeigen kaufen', $this->text_
 					</select>
 					<?php endif; ?>
 					<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', $this->text_domain ); ?>" name="confirm" />
-					<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="classifieds.cancel('<?php the_ID(); ?>'); return false;" />
+					<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
 				</form>
 			</div>
 		</div>

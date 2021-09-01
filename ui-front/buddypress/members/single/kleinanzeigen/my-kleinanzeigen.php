@@ -17,7 +17,7 @@ global $bp, $wp_query, $paged;
 
 $options = $this->get_options( 'general' );
 
-$cf_path = $bp->displayed_user->domain . $this->classifieds_page_slug .'/' . $this->my_classifieds_page_slug;
+$cf_path = $bp->displayed_user->domain . $this->kleinanzeigen_page_slug .'/' . $this->my_kleinanzeigen_page_slug;
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -25,7 +25,7 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $query_args = array(
 'paged' => $paged,
-'post_type' => 'classifieds',
+'post_type' => 'kleinanzeigen',
 'author' => bp_displayed_user_id(),
 );
 
@@ -134,7 +134,7 @@ query_posts($query_args);
 							<tr>
 								<th><?php _e( 'Categories', $this->text_domain ); ?></th>
 								<td>
-									<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
+									<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 									<?php foreach ( $taxonomies as $taxonomy ): ?>
 									<?php echo get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) . ' '; ?>
 									<?php endforeach; ?>
@@ -153,19 +153,19 @@ query_posts($query_args);
 						<input type="hidden" name="url" value="<?php the_permalink(); ?>" />
 
 						<?php if ( bp_is_my_profile() ):
-						if(current_user_can('edit_classified', get_the_ID())){
-							echo do_shortcode('[cf_edit_classified_btn text="' . __('Anzeige bearbeiten', $this->text_domain) . '" view="always" post="' . get_the_ID() . '"]');
+						if(current_user_can('edit_kleinanzeige', get_the_ID())){
+							echo do_shortcode('[cf_edit_kleinanzeige_btn text="' . __('Anzeige bearbeiten', $this->text_domain) . '" view="always" post="' . get_the_ID() . '"]');
 						}
 						?>
 
 						<?php if ( isset( $sub ) && $sub == 'active' ): ?>
-						<button type="submit" name="end" value="<?php _e('Anzeige beenden', $this->text_domain ); ?>" onclick="classifieds.toggle_end('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige beenden', $this->text_domain ); ?></button>
+						<button type="submit" name="end" value="<?php _e('Anzeige beenden', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_end('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige beenden', $this->text_domain ); ?></button>
 						<?php elseif ( isset( $sub ) && ( $sub == 'saved' || $sub == 'ended' ) ): ?>
-						<button type="submit" name="renew" value="<?php _e('Anzeige erneuern', $this->text_domain ); ?>" onclick="classifieds.toggle_renew('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige erneuern', $this->text_domain ); ?></button>
+						<button type="submit" name="renew" value="<?php _e('Anzeige erneuern', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_renew('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige erneuern', $this->text_domain ); ?></button>
 						<?php endif; ?>
 
-						<?php if(current_user_can( 'delete_classifieds' )): ?>
-						<button type="submit" name="delete" value="<?php _e('Anzeige löschen', $this->text_domain ); ?>" onclick="classifieds.toggle_delete('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige löschen', $this->text_domain ); ?></button>
+						<?php if(current_user_can( 'delete_kleinanzeigen' )): ?>
+						<button type="submit" name="delete" value="<?php _e('Anzeige löschen', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_delete('<?php the_ID(); ?>'); return false;" ><?php _e('Anzeige löschen', $this->text_domain ); ?></button>
 						<?php endif; ?>
 
 						<?php endif; ?>
@@ -208,7 +208,7 @@ query_posts($query_args);
 						</select>
 						<?php endif; ?>
 						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', $this->text_domain ); ?>" name="confirm" />
-						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="classifieds.cancel('<?php the_ID(); ?>'); return false;" />
+						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
 					</form>
 
 					<?php endif; ?>

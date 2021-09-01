@@ -1,7 +1,7 @@
 <?php
 /**
 * The template for displaying Author Archive pages.
-* You can override this file in your active theme/classifieds/ folder.
+* You can override this file in your active theme/kleinanzeigen/ folder.
 *
 * @package Classifieds
 * @subpackage UI Front
@@ -62,7 +62,7 @@ $user_display = ( $user_data->display_name ) ? $user_data->display_name : $user_
 		* If you want to overload this in a child theme then include a file
 		* called loop-author.php and that will be used instead.
 		*/
-		load_template( $Classifieds_Core->custom_classifieds_template( 'loop-author' ) );
+		load_template( $Classifieds_Core->custom_kleinanzeigen_template( 'loop-author' ) );
 		?>
 
 	</div><!-- #content -->

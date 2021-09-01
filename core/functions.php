@@ -9,7 +9,7 @@ function cf_supports_taxonomy($taxonomy = '')
     global $wp_taxonomies;
 
     if (empty($taxonomy)) return false;
-    return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('classifieds', $wp_taxonomies[$taxonomy]->object_type) : false;
+    return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('kleinanzeigen', $wp_taxonomies[$taxonomy]->object_type) : false;
 }
 
 function the_cf_categories_home($echo = true, $atts = null)
@@ -27,7 +27,7 @@ function the_cf_categories_home($echo = true, $atts = null)
     $sub_cat_num = (isset($options['general']['count_sub_cat']) && is_numeric($options['general']['count_sub_cat']) && 0 < $options['general']['count_sub_cat']) ? $options['general']['count_sub_cat'] : 5;
     $hide_empty_sub_cat = (isset($options['general']['hide_empty_sub_cat']) && is_numeric($options['general']['hide_empty_sub_cat']) && 0 < $options['general']['hide_empty_sub_cat']) ? $options['general']['hide_empty_sub_cat'] : 0;
 
-    $taxonomies = array_values(get_taxonomies(array('object_type' => array('classifieds'), 'hierarchical' => 1)));
+    $taxonomies = array_values(get_taxonomies(array('object_type' => array('kleinanzeigen'), 'hierarchical' => 1)));
 
     $args = array(
         //'parent' => 0,
@@ -148,22 +148,22 @@ function the_cf_breadcrumbs()
  * @uses $wp_rewrite WP_Rewrite
  * @return string The URL to the author's page.
  */
-function get_author_classifieds_url($author_id, $author_nicename = '')
+function get_author_kleinanzeigen_url($author_id, $author_nicename = '')
 {
     global $wp_rewrite, $bp, $blog_id;
     $auth_ID = (int)$author_id;
     $link = $wp_rewrite->get_author_permastruct();
 
-    $classifieds_obj = get_post_type_object('classifieds');
+    $kleinanzeigen_obj = get_post_type_object('kleinanzeigen');
 
-    if (is_object($classifieds_obj)) {
-        $slug = $classifieds_obj->has_archive;
-        if (!is_string($slug)) $slug = 'classifieds';
+    if (is_object($kleinanzeigen_obj)) {
+        $slug = $kleinanzeigen_obj->has_archive;
+        if (!is_string($slug)) $slug = 'kleinanzeigen';
     }
 
     if (isset($bp) && $bp->root_blog_id == $blog_id) {
         $link = trailingslashit(bp_core_get_user_domain($author_id) . $slug);
-        $link .= ($author_id == bp_loggedin_user_id()) ? 'my-classifieds' : 'all';
+        $link .= ($author_id == bp_loggedin_user_id()) ? 'my-kleinanzeigen' : 'all';
     } else {
         if (empty($link)) {
             $file = home_url('/');
@@ -189,13 +189,13 @@ function get_author_classifieds_url($author_id, $author_nicename = '')
      * @param int $author_id The author's id.
      * @param string $author_nicename The author's nice name.
      */
-    $link = apply_filters('author_classifieds_link', $link, $author_id, $author_nicename);
+    $link = apply_filters('author_kleinanzeigen_link', $link, $author_id, $author_nicename);
 
     return $link;
 }
 
 
-function the_author_classifieds_link()
+function the_author_kleinanzeigen_link()
 {
 
     global $authordata;
@@ -205,7 +205,7 @@ function the_author_classifieds_link()
 
     $link = sprintf(
         '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
-        esc_url(get_author_classifieds_url($authordata->ID, $authordata->user_nicename)),
+        esc_url(get_author_kleinanzeigen_url($authordata->ID, $authordata->user_nicename)),
         esc_attr(sprintf(__('Kleinanzeigen von %s'), get_the_author())),
         get_the_author()
     );
@@ -246,14 +246,14 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
     return $result;
 }
 
-//function allow_classifieds_filter($allow = false){
+//function allow_kleinanzeigen_filter($allow = false){
 //
 //  //Whatever logic to decide whether they should have access.
 //  if(false ) $allow = true;
 //
 //  return $allow;
 //}
-//add_filter('classifieds_full_access', 'allow_classifieds_filter');
+//add_filter('kleinanzeigen_full_access', 'allow_kleinanzeigen_filter');
 
 
 //function sort_alpha($query){
@@ -271,7 +271,7 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
 add_action( 'admin_footer', function() {
         global $post;
         if( ! isset( $post ) ) return;
-        if( 'classifieds' != $post->post_type ) return;
+        if( 'kleinanzeigen' != $post->post_type ) return;
         ?>
         <script type="text/javascript">
         jQuery(function($){

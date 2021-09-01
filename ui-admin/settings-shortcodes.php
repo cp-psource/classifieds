@@ -2,7 +2,7 @@
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings', 'tab' => 'shortcodes' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings', 'tab' => 'shortcodes' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
 	<h1><?php _e( 'Kleinanzeigen Shortcodes', $this->text_domain ); ?></h1>
@@ -18,7 +18,7 @@
 				<br /><?php _e( 'text = <em>Text, der auf einer Schaltfläche angezeigt werden soll</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'view = <em>Ob die Schaltfläche sichtbar ist, wenn Du angemeldet (loggedin), abgemeldet (loggedout) oder beides (both) bist</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'redirect = <em>Auf der Schaltfläche Abmelden, welche Seite nach dem Abmelden aufgerufen werden soll</em>', $this->text_domain ) ?>
-				<br /><?php _e( 'ccats = <em>Eine durch Kommas getrennte Liste von angezeigten Kleinanzeigen-Kategorien-IDs (classifieds_categories)</em>', $this->text_domain ) ?>
+				<br /><?php _e( 'ccats = <em>Eine durch Kommas getrennte Liste von angezeigten Kleinanzeigen-Kategorien-IDs (kleinanzeigen_categories)</em>', $this->text_domain ) ?>
 			</p>
 			<table class="form-table">
 				<tr>
@@ -31,16 +31,16 @@
 				<tr>
 					<th scope="row"><?php _e( 'Kleinanzeigen-Schaltfläche:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[cf_classifieds_btn text="<?php _e('Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
-						<br /><code><strong>[cf_classifieds_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeigen', $this->text_domain);?>[/cf_classifieds_btn]</strong></code>
+						<code><strong>[cf_kleinanzeigen_btn text="<?php _e('Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
+						<br /><code><strong>[cf_kleinanzeigen_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeigen', $this->text_domain);?>[/cf_kleinanzeigen_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links zur Seite mit der Kleinanzeigenliste. Erzeugt eine Schaltfläche (&lt;button&gt; &lt;/button&gt;) mit den Inhalten, die Du definierst.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><?php _e( 'Schaltfläche "Meine Kleinanzeigen":', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[cf_my_classifieds_btn text="<?php _e('Meine Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
-						<br /><code><strong>[cf_my_classifieds_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Meine Kleinanzeigen', $this->text_domain);?>[/cf_my_classifieds_btn]</strong></code>
+						<code><strong>[cf_my_kleinanzeigen_btn text="<?php _e('Meine Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
+						<br /><code><strong>[cf_my_kleinanzeigen_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Meine Kleinanzeigen', $this->text_domain);?>[/cf_my_kleinanzeigen_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links zur Seite „Meine Kleinanzeigen“. Erzeugt eine Schaltfläche (&lt;button&gt; &lt;/button&gt;) mit den Inhalten, die Du definierst.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
@@ -63,16 +63,16 @@
 				<tr>
 					<th scope="row"><?php _e( 'Neue Kleinanzeige Schaltfläche:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[cf_add_classified_btn text="<?php _e('Kleinanzeige erstellen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
-						<br /><code><strong>[cf_add_classified_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeige erstellen', $this->text_domain);?>[/cf_add_classified_btn]</strong></code>
+						<code><strong>[cf_add_kleinanzeige_btn text="<?php _e('Kleinanzeige erstellen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
+						<br /><code><strong>[cf_add_kleinanzeige_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeige erstellen', $this->text_domain);?>[/cf_add_kleinanzeige_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links zur Seite Kleinanzeigen hinzufügen. Erzeugt eine Schaltfläche (&lt;button&gt; &lt;/button&gt;) mit den Inhalten, die Du definierst.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><?php _e( 'Kleinanzeige bearbeiten Schaltfläche:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[cf_edit_classified_btn text="<?php _e('Kleinanzeige bearbeiten', $this->text_domain);?>" post="post_id" view="loggedin | loggedout | both"]</strong></code> or
-						<br /><code><strong>[cf_edit_classified_btn post="post_id" view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeige bearbeiten', $this->text_domain);?>[/cf_edit_classified_btn]</strong></code>
+						<code><strong>[cf_edit_kleinanzeige_btn text="<?php _e('Kleinanzeige bearbeiten', $this->text_domain);?>" post="post_id" view="loggedin | loggedout | both"]</strong></code> or
+						<br /><code><strong>[cf_edit_kleinanzeige_btn post="post_id" view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Kleinanzeige bearbeiten', $this->text_domain);?>[/cf_edit_kleinanzeige_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links zur Seite Kleinanzeigen bearbeiten. Erzeugt eine Schaltfläche (&lt;button&gt; &lt;/button&gt;) mit den Inhalten, die Du definierst.', $this->text_domain ) ?></span>
 					</td>
 				</tr>

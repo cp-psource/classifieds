@@ -20,7 +20,7 @@ $default_email = __(
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_settings', 'tab' => 'general' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_settings', 'tab' => 'general' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
 	<h1><?php _e( 'Allgemeine Einstellungen', $this->text_domain ); ?></h1>
