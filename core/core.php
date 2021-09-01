@@ -1377,9 +1377,10 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function get_single_template( $template ) {
 			global $post;
 			$tpldir   = get_template_directory();
-			$template = ( file_exists( "{$tpldir}/single-{$template}.php" ) )
+			$template = ( ( file_exists( "{$tpldir}/single-{$template}.php" ) )
 				? "{$tpldir}/single-{$template}.php"
-				: ( file_exists( "{$this->plugin_dir}ui-front/general/single-{$template}.php" ) ) ? "{$this->plugin_dir}ui-front/general/single-{$template}.php" : $template;
+				: ( file_exists( "{$this->plugin_dir}ui-front/general/single-{$template}.php" ) ) ) ? "
+				{$this->plugin_dir}ui-front/general/single-{$template}.php" : $template;
 
 			return $template;
 			/*
@@ -1393,9 +1394,10 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function template_file( $template ) {
 			$tpldir   = get_template_directory();
-			$template = ( file_exists( "{$tpldir}/page-{$template}.php" ) )
+			$template = ( ( file_exists( "{$tpldir}/page-{$template}.php" ) )
 				? "{$tpldir}/page-{$template}.php"
-				: ( file_exists( "{$this->plugin_dir}ui-front/general/page-{$template}.php" ) ) ? "{$this->plugin_dir}ui-front/general/page-{$template}.php" : $template;
+				: ( file_exists( "{$this->plugin_dir}ui-front/general/page-{$template}.php" ) ) ) ? "
+				{$this->plugin_dir}ui-front/general/page-{$template}.php" : $template;
 
 			return $template;
 		}
