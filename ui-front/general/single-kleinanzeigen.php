@@ -47,7 +47,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 	<div class="cf-image">
 		<?php
 		if(has_post_thumbnail()){
-			$thumbnail = get_the_post_thumbnail( $post->ID, array( 300, 300 ) );
+			$thumbnail = get_the_post_thumbnail( $post->ID, array( 500, 500 ) );
 		} else {
 			$thumbnail = '<img title="no image" alt="no image" class="cf-no-image wp-post-image" src="' . $field_image . '">';
 		}
@@ -58,7 +58,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 	<div class="cf-ad-info">
 		<table>
 			<tr>
-				<th><?php _e( 'Veröffentlicht von', $this->text_domain ); ?></th>
+				<th><?php _e( 'Anbieter', $this->text_domain ); ?></th>
 				<td>
 					<?php echo the_author_kleinanzeigen_link(); ?>
 				</td>
@@ -73,7 +73,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 				</td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Veröffentlicht am', $this->text_domain ); ?></th>
+				<th><?php _e( 'Veröffentlicht', $this->text_domain ); ?></th>
 				<td><?php the_date(); ?></td>
 			</tr>
 			<tr>
@@ -119,7 +119,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 		<div class="editfield">
 			<label for="subject"><?php _e( 'Betreff', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
 			<input type="text" id="subject" name ="subject" value="<?php echo ( isset( $_POST['subject'] ) ) ? $_POST['subject'] : ''; ?>" />
-			<p class="description"><?php _e( 'Gib hier den Betreff Ihrer Anfrage ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Betreff Deiner Anfrage ein.', $this->text_domain ); ?></p>
 		</div>
 		<div class="editfield">
 			<label for="message"><?php _e( 'Nachricht', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>

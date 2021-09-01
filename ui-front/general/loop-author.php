@@ -99,7 +99,7 @@ $cf_options = $cf->get_options( 'general' );
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Veröffentlicht von', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Anbieter', CF_TEXT_DOMAIN ); ?></th>
 
 						<td>
 							<?php echo the_author_posts_link(); ?>
