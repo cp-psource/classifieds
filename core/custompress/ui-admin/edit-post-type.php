@@ -115,7 +115,7 @@ if( !isset( $post_type['rewrite']['ep_mask'] ) ) {
 						<?php if ( taxonomy_exists( 'category' ) ): ?>
 						<label>
 							<input type="checkbox" name="supports_reg_tax[category]" value="1" <?php checked(empty($post_type['supports_reg_tax']['category']), false); ?> />
-							<span class="description"><strong><?php esc_html_e( 'Categories', $this->text_domain ) ?></strong></span>
+							<span class="description"><strong><?php esc_html_e( 'Kategorien', $this->text_domain ) ?></strong></span>
 						</label>
 						<?php endif; ?>
 						<br />

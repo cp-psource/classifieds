@@ -17,7 +17,7 @@
 			<tr>
 				<th><?php _e( 'ID', $this->text_domain ); ?></th>
 				<th><?php _e( 'Title', $this->text_domain ); ?></th>
-				<th><?php _e( 'Categories', $this->text_domain ); ?></th>
+				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 				<th><?php _e( 'Expiration Date', $this->text_domain ); ?></th>
 				<th><?php _e( 'Image', $this->text_domain ); ?></th>
 				<th><?php _e( 'Actions', $this->text_domain ); ?></th>
@@ -69,7 +69,7 @@
 			<tr>
 				<th><?php _e( 'ID', $this->text_domain ); ?></th>
 				<th><?php _e( 'Title', $this->text_domain ); ?></th>
-				<th><?php _e( 'Categories', $this->text_domain ); ?></th>
+				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 				<th><?php _e( 'Expiration Date', $this->text_domain ); ?></th>
 				<th><?php _e( 'Image', $this->text_domain ); ?></th>
 				<th><?php _e( 'Actions', $this->text_domain ); ?></th>
@@ -138,7 +138,7 @@
 			<tr>
 				<th><?php _e( 'ID', $this->text_domain ); ?></th>
 				<th><?php _e( 'Title', $this->text_domain ); ?></th>
-				<th><?php _e( 'Categories', $this->text_domain ); ?></th>
+				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 				<th><?php _e( 'Expiration Date', $this->text_domain ); ?></th>
 				<th><?php _e( 'Image', $this->text_domain ); ?></th>
 				<th><?php _e( 'Actions', $this->text_domain ); ?></th>

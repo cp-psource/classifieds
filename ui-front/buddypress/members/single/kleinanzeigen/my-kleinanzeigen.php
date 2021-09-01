@@ -132,7 +132,7 @@ query_posts($query_args);
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e( 'Categories', $this->text_domain ); ?></th>
+								<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
 								<td>
 									<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 									<?php foreach ( $taxonomies as $taxonomy ): ?>
