@@ -3,13 +3,13 @@ Contributors: DerN3rd
 Donate link:
 Tags: post types, taxonomies, custom fields, kleinanzeigen, ads, paypal, payments
 Requires at least: 3.0
-Tested up to: 5.0.0
+Tested up to: 5.8.0
 Stable tag: 2.1.6
 
-== Description ==
+== Beschreibung ==
 
-Add Classifieds to your blog, network or BuddyPress site. Create and manage ads,
-upload images, send emails, charge your users for placing ads on your network or BuddyPress site.
+Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Anzeigen erstellen und verwalten
+lade Bilder hoch, sende E-Mails, berechne Deinen Benutzern das Platzieren von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 
 == Installation ==
 
