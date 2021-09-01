@@ -29,7 +29,7 @@ if ( $this->is_full_access() && $step != 'success' && $step != 'api_call_error' 
 
 //STEP = DISABLED
 if ( $step == 'disabled' ): 
-_e( 'This feature is currently disabled by the system administrator.', $this->text_domain );
+_e( 'Diese Funktion ist derzeit vom Systemadministrator deaktiviert.', $this->text_domain );
 elseif ( !empty($error) ): ?>
 <div class="invalid-login"><?php echo $error; ?></div>
 <?php endif; 
@@ -40,12 +40,12 @@ if ( $step == 'terms'): ?>
 <!-- Begin Terms -->
 <form action="#" method="post"  class="checkout">
 
-	<strong><?php _e( 'Cost of Service', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Servicekosten', $this->text_domain ); ?></strong>
 	<table <?php do_action( 'billing_invalid' ); ?>>
 
 		<?php if($this->use_credits && ! $this->is_full_access() ): ?>
 		<tr>
-			<td><label for="billing_type"><?php _e( 'Buy Credits', $this->text_domain ) ?></label></td>
+			<td><label for="billing_type"><?php _e( 'Guthaben kaufen', $this->text_domain ) ?></label></td>
 			<td>
 				<input type="radio" name="billing_type" value="credits" checked="checked" />
 				<select name="credits">
@@ -75,10 +75,10 @@ if ( $step == 'terms'): ?>
 					<?php
 					$bastr    = empty( $options['payments']['recurring_cost'] ) ? '' : $options['payments']['recurring_cost'] . ' ';
 					$bastr .= $options['payment_types']['paypal']['currency'];
-					$bastr .= __( ' per ', $this->text_domain );
+					$bastr .= __( ' pro ', $this->text_domain );
 					$bastr .= ( ! empty( $options['payments']['billing_frequency'] ) && $options['payments']['billing_frequency'] != 1 ) ? $options['payments']['billing_frequency'] . ' ' : '';
 					$bastr .= empty( $options['payments']['billing_period'] ) ? '' : $options['payments']['billing_period'];
-					$bastr .= ($options['payments']['billing_frequency'] > 1) ? __(' period', $this->text_domain) : '';
+					$bastr .= ($options['payments']['billing_frequency'] > 1) ? __(' Zeitraum', $this->text_domain) : '';
 					echo $bastr;
 					?>
 				</span>
@@ -102,7 +102,7 @@ if ( $step == 'terms'): ?>
 
 	<?php if(! empty($options['payments']['tos_txt'])): ?>
 
-	<strong><?php _e( 'Terms of Service', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Nutzungsbedingungen', $this->text_domain ); ?></strong>
 	<table>
 		<tr>
 			<td><div class="terms"><?php echo nl2br( $options['payments']['tos_txt'] ); ?></div></td>
@@ -115,7 +115,7 @@ if ( $step == 'terms'): ?>
 			<td>
 				<label for="tos_agree">
 					<input type="checkbox" id="tos_agree" name="tos_agree" value="1" <?php checked( ! empty( $_POST['tos_agree'] ) ); ?> />
-					<?php _e( 'I agree with the Terms of Service', $this->text_domain ); ?>
+					<?php _e( 'Ich stimme den Nutzungsbedingungen zu', $this->text_domain ); ?>
 				</label>
 			</td>
 		</tr>
@@ -126,7 +126,7 @@ if ( $step == 'terms'): ?>
 	<?php endif; ?>
 
 	<div class="submit">
-		<input type="submit" name="terms_submit" value="<?php _e( 'Continue', $this->text_domain ); ?>" />
+		<input type="submit" name="terms_submit" value="<?php _e( 'Fortfahren', $this->text_domain ); ?>" />
 	</div>
 </form>
 

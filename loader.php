@@ -3,7 +3,7 @@
 Plugin Name: Kleinanzeigen
 Plugin URI: https://n3rds.work/docs/kleinanzeigen-handbuch/
 Description: Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
-Version: 2.3.7
+Version: 2.3.8
 Author: WMS N@W
 Author URI: https://n3rds.work
 License: GNU General Public License (Version 2 - GPLv2)
@@ -48,7 +48,7 @@ $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 );
 
 /* Define plugin version */
-define ( 'CF_VERSION', '2.3.7' );
+define ( 'CF_VERSION', '2.3.8' );
 define ( 'CF_DB_VERSION', '2.0' );
 
 /* define the plugin folder url */
