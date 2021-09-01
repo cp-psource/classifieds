@@ -571,7 +571,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'Classifieds',
+					'post_title'     => 'Kleinanzeigen',
 					'post_status'    => 'publish',
 					//'post_author'    => $current_user->ID,
 					'post_type'      => 'page',
@@ -595,7 +595,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'My Classifieds',
+					'post_title'     => 'Meine Kleinanzeigen',
 					'post_status'    => 'publish',
 					//'post_author'    => $current_user->ID,
 					'post_type'      => 'page',
@@ -620,7 +620,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'Classifieds Checkout',
+					'post_title'     => 'Kleinanzeigen Kasse',
 					'post_name'      => 'checkout',
 					'post_status'    => 'publish',
 					//'post_author'    => $current_user->ID,
@@ -646,7 +646,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'Add Classified',
+					'post_title'     => 'Kleinanzeige hinzufügen',
 					'post_status'    => 'virtual',
 					//'post_author'    => $current_user->ID,
 					'post_parent'    => $this->classifieds_page_id,
@@ -674,7 +674,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'Edit Classified',
+					'post_title'     => 'Kleinanzeige bearbeiten',
 					'post_status'    => 'virtual',
 					//'post_author'    => $current_user->ID,
 					'post_parent'    => $this->classifieds_page_id,
@@ -702,7 +702,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$current_user = wp_get_current_user();
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'My Classifieds Credits',
+					'post_title'     => 'Mein Kleinanzeigen-Guthaben',
 					'post_name'      => 'my-credits',
 					'post_status'    => 'virtual',
 					//'post_author'    => $current_user->ID,
@@ -730,7 +730,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			if ( empty( $page_id ) ) {
 				/* Construct args for the new post */
 				$args             = array(
-					'post_title'     => 'Classifieds Signin',
+					'post_title'     => 'Kleinanzeigen Anmeldung',
 					'post_name'      => 'signin',
 					'post_status'    => 'virtual',
 					//'post_author'    => $current_user->ID,
@@ -783,7 +783,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function login( $username, $password ) {
 			/* Check whether the required information is submitted */
 			if ( empty( $username ) || empty( $password ) ) {
-				return __( 'Please fill in the required fields.', $this->text_domain );
+				return __( 'Bitte fülle die erforderlichen Felder aus.', $this->text_domain );
 			}
 			/* Build the login credentials */
 			$credentials = array( 'remember' => true, 'user_login' => $username, 'user_password' => $password );
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			if ( ! empty( $date ) ) {
 				return date_i18n( get_option( 'date_format' ), $date );
 			} else {
-				return __( 'No expiration date set.', $this->text_domain );
+				return __( 'Kein Ablaufdatum festgelegt.', $this->text_domain );
 			}
 		}
 
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				return post_type_archive_title( '', false );
 			}
 			if ( '' != get_query_var( 'cf_author_name' ) || isset( $_REQUEST['cf_author'] ) && '' != $_REQUEST['cf_author'] ) {
-				$title = sprintf( __( '%s classifieds', CF_TEXT_DOMAIN ), get_query_var( 'cf_author_name' ) );
+				$title = sprintf( __( '%s Kleinanzeigen', CF_TEXT_DOMAIN ), get_query_var( 'cf_author_name' ) );
 			}
 
 			return $title;

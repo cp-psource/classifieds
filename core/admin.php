@@ -84,7 +84,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function launch_tutorial(){
 		?>
-		<h2>Classifieds Tutorial</h2>
+		<h2>Kleinanzeigen Tutorial</h2>
 		<a href="#" data-kera-tutorial="<?php echo $this->tutorial_id; ?>">Launch Tutorial</a>
 		<?php
 	}
