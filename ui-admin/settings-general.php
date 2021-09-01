@@ -7,8 +7,8 @@ $default_email = __(
 
   Name: FROM_NAME
   Email: FROM_EMAIL
-  Subject: FROM_SUBJECT
-  Message:
+  Betreff: FROM_SUBJECT
+  Nachricht:
 
   FROM_MESSAGE
 
