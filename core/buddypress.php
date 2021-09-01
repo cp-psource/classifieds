@@ -94,7 +94,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             if (0 < $classifieds_page->ID)
                 $nav_title = $classifieds_page->post_title;
             else
-                $nav_title = 'Classifieds';
+                $nav_title = 'Kleinanzeigen';
 
             bp_core_new_nav_item(array(
                 'name' => __($nav_title, $this->text_domain),
@@ -110,7 +110,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                 if (0 < $my_classifieds_page->ID)
                     $nav_title = $my_classifieds_page->post_title;
                 else
-                    $nav_title = 'My Classifieds';
+                    $nav_title = 'Meine Kleinanzeigen';
 
                 bp_core_new_subnav_item(array(
                     'name' => __($nav_title, $this->text_domain),
@@ -124,7 +124,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
 
                 if ($this->use_credits && !$this->is_full_access()) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('My Credits', $this->text_domain),
+                        'name' => __('Mein Guthaben', $this->text_domain),
                         'slug' => 'my-credits',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->classifieds->slug,
@@ -135,7 +135,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                 }
                 if (current_user_can('create_classifieds')) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('Create New Ad', $this->text_domain),
+                        'name' => __('Neue Anzeige erstellen', $this->text_domain),
                         'slug' => 'create-new',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->classifieds->slug,
@@ -147,7 +147,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             } else {
                 //display author classifids page
                 bp_core_new_subnav_item(array(
-                    'name' => __('All', $this->text_domain),
+                    'name' => __('Alle', $this->text_domain),
                     'slug' => 'all',
                     'parent_url' => $parent_url,
                     'parent_slug' => $bp->classifieds->slug,
@@ -190,7 +190,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                     if (wp_verify_nonce($_POST['_wpnonce'], 'verify'))
                         $this->render_front('update_classified', array('post_id' => (int)$_POST['post_id']));
                     else
-                        die(__('Security check failed!', $this->text_domain));
+                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain));
                 } elseif (isset($_POST['update_classified'])) {
                     /* The credits required to renew the classified for the selected period */
                     $credits_required = $this->get_credits_from_duration($_POST[$this->custom_fields['duration']]);
@@ -245,7 +245,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                             $this->render_front('my-classifieds', array('action' => 'delete', 'post_title' => $_POST['post_title']));
                         }
                     } else {
-                        die(__('Security check failed!', $this->text_domain));
+                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain));
                     }
                 } else {
                     $this->render_front('my-classifieds');

@@ -1546,9 +1546,9 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function js_redirect( $url, $silent = false ) {
 			if ( ! $silent ):
 				?>
-				<p><?php _e( 'You are being redirected. Please wait.', $this->text_domain ); ?></p>
+				<p><?php _e( 'Du wirst umgeleitet. Warte einen Moment.', $this->text_domain ); ?></p>
 				<img src="<?php echo $this->plugin_url . '/ui-front/general/images/loader.gif'; ?>"
-				     alt="<?php _e( 'You are being redirected. Please wait.', $this->text_domain ); ?>"/>
+				     alt="<?php _e( 'Du wirst umgeleitet. Warte einen Moment.', $this->text_domain ); ?>"/>
 			<?php endif; ?>
 			<script type="text/javascript">//<![CDATA[
 				window.location = '<?php echo $url; ?>';	//]]>
@@ -1627,7 +1627,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function classifieds_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Classifieds', $this->text_domain ),
+				'text' => __( 'Kleinanzeigen', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1654,7 +1654,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function add_classified_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Add Classified', $this->text_domain ),
+				'text' => __( 'Kleinanzeige hinzufügen', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1687,7 +1687,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function edit_classified_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Edit Classified', $this->text_domain ),
+				'text' => __( 'Kleinanzeige bearbeiten', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 				'post' => '0',
 			), $atts ) );
@@ -1715,7 +1715,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function checkout_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Classifieds Checkout', $this->text_domain ),
+				'text' => __( 'Kleinanzeigen Kasse', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1742,7 +1742,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function my_credits_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'My Classifieds Credits', $this->text_domain ),
+				'text' => __( 'Mein Kleinanzeigen-Guthaben', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function my_classifieds_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'My Classifieds', $this->text_domain ),
+				'text' => __( 'Meine Kleinanzeigen', $this->text_domain ),
 				'view' => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function profile_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Go to Profile', $this->text_domain ),
+				'text' => __( 'Gehe zu Profil', $this->text_domain ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1827,7 +1827,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function signin_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Signin', $this->text_domain ),
+				'text'     => __( 'Einloggen', $this->text_domain ),
 				'redirect' => '',
 				'view'     => 'loggedout', //loggedin, loggedout, both
 			), $atts ) );
@@ -1860,7 +1860,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function logout_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Logout', $this->text_domain ),
+				'text'     => __( 'Ausloggen', $this->text_domain ),
 				'redirect' => '',
 				'view'     => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );
@@ -1893,7 +1893,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function custom_fields_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Logout', $this->text_domain ),
+				'text'     => __( 'Ausloggen', $this->text_domain ),
 				'redirect' => '',
 				'view'     => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );

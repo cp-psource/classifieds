@@ -280,10 +280,10 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction = new CF_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('User "%s" received %s credits to member\'s Classifieds account',$this->text_domain), $send_to_user, $credits);
+						$this->message = sprintf(__('Benutzer "%s" hat %s Credits auf das Kleinanzeigenkonto des Mitglieds erhalten',$this->text_domain), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this->text_domain), $send_to_user);
+						$this->message = sprintf(__('Benutzer "%s" nicht gefunden oder kein Kleinanzeigen-Mitglied',$this->text_domain), $send_to_user);
 					}
 				}
 
@@ -296,7 +296,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this->text_domain), $credits);
+					$this->message = sprintf(__('Allen Benutzern wurden "%s" Credits zu ihren Konten hinzugefügt.',$this->text_domain), $credits);
 
 				}
 			} else {
@@ -596,7 +596,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 				} else {
 
-					if ( 1 == $debug_sp ) $this->write_to_log('Subscription ID mismatch Post: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['profile_id'] , 'debug_sp');
+					if ( 1 == $debug_sp ) $this->write_to_log('Abonnement-ID stimmt nicht überein: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['profile_id'] , 'debug_sp');
 
 				}
 			} else{

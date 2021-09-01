@@ -64,7 +64,7 @@ function the_cf_categories_home($echo = true, $atts = null)
 
         $output .= sprintf('<h2><a href="%s" title="%s %s" >%s%s</a></h2>',
             get_term_link($category),
-            esc_html__('View all posts in ', CF_TEXT_DOMAIN),
+            esc_html__('Alle Kleinanzeigen anzeigen in ', CF_TEXT_DOMAIN),
             $category->name,
             $category->name,
             $parent_count);
@@ -133,10 +133,10 @@ function the_cf_breadcrumbs()
     foreach ($category_parent_ids as $category_parent_id) {
         $category_parent = get_term($category_parent_id, $category->taxonomy);
 
-        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('View all posts in %s', CF_TEXT_DOMAIN), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
+        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', CF_TEXT_DOMAIN), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
     }
 
-    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('View all posts in %s', CF_TEXT_DOMAIN), $category->name) . '" >' . $category->name . '</a>';
+    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', CF_TEXT_DOMAIN), $category->name) . '" >' . $category->name . '</a>';
 
     echo $output;
 }
@@ -206,7 +206,7 @@ function the_author_classifieds_link()
     $link = sprintf(
         '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
         esc_url(get_author_classifieds_url($authordata->ID, $authordata->user_nicename)),
-        esc_attr(sprintf(__('Posts by %s'), get_the_author())),
+        esc_attr(sprintf(__('Kleinanzeigen von %s'), get_the_author())),
         get_the_author()
     );
     return $link;
@@ -232,12 +232,12 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
             $expires_date = (empty($expires)) ? '' : date_i18n(get_option('date_format'), $expires);
             if (empty($expires_date)) {
                 $result = preg_replace('#</option>#',
-                    __('How long is this Ad open from today?</option>', CF_TEXT_DOMAIN),
+                    __('Wie lange ist diese Anzeige ab heute geöffnet?</option>', CF_TEXT_DOMAIN),
                     $result, 1);
             } else {
                 $result = preg_replace('#value=""#', 'value="0"', $result, 1); //Give it zero value so it will validate but not change anything.
                 $result = preg_replace('#</option>#',
-                    sprintf('%s %s</option>', __('Expires on', CF_TEXT_DOMAIN),
+                    sprintf('%s %s</option>', __('Läuft ab', CF_TEXT_DOMAIN),
                         $expires_date),
                     $result, 1);
             }
@@ -279,7 +279,7 @@ add_action( 'admin_footer', function() {
                         $('.cf-error').remove();
                         var val = $('.ct-field.ct-selectbox').val();
                         if( val == '' ){
-                                $('.ct-field.ct-selectbox').next('br').next('span').after('<div class="cf-error" style="color:red; font-size: 12px;">Please select a duration</div>');
+                                $('.ct-field.ct-selectbox').next('br').next('span').after('<div class="cf-error" style="color:red; font-size: 12px;">Bitte wähle eine Dauer</div>');
                                 $('html,body').animate({
                                         scrollTop: $(".ct-field.ct-selectbox").offset().top - 50},
                                         'slow');

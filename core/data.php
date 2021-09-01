@@ -268,13 +268,13 @@ class Classifieds_Core_Data {
 			$options['payments'] = array(
 			'enable_recurring'    => '1',
 			'recurring_cost'      => '9.99',
-			'recurring_name'      => 'Subscription',
-			'billing_period'      => 'Month',
+			'recurring_name'      => 'Abonnement',
+			'billing_period'      => 'Monat',
 			'billing_frequency'   => '1',
-			'billing_agreement'   => 'Customer will be billed at &ldquo;9.99 per month for 2 years&rdquo;',
+			'billing_agreement'   => 'Dem Kunden werden 2 Jahre lang &ldquo;9,99 pro Monat in Rechnung gestellt&rdquo;',
 			'enable_one_time'     => '1',
 			'one_time_cost'       => '99.99',
-			'one_time_name'       => 'One Time Only',
+			'one_time_name'       => 'Nur einmal',
 			'enable_credits'      => '1',
 			'cost_credit'         => '.99',
 			'credits_per_week'    => 1,
@@ -296,7 +296,7 @@ class Classifieds_Core_Data {
 			'use_paypal'       => 0,
 			'use_authorizenet' => 0,
 			'paypal'           => array('api_url' => 'sandbox', 'api_username' => '', 'api_password' => '', 'api_signature' => '', 'currency' => 'USD'),
-			'authorizenet'     => array('mode' => 'sandbox', 'delim_char' => ',', 'encap_char' => '', 'email_customer' => 'yes', 'header_email_receipt' => 'Thanks for your payment!', 'delim_data' => 'yes'),
+			'authorizenet'     => array('mode' => 'sandbox', 'delim_char' => ',', 'encap_char' => '', 'email_customer' => 'yes', 'header_email_receipt' => 'Vielen Dank für Deine Zahlung!', 'delim_data' => 'yes'),
 			);
 		}
 
