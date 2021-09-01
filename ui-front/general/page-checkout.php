@@ -23,7 +23,7 @@ $error = get_query_var('checkout_error');
 $error = (empty($error)) ? '' : $error;
 
 if ( $this->is_full_access() && $step != 'success' && $step != 'api_call_error' ) {
-	_e( 'You already have access to create ads.', $this->text_domain );
+	_e( 'Du hast bereits Zugriff zum Erstellen von Anzeigen.', $this->text_domain );
 	$step = '';
 }
 
