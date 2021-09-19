@@ -15,7 +15,7 @@ Kleinanzeigen bieten Benutzern die Möglichkeit, Waren auf Deiner WordPress-Seit
 Verwandel Deine Webseite mit Kleinanzeigenfunktionen oder erstelle einfach eine eigenständige Seite. 
 Verwandel Deine Webseite oder Dein Netzwerk schnell und einfach in das nächste eBay oder Willhaben.
 
-=== Verdiene Geld mit Deiner Webseite ===
+= Verdiene Geld mit Deiner Webseite =
 
 Benutzer können Anzeigen erstellen und verwalten, Bilder hochladen, E-Mails zu ihren Angeboten erhalten und Guthaben kaufen.
 
@@ -24,14 +24,14 @@ Kleinanzeigen ist vollständig Multisite- und BuddyPress-kompatibel, was bedeute
 Du kannst auch das Guthabensystem aktivieren und Nutzern für die Platzierung von Anzeigen auf Deiner Webseite Gebühren in Rechnung stellen. 
 Dank der vollständigen PayPal-Integration des Plugins legst Du die Preise fest und verdienst Geld für jede auf Deiner Webseite veröffentlichten Anzeige.
 
-=== Die Power von PS CustomPress ===
+= Die Power von PS CustomPress =
 
 Kleinanzeigen verwendet einen benutzerdefinierten Beitragstyp, der mit PS CustomPress erstellt wurde. Die Verwendung von PS CustomPress ist keine Voraussetzung für die Verwendung von Kleinanzeigen. 
 Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Felder für Deine Einträge erstellen und den benutzerdefinierten Posttyp für Kleinanzeigen anpassen kannst.
 
 [POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
-=== Hilfe und Support ===
+= Hilfe und Support =
 
 [Projektseite](https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/)
 [Handbuch](https://n3rds.work/docs/kleinanzeigen-handbuch/)
@@ -42,16 +42,87 @@ Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Fe
 
 Erweitere die Möglichkeiten von Kleinanzeigen mit kompatiblen PSOURCE Plugins und Themes
 
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
+
 == Hilf uns ==
 
 Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
 Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
 
-=== Unterstütze uns ===
+= Unterstütze uns =
 
 Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
 
 [POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
+
+== Kurzanleitung ==
+
+= Admin-Inhaltstypen =
+
+Wenn Du das Kleinanzeigen-Plugin zum ersten Mal lädst, werden einige Inhaltstypendaten erstellt.
+Das heißt, Du hast einen benutzerdefinierten Beitragstyp namens "kleinanzeigen", zwei Taxonomien
+namens "kleinanzeigen_tags" und "kleinanzeigen_categories" und zwei benutzerdefinierte Felder namens
+"Dauer" und "Kosten". Jeder Typ wird mit allen notwendigen Einstellungen geliefert.
+
+Du kannst die Funktionalität Deines Beitragstyps "kleinanzeigen" erweitern, indem Du auf [Inhaltstypen]->[Beitragstypen] gehst
+und auf den Titel des Beitragstyps oder auf den Link [Bearbeiten] klickst.
+Von dort aus kannst Du Deinen benutzerdefinierten Beitragstyp "kleinanzeigen" erweitern.
+(Du findest weitere Informationen zu jeder der Optionen auf dem Bildschirm Bearbeiten).
+
+Du kannst neue Taxonomien hinzufügen oder die bestehenden bearbeiten, indem Du zu [Inhaltstypen]->[Taxonomien] gehst.
+Du kannst auf die Titel von "kleinanzeigen_tags" und "kleinanzeigen_categories" klicken oder auf den [Bearbeiten]
+Link unten, um die Taxonomien zu bearbeiten (weitere Informationen zu den einzelnen Optionen findest Du auf dem Bildschirm Bearbeiten).
+
+Du kannst neue benutzerdefinierte Felder hinzufügen oder die vorhandenen bearbeiten, indem Du zu [Inhaltstypen]->[Benutzerdefinierte Felder] gehst.
+Du kannst auf die Titel "Dauer" und "Kosten" klicken oder auf den [Bearbeiten]
+Link unten, um die benutzerdefinierten Felder zu bearbeiten (weitere Informationen zu den einzelnen Optionen findest Du auf dem Bildschirm Bearbeiten).
+
+= Admin-Einstellungen =
+
+= Allgemein =
+
+Wenn Du das Kleinanzeigen-Plugin zum ersten Mal lädst, gibt es einige Anfangsdaten, die
+Du bereitstellen musst, um den ordnungsgemäßen Betrieb des Plugins zu gewährleisten. Gehe zu
+[Einstellungen]->[Allgemein]->[Guthaben] und gib die erforderlichen Daten ein
+(Du findest weitere Informationen zu jeder der Optionen auf dem Optionsbildschirm).
+
+Außerdem musst Du allgemeine Informationen zum Checkout-Prozess angeben. Gehe zu
+[Einstellungen]->[Allgemein]->[Gateways]. Du findest einen Optionsbildschirm, in dem Du
+Deine Geschäftsdaten einfügst. Diese Informationen werden angezeigt
+unter der Front-End-Seite [yourdomain.com][(if)blog-subdomain][checkout].
+
+= Zahlungen =
+
+Die aktuelle Version integriert das Zahlungsgateway PayPal Express. Du kannst
+Deine API-Anmeldeinformationen unter [Einstellungen]->[Zahlungen]->[PayPal Express] festlegen 
+(Weitere Informationen zu den einzelnen Optionen findest Du auf dem Optionsbildschirm).
+
+= Admin-Guthaben =
+
+Im [Guthaben] Kleinanzeigen-Admin-Menü findest Du eine Log-Seite, auf der Du
+Dein aktuelles Guthabenguthaben und das Kaufprotokoll für Basisguthaben ansehen kannst. Du findest auch
+eine Schaltfläche [Kaufen], die Dich zum vorderen Kassenbildschirm weiterleitet, damit Du Credits kaufen oder ein Abonnement abschließen kannst.
+
+= Admin-Dashboard =
+
+Im Admin-Dashboard siehst Du alle verfügbaren Kleinanzeigen, die Du hast.
+Es gibt eine Schaltfläche [Neue Anzeige erstellen], die Dich auf die Schaltfläche [Neue Kleinanzeige hinzufügen] umleitet.
+
+Auf dem Admin-Dashboard findest Du auch einen Schnellzugriff auf
+Aktionen [Anzeige bearbeiten]/[Anzeige beenden/erneuern][Anzeige löschen]. 
+Und Informationen zu jeder Anzeige, z.B. "Ablaufdatum"
+
+= Front-End-Kleinanzeigenverwaltung =
+
+Unter [yourdomain.com]/[kleinanzeigen]/[my-kleinanzeigen] findest Du eine Front-End
+UI zur Verwaltung Deinerer Kleinanzeigen. Du kannst Dein verfügbares Guthaben anzeigen, Du kannst
+[Anzeige bearbeiten]/[Anzeige beenden/erneuern][Anzeige löschen].
+
+= Anzeige =
+
+Unter [ihredomain.com]/[kleinanzeigen] findest Du eine Liste aller veröffentlichten kleinanzeigen
+auf der Webseite. Wenn Du auf die Autorenlinks klickst, erhältst Du alle Kleinanzeigen von
+diesem Autor. Wenn Du auf einen benutzerdefinierten Taxonomiebegriff für Kategorie/Steuern klickst, werden alle Kleinanzeigen mit diesem Begriff angezeigt.
 
 == Changelog ==
 
@@ -66,82 +137,3 @@ Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktion
 
 = 1.1.1 =
 * Initial release.
-
-== Upgrade Notice ==
-
-= 2.0.0 =
-Due to the fact that the internal architecture of the current version is completly
-different from the previous one, the "v1.1.1" release is NOT backward compatible
-with the "v2.0.0" release. All data gathered from previous installations of this plugin
-will not be available to the "v2.0.0" release.
-
-== Usage Guides ==
-
-= Admin Content Types =
-
-When you first load the Classifieds plugin, some Content Types data will be created,
-meaning you will have one custom post type named "kleinanzeigen", two taxonomies
-named "kleinanzeigen_tags" and "kleinanzeigen_categories" and two custom fields named
-"Duration" and "Cost". Each type comes with all the necessary settings.
-
-You can extend the functionality of your post type "kleinanzeigen" by going to
-[Content Types]->[Post Types] and click on the post type title or on the [Edit] link
-below it. You will be able to extend your "kleinanzeigen" custom post type from there,
-( you will find more information for each of the options on the Edit screen ).
-
-You can add new taxonomy or edit the existing ones by going to [Content Types]->[Taxonomies].
-You can click on the titles of "kleinanzeigen_tags" and "kleinanzeigen_categories" or on the [Edit]
-links below to edit the taxonomies ( you will find more information for each of the options on the Edit screen ).
-
-You can add new custom field or edit the existing ones by going to [Content Types]->[Custom Fields].
-You can click on the titles of "Duration" and "Cost" or on the [Edit]
-links below to edit the custom fields ( you will find more information for each of the options on the Edit screen ).
-
-= Admin Settings =
-
-- General -
-
-When you first load the Classifieds plugin, there will be some initial data that
-you will have to provide to ensure proper operation of the plugin. Go to
-[Settings]->[General]->[Credits] and insert the required data
-( you will find more information for each of the options on the options screen )
-
-You will also have to provide general information about the Checkout process. Go to
-[Settings]->[General]->[Checkout]. You will find an options screen where you can
-insert your business details. This information will be displayed
-under the front-end page [yourdomain.com][(if)blog-subdomain][checkout].
-
-- Payments -
-
-The current version integrates the PayPal Express payment gateway. You will have
-to set your API Credentials under [Settings]->[Payments]->[PayPal Express] 
-( you will find more information for each of the options on the options screen ) .
-
-= Admin Credits =
-
-Under [Credits] Classifieds admin menu you will find a log page where you can
-see your current credits balance and basic credits purchasing log. You will also find
-a button [Purchase] which will redirect you to the front checkout screen so you can
-buy credits or make a subscription.
-
-= Admin Dashboard =
-
-From the admin dashboard you will see all the available kleinanzeigen that you have.
-There is a [Create New Ad] button which will redirect you to the [Add New Classified]
-admin screen ( more on which in the =  = section ).
-
-On the admin dashboard you will also find quick access to
-[Edit Ad]/[End/Renew Ad][Delete Ad] actions. And info about each ad e.g. "Expiration Date"
-
-= Front End Classifieds Managment =
-
-Under [yourdomain.com]/[kleinanzeigen]/[my-kleinanzeigen] you will find a front-end
-UI for managing your kleinanzeigen. You can view your available credits, you can
-[Edit Ad]/[End/Renew Ad][Delete Ad].
-
-= Display =
-
-Under [yourdomain.com]/[kleinanzeigen] you will find list of all kleinanzeigen published
-on the site. When you click on the author links you will get all kleinanzeigen from
-that author. When you click on a category/tax custom taxonomy term, you will see all
-kleinanzeigen with that term.
