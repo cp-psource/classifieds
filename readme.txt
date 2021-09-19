@@ -1,23 +1,57 @@
 === Kleinanzeigen ===
-Contributors: DerN3rd
-Donate link:
+Contributors: DerN3rd (WMS N@W)
+Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
 Tags: post types, taxonomies, custom fields, kleinanzeigen, ads, paypal, payments
 Requires at least: 3.0
 Tested up to: 5.8.0
-Stable tag: 2.1.6
+Stable tag: 2.4.2
 
-== Beschreibung ==
+== Description ==
 
-Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Anzeigen erstellen und verwalten
-lade Bilder hoch, sende E-Mails, berechne Deinen Benutzern das Platzieren von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
+Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Anzeigen erstellen und verwalten.
+Lade Bilder hoch, sende E-Mails, berechne Deinen Benutzern das Platzieren von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 
-== Installation ==
+Kleinanzeigen bieten Benutzern die Möglichkeit, Waren auf Deiner WordPress-Seite zu kaufen und zu verkaufen.
+Verwandel Deine Webseite mit Kleinanzeigenfunktionen oder erstelle einfach eine eigenständige Seite. 
+Verwandel Deine Webseite oder Dein Netzwerk schnell und einfach in das nächste eBay oder Willhaben.
 
-1. Extract the plugin archive file.
-2. Upload `kleinanzeigen` folder to the `/wp-content/plugins/` directory.
-3. Activate the plugin through the 'Plugins' menu in WordPress
+=== Verdiene Geld mit Deiner Webseite ===
 
-== Frequently Asked Questions ==
+Benutzer können Anzeigen erstellen und verwalten, Bilder hochladen, E-Mails zu ihren Angeboten erhalten und Guthaben kaufen.
+
+Kleinanzeigen ist vollständig Multisite- und BuddyPress-kompatibel, was bedeutet, dass Du ein ganzes Netzwerk lokalisierter Kleinanzeigenseiten erstellen kannst, ähnlich wie Craigslist.
+
+Du kannst auch das Guthabensystem aktivieren und Nutzern für die Platzierung von Anzeigen auf Deiner Webseite Gebühren in Rechnung stellen. 
+Dank der vollständigen PayPal-Integration des Plugins legst Du die Preise fest und verdienst Geld für jede auf Deiner Webseite veröffentlichten Anzeige.
+
+=== Die Power von PS CustomPress ===
+
+Kleinanzeigen verwendet einen benutzerdefinierten Beitragstyp, der mit PS CustomPress erstellt wurde. Die Verwendung von PS CustomPress ist keine Voraussetzung für die Verwendung von Kleinanzeigen. 
+Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Felder für Deine Einträge erstellen und den benutzerdefinierten Posttyp für Kleinanzeigen anpassen kannst.
+
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
+
+=== Hilfe und Support ===
+
+[Projektseite](https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/)
+[Handbuch](https://n3rds.work/docs/kleinanzeigen-handbuch/)
+[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/kleinanzeigen-plugin-supportforum/)
+[GitHub](https://github.com/piestingtal-source/kleinanzeigen)
+
+== Mehr PSOURCE ==
+
+Erweitere die Möglichkeiten von Kleinanzeigen mit kompatiblen PSOURCE Plugins und Themes
+
+== Hilf uns ==
+
+Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
+Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
+
+=== Unterstütze uns ===
+
+Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
+
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
 == Changelog ==
 

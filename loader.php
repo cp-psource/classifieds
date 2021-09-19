@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Kleinanzeigen
-Plugin URI: https://n3rds.work/docs/kleinanzeigen-handbuch/
+Plugin URI: https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/
 Description: Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 Version: 2.4.2
-Author: WMS N@W
+Author: DerN3rd (WMS N@W)
 Author URI: https://n3rds.work
 License: GNU General Public License (Version 2 - GPLv2)
 Text Domain: kleinanzeigen
@@ -40,7 +40,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
-require 'plugin-update-checker/plugin-update-checker.php';
+require 'psource/plugin-update-checker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=kleinanzeigen', 
 	__FILE__, 
