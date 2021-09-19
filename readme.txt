@@ -6,6 +6,8 @@ Requires at least: 3.0
 Tested up to: 5.8.0
 Stable tag: 2.4.3
 
+Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
+
 == Description ==
 
 Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Anzeigen erstellen und verwalten.
@@ -78,6 +80,11 @@ Du kannst auf die Titel "Dauer" und "Kosten" klicken oder auf den [Bearbeiten]
 Link unten, um die benutzerdefinierten Felder zu bearbeiten (weitere Informationen zu den einzelnen Optionen findest Du auf dem Bildschirm Bearbeiten).
 
 = Admin-Einstellungen =
+
+= Lies das verdammte Handbuch =
+
+Bitte lies erst das [Kleinanzeigen Plugin Handbuch](https://n3rds.work/docs/kleinanzeigen-handbuch/).
+Wir geben Dir hier nur eine rudimentäre Anleitung.
 
 = Allgemein =
 
