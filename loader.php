@@ -3,7 +3,7 @@
 Plugin Name: Kleinanzeigen
 Plugin URI: https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/
 Description: Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
-Version: 2.4.2
+Version: 2.4.3
 Author: DerN3rd (WMS N@W)
 Author URI: https://n3rds.work
 License: GNU General Public License (Version 2 - GPLv2)
