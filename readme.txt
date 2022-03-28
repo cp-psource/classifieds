@@ -133,7 +133,11 @@ diesem Autor. Wenn Du auf einen benutzerdefinierten Taxonomiebegriff für Katego
 
 == Changelog ==
 
-= 2.0.0 =
+= 2.4.4 =
+
+* Aktuelles CustomPress Integriert
+
+= 2.4.3 =
 * Front-end kleinanzeigen management added.
 * Front-end kleinanzeigen management added for BuddyPress ( integrated with BP user profiles )
 * Improved Admin UI.
@@ -142,5 +146,5 @@ diesem Autor. Wenn Du auf einen benutzerdefinierten Taxonomiebegriff für Katego
 * Content Types submodule added.
 * Localization available ( You need to generate a PO/MO file )
 
-= 1.1.1 =
-* Initial release.
+= 2.4.2 =
+* PSOURCE Release.
