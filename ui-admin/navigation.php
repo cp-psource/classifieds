@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 
-<?php screen_icon('options-general'); ?>
+<?php if ( function_exists('screen_icon') ) screen_icon('options-general'); ?>
 <h2><?php echo sprintf( __('Kleinanzeigen Einstellungen %s', $this->text_domain), CF_VERSION);?></h2>
 
 <h2>

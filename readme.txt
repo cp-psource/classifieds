@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: post types, taxonomies, custom fields, kleinanzeigen, ads, paypal, payments
 Requires at least: 3.0
 Tested up to: 5.8.0
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 
 Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 

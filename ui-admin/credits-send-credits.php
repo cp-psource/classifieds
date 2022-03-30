@@ -7,7 +7,7 @@ $send_to_count = ( empty($_POST['manage_credits_count'])) ? '' : $_POST['manage_
 ?>
 
 <div class="wrap">
-	<?php screen_icon('options-general'); ?>
+	<?php if ( function_exists('screen_icon') ) screen_icon('options-general'); ?>
 
 	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_credits','tab' => 'send-credits' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>

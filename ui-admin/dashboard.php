@@ -5,7 +5,7 @@
 <?php $options = $this->get_options( 'general' ); ?>
 
 <div class="wrap">
-	<?php screen_icon('index'); ?>
+	<?php if ( function_exists('screen_icon') ) screen_icon('index'); ?>
 	<h2>
 		<?php _e( 'Kleinanzeigen Dashboard', $this->text_domain ); ?>
 		<a class="button add-new-h2" href="post-new.php?post_type=<?php echo $this->post_type; ?>"><?php _e( 'Neue Anzeige erstellen', $this->text_domain ); ?></a>
