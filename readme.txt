@@ -136,6 +136,7 @@ diesem Autor. Wenn Du auf einen benutzerdefinierten Taxonomiebegriff für Katego
 = 2.4.5 =
 
 * Fix: Deprecated screen_icon
+* Fix: Style Konflikt BuddyPress
 
 = 2.4.4 =
 
