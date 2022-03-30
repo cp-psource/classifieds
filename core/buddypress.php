@@ -97,7 +97,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                 $nav_title = 'Kleinanzeigen';
 
             bp_core_new_nav_item(array(
-                'name' => __($nav_title, $this->text_domain),
+                'name' => __($nav_title, 'kleinanzeigen'),
                 'slug' => $bp->kleinanzeigen->slug . '/' . $default_sub_slug . '/',
                 'position' => 100,
                 'show_for_displayed_user' => true,
@@ -113,7 +113,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                     $nav_title = 'Meine Kleinanzeigen';
 
                 bp_core_new_subnav_item(array(
-                    'name' => __($nav_title, $this->text_domain),
+                    'name' => __($nav_title, 'kleinanzeigen'),
                     'slug' => $meine_kleinanzeigen_page->post_name,
                     'parent_url' => $parent_url,
                     'parent_slug' => $bp->kleinanzeigen->slug,
@@ -124,7 +124,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
 
                 if ($this->use_credits && !$this->is_full_access()) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('Mein Guthaben', $this->text_domain),
+                        'name' => __('Mein Guthaben', 'kleinanzeigen'),
                         'slug' => 'my-credits',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->kleinanzeigen->slug,
@@ -135,7 +135,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                 }
                 if (current_user_can('create_kleinanzeigen')) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('Neue Anzeige erstellen', $this->text_domain),
+                        'name' => __('Neue Anzeige erstellen', 'kleinanzeigen'),
                         'slug' => 'create-new',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->kleinanzeigen->slug,
@@ -147,7 +147,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             } else {
                 //display author classifids page
                 bp_core_new_subnav_item(array(
-                    'name' => __('Alle', $this->text_domain),
+                    'name' => __('Alle', 'kleinanzeigen'),
                     'slug' => 'all',
                     'parent_url' => $parent_url,
                     'parent_slug' => $bp->kleinanzeigen->slug,
@@ -190,7 +190,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                     if (wp_verify_nonce($_POST['_wpnonce'], 'verify'))
                         $this->render_front('update_kleinanzeige', array('post_id' => (int)$_POST['post_id']));
                     else
-                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain));
+                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', 'kleinanzeigen'));
                 } elseif (isset($_POST['update_kleinanzeige'])) {
                     /* The credits required to renew the kleinanzeige for the selected period */
                     $credits_required = $this->get_credits_from_duration($_POST[$this->custom_fields['duration']]);
@@ -245,7 +245,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                             $this->render_front('meine-kleinanzeigen', array('action' => 'delete', 'post_title' => $_POST['post_title']));
                         }
                     } else {
-                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain));
+                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', 'kleinanzeigen'));
                     }
                 } else {
                     $this->render_front('meine-kleinanzeigen');

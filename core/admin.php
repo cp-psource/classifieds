@@ -100,26 +100,26 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 			remove_submenu_page('edit.php?post_type=kleinanzeigen', 'post-new.php?post_type=kleinanzeigen' );
 			add_submenu_page(
 			'edit.php?post_type=kleinanzeigen',
-			__( 'Neue hinzufügen', $this->text_domain ),
-			__( 'Neue hinzufügen', $this->text_domain ),
+			__( 'Neue hinzufügen', 'kleinanzeigen' ),
+			__( 'Neue hinzufügen', 'kleinanzeigen' ),
 			'create_kleinanzeigen',
 			'kleinanzeigen_add',
 			array( &$this, 'redirect_add' ) );
 		}
 
-		//add_menu_page( __( 'Classifieds', $this->text_domain ), __( 'Classifieds', $this->text_domain ), 'read', $this->menu_slug, array( &$this, 'handle_admin_requests' ) );
+		//add_menu_page( __( 'Classifieds', 'kleinanzeigen' ), __( 'Classifieds', 'kleinanzeigen' ), 'read', $this->menu_slug, array( &$this, 'handle_admin_requests' ) );
 		add_submenu_page(
 		'edit.php?post_type=kleinanzeigen',
-		__( 'Dashboard', $this->text_domain ),
-		__( 'Dashboard', $this->text_domain ),
+		__( 'Dashboard', 'kleinanzeigen' ),
+		__( 'Dashboard', 'kleinanzeigen' ),
 		'read',
 		$this->menu_slug,
 		array( &$this, 'handle_admin_requests' ) );
 
 		$settings_page = add_submenu_page(
 		'edit.php?post_type=kleinanzeigen',
-		__( 'Kleinanzeigen Einstellungen', $this->text_domain ),
-		__( 'Einstellungen', $this->text_domain ),
+		__( 'Kleinanzeigen Einstellungen', 'kleinanzeigen' ),
+		__( 'Einstellungen', 'kleinanzeigen' ),
 		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
 		'kleinanzeigen_settings',
 		array( &$this, 'handle_admin_requests' ) );
@@ -129,8 +129,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			$settings_page = add_submenu_page(
 			'edit.php?post_type=kleinanzeigen',
-			__( 'Kleinanzeigen-Guthaben', $this->text_domain ),
-			__( 'Guthaben', $this->text_domain ),
+			__( 'Kleinanzeigen-Guthaben', 'kleinanzeigen' ),
+			__( 'Guthaben', 'kleinanzeigen' ),
 			'read',
 			'kleinanzeigen_credits',
 			array( &$this, 'handle_credits_requests' ) );
@@ -139,7 +139,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		}
 
 		if(file_exists($this->plugin_dir . 'tutorial/kleinanzeigen-tutorial.js') ){
-			add_submenu_page( 'edit.php?post_type=kleinanzeigen', __( 'Tutorial', $this->text_domain ), __( 'Tutorial', $this->text_domain ), 'read', 'kleinanzeigen_tutorial', array( &$this, 'launch_tutorial' ) );
+			add_submenu_page( 'edit.php?post_type=kleinanzeigen', __( 'Tutorial', 'kleinanzeigen' ), __( 'Tutorial', 'kleinanzeigen' ), 'read', 'kleinanzeigen_tutorial', array( &$this, 'launch_tutorial' ) );
 		}
 	}
 
@@ -220,14 +220,14 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					$name = sanitize_file_name($params['new_role']);
 					$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 					$result = add_role($slug, $name, array('read' => true) );
-					if (empty($result) ) $this->message = __('ROLLE BESTEHT BEREITS' , $this->text_domain);
-					else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , $this->text_domain), $name);
+					if (empty($result) ) $this->message = __('ROLLE BESTEHT BEREITS' , 'kleinanzeigen');
+					else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , 'kleinanzeigen'), $name);
 				}
 				if ( isset( $params['remove_role'] ) ) {
 					check_admin_referer('verify');
 					$name = $params['delete_role'];
 					remove_role($name);
-					$this->message = sprintf(__('Rolle "%s" entfernt' , $this->text_domain), $name);
+					$this->message = sprintf(__('Rolle "%s" entfernt' , 'kleinanzeigen'), $name);
 				}
 				if ( isset( $params['save'] ) ) {
 					check_admin_referer('verify');
@@ -238,7 +238,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					);
 
 					$this->save_options( $params );
-					$this->message = __( 'Einstellungen gespeichert.', $this->text_domain );
+					$this->message = __( 'Einstellungen gespeichert.', 'kleinanzeigen' );
 				}
 				/* Render admin template */
 				$this->render_admin( "settings-{$tab}" );
@@ -280,10 +280,10 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction = new CF_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('Benutzer "%s" hat %s Credits auf das Kleinanzeigenkonto des Mitglieds erhalten',$this->text_domain), $send_to_user, $credits);
+						$this->message = sprintf(__('Benutzer "%s" hat %s Credits auf das Kleinanzeigenkonto des Mitglieds erhalten','kleinanzeigen'), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('Benutzer "%s" nicht gefunden oder kein Kleinanzeigen-Mitglied',$this->text_domain), $send_to_user);
+						$this->message = sprintf(__('Benutzer "%s" nicht gefunden oder kein Kleinanzeigen-Mitglied','kleinanzeigen'), $send_to_user);
 					}
 				}
 
@@ -296,7 +296,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('Allen Benutzern wurden "%s" Credits zu ihren Konten hinzugefügt.',$this->text_domain), $credits);
+					$this->message = sprintf(__('Allen Benutzern wurden "%s" Credits zu ihren Konten hinzugefügt.','kleinanzeigen'), $credits);
 
 				}
 			} else {

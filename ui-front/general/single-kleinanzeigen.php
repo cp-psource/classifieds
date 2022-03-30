@@ -24,21 +24,21 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 <?php if ( isset( $_POST['_wpnonce'] ) ): ?>
 <br clear="all" />
 <div id="cf-message-error">
-	<?php _e( "Nachricht senden fehlgeschlagen: Du hast nicht alle erforderlichen Felder im Kontaktformular korrekt ausgefüllt!", $this->text_domain ); ?>
+	<?php _e( "Nachricht senden fehlgeschlagen: Du hast nicht alle erforderlichen Felder im Kontaktformular korrekt ausgefüllt!", 'kleinanzeigen' ); ?>
 </div>
 <br clear="all" />
 
 <?php elseif ( isset( $_GET['sent'] ) && 1 == $_GET['sent'] ): ?>
 <br clear="all" />
 <div id="cf-message">
-	<?php _e( 'Nachricht wird gesendet!', $this->text_domain ); ?>
+	<?php _e( 'Nachricht wird gesendet!', 'kleinanzeigen' ); ?>
 </div>
 <br clear="all" />
 
 <?php elseif ( isset( $_GET['sent'] ) && 0 == $_GET['sent'] ): ?>
 <br clear="all" />
 <div id="cf-message-error">
-	<?php _e( 'E-Mail-Dienst antwortet nicht!', $this->text_domain ); ?>
+	<?php _e( 'E-Mail-Dienst antwortet nicht!', 'kleinanzeigen' ); ?>
 </div>
 <br clear="all" />
 <?php endif; ?>
@@ -58,13 +58,13 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 	<div class="cf-ad-info">
 		<table>
 			<tr>
-				<th><?php _e( 'Anbieter', $this->text_domain ); ?></th>
+				<th><?php _e( 'Anbieter', 'kleinanzeigen' ); ?></th>
 				<td>
 					<?php echo the_author_kleinanzeigen_link(); ?>
 				</td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
+				<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
 				<td>
 					<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 					<?php foreach ( $taxonomies as $taxonomy ): ?>
@@ -73,11 +73,11 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 				</td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Veröffentlicht', $this->text_domain ); ?></th>
+				<th><?php _e( 'Veröffentlicht', 'kleinanzeigen' ); ?></th>
 				<td><?php the_date(); ?></td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Läuft aus am', $this->text_domain ); ?></th>
+				<th><?php _e( 'Läuft aus am', 'kleinanzeigen' ); ?></th>
 				<td><?php if ( class_exists('Classifieds_Core') ) echo Classifieds_Core::get_expiration_date( get_the_ID() ); ?></td>
 			</tr>
 		</table>
@@ -94,7 +94,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 
 	<?php if( empty( $options['disable_contact_form'] ) ): ?>
 	<form method="post" action="#" class="contact-user-btn action-form" id="action-form">
-		<input type="submit" name="contact_user" value="<?php _e('Anbieter kontaktieren', $this->text_domain ); ?>" onclick="kleinanzeigen.toggle_contact_form(); return false;" />
+		<input type="submit" name="contact_user" value="<?php _e('Anbieter kontaktieren', 'kleinanzeigen' ); ?>" onclick="kleinanzeigen.toggle_contact_form(); return false;" />
 	</form>
 	<div class="clear"></div>
 
@@ -107,38 +107,38 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 		$email  = ( isset( $current_user->user_email ) && '' != $current_user->user_email ) ? $current_user->user_email : '';
 		?>
 		<div class="editfield">
-			<label for="name"><?php _e( 'Name', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
+			<label for="name"><?php _e( 'Name', 'kleinanzeigen' ); ?> (<?php _e( 'erforderlich', 'kleinanzeigen' ); ?>)</label>
 			<input type="text" id="name" name ="name" value="<?php echo ( isset( $_POST['name'] ) ) ? $_POST['name'] : $name; ?>" />
-			<p class="description"><?php _e( 'Gib hier Deinen vollständigen Namen ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier Deinen vollständigen Namen ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 		<div class="editfield">
-			<label for="email"><?php _e( 'Email', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
+			<label for="email"><?php _e( 'Email', 'kleinanzeigen' ); ?> (<?php _e( 'erforderlich', 'kleinanzeigen' ); ?>)</label>
 			<input type="text" id="email" name ="email" value="<?php echo ( isset( $_POST['email'] ) ) ? $_POST['email'] : $email; ?>" />
-			<p class="description"><?php _e( 'Gib hier eine gültige E-Mail-Adresse ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier eine gültige E-Mail-Adresse ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 		<div class="editfield">
-			<label for="subject"><?php _e( 'Betreff', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
+			<label for="subject"><?php _e( 'Betreff', 'kleinanzeigen' ); ?> (<?php _e( 'erforderlich', 'kleinanzeigen' ); ?>)</label>
 			<input type="text" id="subject" name ="subject" value="<?php echo ( isset( $_POST['subject'] ) ) ? $_POST['subject'] : ''; ?>" />
-			<p class="description"><?php _e( 'Gib hier den Betreff Deiner Anfrage ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Betreff Deiner Anfrage ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 		<div class="editfield">
-			<label for="message"><?php _e( 'Nachricht', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
+			<label for="message"><?php _e( 'Nachricht', 'kleinanzeigen' ); ?> (<?php _e( 'erforderlich', 'kleinanzeigen' ); ?>)</label>
 			<textarea id="message" name="message"><?php echo ( isset( $_POST['message'] ) ) ? $_POST['message'] : ''; ?></textarea>
-			<p class="description"><?php _e( 'Gib hier den Inhalt Deiner Anfrage ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Inhalt Deiner Anfrage ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 
 		<div class="editfield">
-			<label for="cf_random_value"><?php _e( 'Sicherheitsbild', $this->text_domain ); ?> (<?php _e( 'erforderlich', $this->text_domain ); ?>)</label>
+			<label for="cf_random_value"><?php _e( 'Sicherheitsbild', 'kleinanzeigen' ); ?> (<?php _e( 'erforderlich', 'kleinanzeigen' ); ?>)</label>
 			<img class="captcha" src="<?php echo admin_url('admin-ajax.php?action=cf-captcha');?>" />
 			<input type="text" id="cf_random_value" name ="cf_random_value" value="" size="8" />
-			<p class="description"><?php _e( 'Gib die Zeichen aus dem Bild ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib die Zeichen aus dem Bild ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 
 		<div class="submit">
 			<p>
 				<?php wp_nonce_field( 'send_message' ); ?>
-				<input type="submit" class="button confirm" value="<?php _e( 'Senden', $this->text_domain ); ?>" name="contact_form_send" />
-				<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="kleinanzeigen.cancel_contact_form(); return false;" />
+				<input type="submit" class="button confirm" value="<?php _e( 'Senden', 'kleinanzeigen' ); ?>" name="contact_form_send" />
+				<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', 'kleinanzeigen' ); ?>" onclick="kleinanzeigen.cancel_contact_form(); return false;" />
 			</p>
 		</div>
 	</form>
@@ -153,7 +153,7 @@ $field_image = (empty($options['field_image_def'])) ? $this->plugin_url . 'ui-fr
 	<table class="cf-description">
 		<thead>
 			<tr>
-				<th><?php _e( 'Beschreibung', $this->text_domain ); ?></th>
+				<th><?php _e( 'Beschreibung', 'kleinanzeigen' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>

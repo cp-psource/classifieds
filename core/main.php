@@ -97,7 +97,7 @@ if (!class_exists('Classifieds_Core_Main')):
                                 }
 
                             } else {
-                                $error = __('Du hast nicht genügend Guthaben, um Deine Kleinanzeige für den gewählten Zeitraum zu veröffentlichen. Bitte wähle einen kürzeren Zeitraum, falls verfügbar, oder kaufe mehr Credits. Deine Anzeige wurde als Entwurf gespeichert.', $this->text_domain);
+                                $error = __('Du hast nicht genügend Guthaben, um Deine Kleinanzeige für den gewählten Zeitraum zu veröffentlichen. Bitte wähle einen kürzeren Zeitraum, falls verfügbar, oder kaufe mehr Credits. Deine Anzeige wurde als Entwurf gespeichert.', 'kleinanzeigen');
                                 set_query_var('cf_error', $error);
                             }
                             //$this->process_credits()
@@ -108,7 +108,7 @@ if (!class_exists('Classifieds_Core_Main')):
                             set_query_var('cf_action', 'meine-kleinanzeigen');
                         }
                     } else {
-                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain));
+                        die(__('Sicherheitsüberprüfung fehlgeschlagen!', 'kleinanzeigen'));
                     }
                 }
 
@@ -148,7 +148,7 @@ if (!class_exists('Classifieds_Core_Main')):
                         set_query_var('cf_post_id', $_POST['post_id']);
                         /* Set the proper step which will be loaded by "page-meine-kleinanzeigen.php" */
                         set_query_var('cf_action', 'edit');
-                        $error = __('Du hast nicht genügend Guthaben, um Deine Kleinanzeige für den gewählten Zeitraum zu veröffentlichen. Bitte wähle einen kürzeren Zeitraum, falls verfügbar, oder kaufe mehr Credits.<br />Deine Anzeige wurde als Entwurf gespeichert.', $this->text_domain);
+                        $error = __('Du hast nicht genügend Guthaben, um Deine Kleinanzeige für den gewählten Zeitraum zu veröffentlichen. Bitte wähle einen kürzeren Zeitraum, falls verfügbar, oder kaufe mehr Credits.<br />Deine Anzeige wurde als Entwurf gespeichert.', 'kleinanzeigen');
                         set_query_var('cf_error', $error);
                     }
                 }

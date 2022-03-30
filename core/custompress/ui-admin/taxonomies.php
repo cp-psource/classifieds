@@ -23,27 +23,27 @@ if(is_multisite()) {
 <?php $this->render_admin('update-message'); ?>
 
 <form action="#" method="post" class="ct-form-single-btn">
-	<input type="submit" class="button-secondary" name="redirect_add_taxonomy" value="<?php esc_attr_e('Taxonomie hinzufügen', $this->text_domain); ?>" />
+	<input type="submit" class="button-secondary" name="redirect_add_taxonomy" value="<?php esc_attr_e('Taxonomie hinzufügen', 'kleinanzeigen'); ?>" />
 </form>
 <table class="widefat">
 	<thead>
 		<tr>
-			<th><?php esc_html_e('Taxonomie', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Name', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Beitragstypen', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Öffentlich', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Hierarchisch', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Umschreiben', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Taxonomie', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Name', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Beitragstypen', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Öffentlich', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Hierarchisch', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Umschreiben', 'kleinanzeigen'); ?></th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th><?php esc_html_e('Taxonomie', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Name', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Beitragstypen', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Öffentlich', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Hierarchisch', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Umschreiben', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Taxonomie', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Name', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Beitragstypen', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Öffentlich', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Hierarchisch', 'kleinanzeigen'); ?></th>
+			<th><?php esc_html_e('Umschreiben', 'kleinanzeigen'); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
@@ -71,29 +71,29 @@ if(is_multisite()) {
 					<?php if(! $flag): ?>
 
 					<span class="edit">
-						<a title="<?php esc_attr_e('Bearbeite diese Taxonomie', $this->text_domain); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>" ><?php esc_attr_e('Bearbeiten', $this->text_domain); ?></a> |
+						<a title="<?php esc_attr_e('Bearbeite diese Taxonomie', 'kleinanzeigen'); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>" ><?php esc_attr_e('Bearbeiten', 'kleinanzeigen'); ?></a> |
 					</span>
 					<?php endif; ?>
 
 					<span>
-						<a title="<?php esc_attr_e('Einbettungscode anzeigen', $this->text_domain); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo esc_html( $name ); ?>'); return false;"><?php esc_attr_e('Einbettungscode', $this->text_domain); ?></a>
+						<a title="<?php esc_attr_e('Einbettungscode anzeigen', 'kleinanzeigen'); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo esc_html( $name ); ?>'); return false;"><?php esc_attr_e('Einbettungscode', 'kleinanzeigen'); ?></a>
 					</span>
 
 					<?php if($flag): ?>
-					<span class="description"><?php esc_html_e('In Netzwerkadministration bearbeiten.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('In Netzwerkadministration bearbeiten.', 'kleinanzeigen'); ?></span>
 					<?php endif; ?>
 
 					<?php if(! $flag): ?>
 					<span class="trash">
-						| <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo esc_html( $name ); ?>'); return false;"><?php esc_html_e('Löschen', $this->text_domain); ?></a>
+						| <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo esc_html( $name ); ?>'); return false;"><?php esc_html_e('Löschen', 'kleinanzeigen'); ?></a>
 					</span>
 					<?php endif; ?>
 				</div>
 				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_taxonomy'); ?>
 					<input type="hidden" name="taxonomy_name" value="<?php echo esc_html( $name ); ?>" />
-					<input type="submit" class="button confirm" value="<?php esc_attr_e( 'Bestätigen', $this->text_domain ); ?>" name="submit" />
-					<input type="submit" class="button cancel"  value="<?php esc_attr_e( 'Abbrechen', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
+					<input type="submit" class="button confirm" value="<?php esc_attr_e( 'Bestätigen', 'kleinanzeigen' ); ?>" name="submit" />
+					<input type="submit" class="button cancel"  value="<?php esc_attr_e( 'Abbrechen', 'kleinanzeigen' ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
 				</form>
 			</td>
 			<td><?php if ( isset( $taxonomy['args']['labels']['name'] ) ) echo esc_html( $taxonomy['args']['labels']['name'] ); ?></td>
@@ -104,36 +104,36 @@ if(is_multisite()) {
 			</td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( ! isset( $taxonomy['args']['public'] ) ): ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/advanced.png' ); ?>" alt="<?php esc_attr_e('Erweitert', $this->text_domain); ?>" title="<?php esc_attr_e('Erweitert', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/advanced.png' ); ?>" alt="<?php esc_attr_e('Erweitert', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Erweitert', 'kleinanzeigen'); ?>" />
 				<?php elseif ( $taxonomy['args']['public'] ): ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" />
 				<?php endif; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( $taxonomy['args']['hierarchical'] ): ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" />
 				<?php endif; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( $taxonomy['args']['rewrite'] ): ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Wahr', 'kleinanzeigen'); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/false.png' ); ?>" alt="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" title="<?php esc_attr_e('Falsch', 'kleinanzeigen'); ?>" />
 				<?php endif; ?>
 			</td>
 		</tr>
 		<tr id="embed-code-<?php echo( $name ); ?>" class="embed-code <?php echo ( $class ); ?>">
 			<td colspan="6">
 				<div class="embed-code-wrap">
-					<span class="description"><?php esc_html_e('Einbettungscode gibt eine HTML-Zeichenfolge mit Taxonomiebegriffen zurück, die einem Beitrag und einer bestimmten Taxonomie zugeordnet sind.<br />Begriffe sind mit den jeweiligen Seiten der Begriffsliste verknüpft. Verwende es in Vorlagen innerhalb der Schleife.', $this->text_domain ); ?></span>
+					<span class="description"><?php esc_html_e('Einbettungscode gibt eine HTML-Zeichenfolge mit Taxonomiebegriffen zurück, die einem Beitrag und einer bestimmten Taxonomie zugeordnet sind.<br />Begriffe sind mit den jeweiligen Seiten der Begriffsliste verknüpft. Verwende es in Vorlagen innerhalb der Schleife.', 'kleinanzeigen' ); ?></span>
 					<br />
 					<code><span style="color:red">&lt;?php</span> echo <strong>do_shortcode('[tax id="<?php echo( $name ); ?>" before="your text before " separator=", " after=" your text after"]')</strong>; <span style="color:red">?&gt;</span></code>
 					<br /><br />
-					<span class="description"><?php esc_html_e('Der Shortcode gibt eine HTML-Zeichenfolge mit Taxonomiebegriffen zurück, die einem Beitrag und einer bestimmten Taxonomie zugeordnet sind.<br />Begriffe sind mit den jeweiligen Seiten der Begriffsliste verknüpft. Verwende es in der Schleife.', $this->text_domain ); ?></span>
+					<span class="description"><?php esc_html_e('Der Shortcode gibt eine HTML-Zeichenfolge mit Taxonomiebegriffen zurück, die einem Beitrag und einer bestimmten Taxonomie zugeordnet sind.<br />Begriffe sind mit den jeweiligen Seiten der Begriffsliste verknüpft. Verwende es in der Schleife.', 'kleinanzeigen' ); ?></span>
 					<br />
 					<code><strong>[tax id="<?php echo( $name ); ?>" before="your text before: " separator=", " after=" your text after"]</strong></code>
 				</div>
@@ -144,5 +144,5 @@ if(is_multisite()) {
 	</tbody>
 </table>
 <form action="#" method="post" class="ct-form-single-btn">
-	<input type="submit" class="button-secondary" name="redirect_add_taxonomy" value="<?php esc_attr_e('Taxonomie hinzufügen', $this->text_domain); ?>" />
+	<input type="submit" class="button-secondary" name="redirect_add_taxonomy" value="<?php esc_attr_e('Taxonomie hinzufügen', 'kleinanzeigen'); ?>" />
 </form>

@@ -87,9 +87,9 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<?php if(post_type_supports('kleinanzeigen','title') ): ?>
 		<div class="editfield">
-			<label for="title"><?php _e( 'Titel', $this->text_domain ); ?></label>
+			<label for="title"><?php _e( 'Titel', 'kleinanzeigen' ); ?></label>
 			<input class="required" type="text" id="title" name="kleinanzeige_data[post_title]" value="<?php echo ( empty( $kleinanzeige_data['post_title'] ) ) ? '' : esc_attr($kleinanzeige_data['post_title']); ?>" />
-			<p class="description"><?php _e( 'Gib hier den Titel ein.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Titel ein.', 'kleinanzeigen' ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -99,13 +99,13 @@ wp_enqueue_script('set-post-thumbnail');
 			<?php if(empty($options['media_manager']) ): ?>
 
 			<?php if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?><br />
-			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Artikel-Bild ausgewählt", $this->text_domain); ?>';</script>
+			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Artikel-Bild ausgewählt", 'kleinanzeigen'); ?>';</script>
 			<span class="upload-button">
 
 				<?php $class = ( empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
 
 				<input type="file" name="feature_image" size="1" id="image" class="<?php echo $class; ?>" />
-				<button type="button" class="button"><?php _e('Artikel-Bild einstellen', $this->text_domain); ?></button>
+				<button type="button" class="button"><?php _e('Artikel-Bild einstellen', 'kleinanzeigen'); ?></button>
 			</span>
 			<br />
 
@@ -125,18 +125,18 @@ wp_enqueue_script('set-post-thumbnail');
 		<?php endif; ?>
 
 		<?php if(post_type_supports('kleinanzeigen','editor') ): ?>
-		<label for="kleinanzeigecontent"><?php _e( 'Beschreibung', $this->text_domain ); ?></label>
+		<label for="kleinanzeigecontent"><?php _e( 'Beschreibung', 'kleinanzeigen' ); ?></label>
 
 		<?php wp_editor( $kleinanzeige_content, 'kleinanzeigecontent', $editor_settings); ?>
 
-		<p class="description"><?php _e( 'Der Inhalt Deiner Kleinanzeige.', $this->text_domain ); ?></p>
+		<p class="description"><?php _e( 'Der Inhalt Deiner Kleinanzeige.', 'kleinanzeigen' ); ?></p>
 		<?php endif; ?>
 
 		<?php if(post_type_supports('kleinanzeigen','excerpt') ): ?>
 		<div class="editfield alt">
-			<label for="excerpt"><?php _e( 'Auszug', $this->text_domain ); ?></label>
+			<label for="excerpt"><?php _e( 'Auszug', 'kleinanzeigen' ); ?></label>
 			<textarea id="excerpt" name="kleinanzeige_data[post_excerpt]" rows="2" ><?php echo (empty( $kleinanzeige_data['post_excerpt'] ) ) ? '' : esc_textarea($kleinanzeige_data['post_excerpt']); ?></textarea>
-			<p class="description"><?php _e( 'Ein kurzer Auszug Deiner Anzeige.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Ein kurzer Auszug Deiner Anzeige.', 'kleinanzeigen' ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -190,14 +190,14 @@ wp_enqueue_script('set-post-thumbnail');
 				<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 			</div>
 
-			<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("füge ein Schlagwort hinzu", $this->text_domain); ?>'}); </script>
+			<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("füge ein Schlagwort hinzu", 'kleinanzeigen'); ?>'}); </script>
 		</div>
 		<?php endforeach; ?>
 
 		<div class="clear"><br /></div>
 
 		<div class="editfield" >
-			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
+			<label for="title"><?php _e( 'Status', 'kleinanzeigen' ); ?></label>
 			<div id="status-box">
 				<select name="kleinanzeige_data[post_status]" id="kleinanzeige_data[post_status]">
 					<?php
@@ -208,7 +208,7 @@ wp_enqueue_script('set-post-thumbnail');
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<p class="description"><?php _e( 'Wähle einen Status für Deine Anzeige aus.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Wähle einen Status für Deine Anzeige aus.', 'kleinanzeigen' ); ?></p>
 		</div>
 
 		<?php if ( isset( $CustomPress_Core ) ) : ?>
@@ -221,9 +221,9 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
-			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_kleinanzeige">
+			<input type="submit" value="<?php _e( 'Änderungen speichern', 'kleinanzeigen' ); ?>" name="update_kleinanzeige">
 
-			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->meine_kleinanzeigen_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Abbrechen', 'kleinanzeigen' ); ?>" onclick="location.href='<?php echo get_permalink($this->meine_kleinanzeigen_page_id); ?>'">
 		</div>
 	</form>
 </div><!-- .cf_update_form -->

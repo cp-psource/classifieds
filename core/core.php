@@ -97,18 +97,18 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 			//Default capability map for Classifieds
 			$this->capability_map = array(
-				'read_kleinanzeigen'             => __( 'Kleinanzeigen ansehen.', $this->text_domain ),
-				'read_private_kleinanzeigen'     => __( 'Private Kleinanzeigen ansehen.', $this->text_domain ),
-				'publish_kleinanzeigen'          => __( 'Kleinanzeigen hinzufügen.', $this->text_domain ),
-				'edit_kleinanzeigen'             => __( 'Kleinanzeigen bearbeiten.', $this->text_domain ),
-				'edit_published_kleinanzeigen'   => __( 'Veröffentlichte Kleinanzeigen bearbeiten.', $this->text_domain ),
-				'edit_private_kleinanzeigen'     => __( 'Private Kleinanzeigen bearbeiten.', $this->text_domain ),
-				'delete_kleinanzeigen'           => __( 'Kleinanzeigen löschen', $this->text_domain ),
-				'delete_published_kleinanzeigen' => __( 'Veröffentlichte Kleinanzeigen löschen.', $this->text_domain ),
-				'delete_private_kleinanzeigen'   => __( 'Private Kleinanzeigen löschen.', $this->text_domain ),
-				'edit_others_kleinanzeigen'      => __( 'Kleinanzeigen anderer bearbeiten.', $this->text_domain ),
-				'delete_others_kleinanzeigen'    => __( 'Andere Kleinanzeigen löschen.', $this->text_domain ),
-				'upload_files'                 => __( 'Daten hochladen.', $this->text_domain ),
+				'read_kleinanzeigen'             => __( 'Kleinanzeigen ansehen.', 'kleinanzeigen' ),
+				'read_private_kleinanzeigen'     => __( 'Private Kleinanzeigen ansehen.', 'kleinanzeigen' ),
+				'publish_kleinanzeigen'          => __( 'Kleinanzeigen hinzufügen.', 'kleinanzeigen' ),
+				'edit_kleinanzeigen'             => __( 'Kleinanzeigen bearbeiten.', 'kleinanzeigen' ),
+				'edit_published_kleinanzeigen'   => __( 'Veröffentlichte Kleinanzeigen bearbeiten.', 'kleinanzeigen' ),
+				'edit_private_kleinanzeigen'     => __( 'Private Kleinanzeigen bearbeiten.', 'kleinanzeigen' ),
+				'delete_kleinanzeigen'           => __( 'Kleinanzeigen löschen', 'kleinanzeigen' ),
+				'delete_published_kleinanzeigen' => __( 'Veröffentlichte Kleinanzeigen löschen.', 'kleinanzeigen' ),
+				'delete_private_kleinanzeigen'   => __( 'Private Kleinanzeigen löschen.', 'kleinanzeigen' ),
+				'edit_others_kleinanzeigen'      => __( 'Kleinanzeigen anderer bearbeiten.', 'kleinanzeigen' ),
+				'delete_others_kleinanzeigen'    => __( 'Andere Kleinanzeigen löschen.', 'kleinanzeigen' ),
+				'upload_files'                 => __( 'Daten hochladen.', 'kleinanzeigen' ),
 			);
 
 
@@ -216,7 +216,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 			// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
 			register_post_status( 'virtual', array(
-				'label'                     => __( 'Virtual', $this->text_domain ),
+				'label'                     => __( 'Virtual', 'kleinanzeigen' ),
 				'public'                    => ( ! is_admin() ),
 				//This trick prevents the virtual pages from appearing in the All Pages list but can be display on the front end.
 				'exclude_from_search'       => false,
@@ -316,14 +316,14 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function contact_fields( $contact_fields = array(), $user = null ) {
 
 			$cc_contact = array(
-				'cc_email'        => __( 'CC Email', $this->text_domain ),
-				'cc_firstname'    => __( 'CC First Name', $this->text_domain ),
-				'cc_lastname'     => __( 'CC Last Name', $this->text_domain ),
-				'cc_street'       => __( 'CC Street', $this->text_domain ),
-				'cc_city'         => __( 'CC City', $this->text_domain ),
-				'cc_state'        => __( 'CC State', $this->text_domain ),
-				'cc_zip'          => __( 'CC Zip', $this->text_domain ),
-				'cc_country_code' => __( 'CC Country Code', $this->text_domain ),
+				'cc_email'        => __( 'CC Email', 'kleinanzeigen' ),
+				'cc_firstname'    => __( 'CC First Name', 'kleinanzeigen' ),
+				'cc_lastname'     => __( 'CC Last Name', 'kleinanzeigen' ),
+				'cc_street'       => __( 'CC Street', 'kleinanzeigen' ),
+				'cc_city'         => __( 'CC City', 'kleinanzeigen' ),
+				'cc_state'        => __( 'CC State', 'kleinanzeigen' ),
+				'cc_zip'          => __( 'CC Zip', 'kleinanzeigen' ),
+				'cc_country_code' => __( 'CC Country Code', 'kleinanzeigen' ),
 			);
 
 			return array_merge( $cc_contact, $contact_fields );
@@ -396,7 +396,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function on_plugins_loaded() {
 
 			//Loads "kleinanzeigen-[xx_XX].mo" language file from the "languages" kleinanzeigen
-			load_plugin_textdomain( $this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages' ) );
+			load_plugin_textdomain( 'kleinanzeigen', false, plugin_basename( $this->plugin_dir . 'languages' ) );
 
 			//If the activate flag is set then try to initalize the defaults
 			if ( get_site_option( 'cf_activate', false ) ) {
@@ -561,7 +561,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function create_default_pages() {
 			/* Create neccessary pages */
 
-			$post_content = __( 'Virtuelle Seite. Das Bearbeiten dieser Seite ändert nichts.', $this->text_domain );
+			$post_content = __( 'Virtuelle Seite. Das Bearbeiten dieser Seite ändert nichts.', 'kleinanzeigen' );
 
 			//Classifieds list
 			$kleinanzeigen_page = $this->get_page_by_meta( 'kleinanzeigen' );
@@ -783,7 +783,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function login( $username, $password ) {
 			/* Check whether the required information is submitted */
 			if ( empty( $username ) || empty( $password ) ) {
-				return __( 'Bitte fülle die erforderlichen Felder aus.', $this->text_domain );
+				return __( 'Bitte fülle die erforderlichen Felder aus.', 'kleinanzeigen' );
 			}
 			/* Build the login credentials */
 			$credentials = array( 'remember' => true, 'user_login' => $username, 'user_password' => $password );
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			if ( ! empty( $date ) ) {
 				return date_i18n( get_option( 'date_format' ), $date );
 			} else {
-				return __( 'Kein Ablaufdatum festgelegt.', $this->text_domain );
+				return __( 'Kein Ablaufdatum festgelegt.', 'kleinanzeigen' );
 			}
 		}
 
@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				$options = array_merge( $options, array( $params['key'] => $params ) );
 				update_option( $this->options_name, $options );
 			} else {
-				die( __( 'Security check failed!', $this->text_domain ) );
+				die( __( 'Security check failed!', 'kleinanzeigen' ) );
 			}
 		}
 
@@ -1546,9 +1546,9 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function js_redirect( $url, $silent = false ) {
 			if ( ! $silent ):
 				?>
-				<p><?php _e( 'Du wirst umgeleitet. Warte einen Moment.', $this->text_domain ); ?></p>
+				<p><?php _e( 'Du wirst umgeleitet. Warte einen Moment.', 'kleinanzeigen' ); ?></p>
 				<img src="<?php echo $this->plugin_url . '/ui-front/general/images/loader.gif'; ?>"
-				     alt="<?php _e( 'Du wirst umgeleitet. Warte einen Moment.', $this->text_domain ); ?>"/>
+				     alt="<?php _e( 'Du wirst umgeleitet. Warte einen Moment.', 'kleinanzeigen' ); ?>"/>
 			<?php endif; ?>
 			<script type="text/javascript">//<![CDATA[
 				window.location = '<?php echo $url; ?>';	//]]>
@@ -1627,7 +1627,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function kleinanzeigen_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Kleinanzeigen', $this->text_domain ),
+				'text' => __( 'Kleinanzeigen', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1654,7 +1654,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function add_kleinanzeige_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Kleinanzeige hinzufügen', $this->text_domain ),
+				'text' => __( 'Kleinanzeige hinzufügen', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1687,7 +1687,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function edit_kleinanzeige_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Kleinanzeige bearbeiten', $this->text_domain ),
+				'text' => __( 'Kleinanzeige bearbeiten', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 				'post' => '0',
 			), $atts ) );
@@ -1715,7 +1715,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function checkout_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Kleinanzeigen Kasse', $this->text_domain ),
+				'text' => __( 'Kleinanzeigen Kasse', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1742,7 +1742,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function my_credits_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Mein Kleinanzeigen-Guthaben', $this->text_domain ),
+				'text' => __( 'Mein Kleinanzeigen-Guthaben', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function meine_kleinanzeigen_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Meine Kleinanzeigen', $this->text_domain ),
+				'text' => __( 'Meine Kleinanzeigen', 'kleinanzeigen' ),
 				'view' => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function profile_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text' => __( 'Gehe zu Profil', $this->text_domain ),
+				'text' => __( 'Gehe zu Profil', 'kleinanzeigen' ),
 				'view' => 'both', //loggedin, loggedout, both
 			), $atts ) );
 
@@ -1827,7 +1827,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function signin_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Einloggen', $this->text_domain ),
+				'text'     => __( 'Einloggen', 'kleinanzeigen' ),
 				'redirect' => '',
 				'view'     => 'loggedout', //loggedin, loggedout, both
 			), $atts ) );
@@ -1860,7 +1860,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function logout_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Ausloggen', $this->text_domain ),
+				'text'     => __( 'Ausloggen', 'kleinanzeigen' ),
 				'redirect' => '',
 				'view'     => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );
@@ -1893,7 +1893,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 		function custom_fields_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
-				'text'     => __( 'Ausloggen', $this->text_domain ),
+				'text'     => __( 'Ausloggen', 'kleinanzeigen' ),
 				'redirect' => '',
 				'view'     => 'loggedin', //loggedin, loggedout, both
 			), $atts ) );

@@ -27,17 +27,17 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 <div class="wrap">
 
-	<h2><?php esc_html_e('CustomPress Benutzerdefinierte Typen exportieren', $this->text_domain); ?></h2>
+	<h2><?php esc_html_e('CustomPress Benutzerdefinierte Typen exportieren', 'kleinanzeigen'); ?></h2>
 	<form action="#" method="post">
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php esc_html_e('Beitragstypen exportieren', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Beitragstypen exportieren', 'kleinanzeigen'); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php esc_html_e('Wähle die Beitragstypen, die Du exportieren möchtest.', $this->text_domain); ?>
+							<?php esc_html_e('Wähle die Beitragstypen, die Du exportieren möchtest.', 'kleinanzeigen'); ?>
 						</th>
 						<td>
 							<?php foreach($post_types as $key => $post_type): ?>
@@ -56,7 +56,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<input type="submit" class="button" value="<?php esc_html_e('Beitragstyp Export erstellen', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Beitragstyp Export erstellen', 'kleinanzeigen'); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -65,12 +65,12 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php esc_html_e('Export von Taxonomien', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Export von Taxonomien', 'kleinanzeigen'); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php esc_html_e('Wähle die Taxonomien, die Du exportieren möchtest.', $this->text_domain); ?>
+							<?php esc_html_e('Wähle die Taxonomien, die Du exportieren möchtest.', 'kleinanzeigen'); ?>
 						</th>
 						<td>
 							<?php foreach($taxonomies as $key => $taxonomy): ?>
@@ -89,7 +89,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<input type="submit" class="button" value="<?php esc_html_e('Export von Taxonomien erstellen', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Export von Taxonomien erstellen', 'kleinanzeigen'); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -98,12 +98,12 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php esc_html_e('Export von benutzerdefinierten Feldern', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Export von benutzerdefinierten Feldern', 'kleinanzeigen'); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php esc_html_e('Wähle die benutzerdefinierten Felder, die Du exportieren möchten.', $this->text_domain); ?>
+							<?php esc_html_e('Wähle die benutzerdefinierten Felder, die Du exportieren möchten.', 'kleinanzeigen'); ?>
 						</th>
 						<td>
 							<?php foreach($custom_fields as $key => $custom_field): ?>
@@ -123,7 +123,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php wp_nonce_field('export'); ?>
-							<input type="submit" class="button" value="<?php esc_html_e('Export von benutzerdefinierten Feldern erstellen', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Export von benutzerdefinierten Feldern erstellen', 'kleinanzeigen'); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -136,20 +136,20 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 	<form action="#" method="post">
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php esc_html_e('Benutzerdefinierte Typen importieren', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Benutzerdefinierte Typen importieren', 'kleinanzeigen'); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php esc_html_e('Füge hier Deinen Exportcode ein und klicke auf Importieren, um den benutzerdefinierten Typ zu CustomPress hinzuzufügen', $this->text_domain); ?>
+							<?php esc_html_e('Füge hier Deinen Exportcode ein und klicke auf Importieren, um den benutzerdefinierten Typ zu CustomPress hinzuzufügen', 'kleinanzeigen'); ?>
 						</th>
 						<td>
 							<?php wp_nonce_field('import'); ?>
 							<?php if( defined('CT_ALLOW_IMPORT') ): ?>
 							<textarea id="ct_import" name="ct_import" rows="6" cols="80" ><?php echo esc_textarea($import); ?></textarea>
 							<?php else: ?>
-							<span class="description"><?php _e("Der Import ist derzeit auf dieser Seite deaktiviert. Zum Aktivieren füge die Zeile<br /><code>define('CT_ALLOW_IMPORT', true);</code><br />der wp-config.php file hinzu.", $this->text_domain); ?></span>
-							<span class="description"><?php esc_html_e("Entferne die Zeile, wenn sie nicht mehr benötigt wird, um mögliche Sicherheitsprobleme zu vermeiden.", $this->text_domain); ?></span>
+							<span class="description"><?php _e("Der Import ist derzeit auf dieser Seite deaktiviert. Zum Aktivieren füge die Zeile<br /><code>define('CT_ALLOW_IMPORT', true);</code><br />der wp-config.php file hinzu.", 'kleinanzeigen'); ?></span>
+							<span class="description"><?php esc_html_e("Entferne die Zeile, wenn sie nicht mehr benötigt wird, um mögliche Sicherheitsprobleme zu vermeiden.", 'kleinanzeigen'); ?></span>
 							<?php endif; ?>
 						</td>
 					</tr>
@@ -158,7 +158,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php if( defined('CT_ALLOW_IMPORT') ): ?>
-							<input type="submit" class="button" value="<?php esc_html_e('Importieren', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Importieren', 'kleinanzeigen'); ?>" />
 							<?php endif; ?>
 						</td>
 					</tr>

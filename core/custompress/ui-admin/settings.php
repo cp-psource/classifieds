@@ -30,33 +30,33 @@ array(
 ?>
 
 <div class="wrap">
-	<h2><?php echo sprintf(__('CustomPress-Einstellungen %s', $this->text_domain), CPT_VERSION);?></h2>
+	<h2><?php echo sprintf(__('CustomPress-Einstellungen %s', 'kleinanzeigen'), CPT_VERSION);?></h2>
 
 	<?php $this->render_admin('message'); ?>
 
 	<form action="#" method="post" class="cp-main">
 
 		<?php if ( is_multisite() && is_super_admin() && is_network_admin() ): ?>
-		<h3><?php esc_html_e( 'Allgemein', $this->text_domain );  ?></h3>
+		<h3><?php esc_html_e( 'Allgemein', 'kleinanzeigen' );  ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="enable_subsite_content_types"><?php esc_html_e('Aktiviere Inhaltstypen für Unterwebseiten.', $this->text_domain) ?></label>
+					<label for="enable_subsite_content_types"><?php esc_html_e('Aktiviere Inhaltstypen für Unterwebseiten.', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( ! empty( $enable_subsite_content_types )); ?>  />
-					<span class="description"><?php esc_html_e('Wenn Du diese Option aktivierst, können Unterseiten in Deinem Netzwerk ihre eigenen Inhaltstypen definieren. Wenn diese Option nicht aktiviert ist (Standard), müssen alle Webseiten in Deinem Netzwerk die von Dir, dem Superadministrator, definierten netzwerkweiten Inhaltstypen verwenden.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn Du diese Option aktivierst, können Unterseiten in Deinem Netzwerk ihre eigenen Inhaltstypen definieren. Wenn diese Option nicht aktiviert ist (Standard), müssen alle Webseiten in Deinem Netzwerk die von Dir, dem Superadministrator, definierten netzwerkweiten Inhaltstypen verwenden.', 'kleinanzeigen'); ?></span>
 					<br /><br />
 					<input type="checkbox" id="display_network_content_types" name="display_network_content_types" value="1" <?php checked( ! empty( $display_network_content_types )); ?>  />
-					<span class="description"><?php esc_html_e('Wenn Du diese Option aktivierst, verwenden alle Unterwebsites die auf Netzwerkebene definierten Inhaltstypen und zeigen sie an. ', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn Du diese Option aktivierst, verwenden alle Unterwebsites die auf Netzwerkebene definierten Inhaltstypen und zeigen sie an. ', 'kleinanzeigen'); ?></span>
 					<br /><br />
 
 					<!--
 					<input type="radio" name="display_network_content_types" value="1" <?php checked(empty( $display_network_content_types ), false ); ?> />
-					<span class="description"><?php esc_html_e('Zeige die netzwerkweiten Inhaltstypen auf Unterseiten an.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Zeige die netzwerkweiten Inhaltstypen auf Unterseiten an.', 'kleinanzeigen'); ?></span>
 					<br />
 					<input type="radio" name="display_network_content_types" value="0" <?php checked( empty($display_network_content_types ), true ); ?> />
-					<span class="description"><?php esc_html_e('Zeige die netzwerkweiten Inhaltstypen nicht auf Unterseiten an.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Zeige die netzwerkweiten Inhaltstypen nicht auf Unterseiten an.', 'kleinanzeigen'); ?></span>
 					-->
 				</td>
 			</tr>
@@ -65,11 +65,11 @@ array(
 
 
 		<?php if ( is_admin() && !is_network_admin() ): ?>
-		<h3><?php esc_html_e( 'Beitragstypen', $this->text_domain ); ?></h3>
+		<h3><?php esc_html_e( 'Beitragstypen', 'kleinanzeigen' ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php esc_html_e('Zeige auf der Seite "Blog/Home" die folgenden Beitragstypen an: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Zeige auf der Seite "Blog/Home" die folgenden Beitragstypen an: ', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[home][]" value="post" <?php checked(is_array($cp_post_type['home']['post_type']) && in_array('post',$cp_post_type['home']['post_type'])); ?> />
@@ -98,11 +98,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php esc_html_e('Wähle die benutzerdefinierten Beitragstypen, die auf der Seite "Blog/Home" angezeigt werden sollen.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wähle die benutzerdefinierten Beitragstypen, die auf der Seite "Blog/Home" angezeigt werden sollen.', 'kleinanzeigen'); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[home][]" value="default" <?php checked(empty($cp_post_type['home']['post_type']) || (is_array($cp_post_type['home']['post_type']) && in_array('default', $cp_post_type['home']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', 'kleinanzeigen'); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -110,7 +110,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php esc_html_e('Zeige auf der "Startseite" die folgenden Beitragstypen an: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Zeige auf der "Startseite" die folgenden Beitragstypen an: ', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[front_page][]" value="post" <?php checked(is_array($cp_post_type['front_page']['post_type']) && in_array('post',$cp_post_type['front_page']['post_type'])); ?> />
@@ -139,11 +139,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die auf der statischen Seite "Vorderseite" angezeigt werden sollen.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die auf der statischen Seite "Vorderseite" angezeigt werden sollen.', 'kleinanzeigen'); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[front_page][]" value="default" <?php checked(empty($cp_post_type['front_page']['post_type']) || (is_array($cp_post_type['front_page']['post_type']) && in_array('default', $cp_post_type['front_page']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', 'kleinanzeigen'); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -151,7 +151,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php esc_html_e('Zeige in "Archiven" die folgenden Beitragstypen an:  ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Zeige in "Archiven" die folgenden Beitragstypen an:  ', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[archive][]" value="post" <?php checked(is_array($cp_post_type['archive']['post_type']) && in_array('post',$cp_post_type['archive']['post_type'])); ?> />
@@ -180,11 +180,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die in "Archiven" angezeigt werden sollen.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die in "Archiven" angezeigt werden sollen.', 'kleinanzeigen'); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[archive][]" value="default" <?php checked(empty($cp_post_type['archive']['post_type']) || (is_array($cp_post_type['archive']['post_type']) && in_array('default', $cp_post_type['archive']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', 'kleinanzeigen'); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -192,7 +192,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php esc_html_e('Zeige in "Suchen" die folgenden Beitragstypen an:  ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Zeige in "Suchen" die folgenden Beitragstypen an:  ', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[search][]" value="post" <?php checked(is_array($cp_post_type['search']['post_type']) && in_array('post',$cp_post_type['search']['post_type'])); ?> />
@@ -221,11 +221,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die in "Suchen" angezeigt werden sollen.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Überprüfe die benutzerdefinierten Beitragstypen, die in "Suchen" angezeigt werden sollen.', 'kleinanzeigen'); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[search][]" value="default" <?php checked(empty($cp_post_type['search']['post_type']) || (is_array($cp_post_type['search']['post_type']) && in_array('default', $cp_post_type['search']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Wenn "default" aktiviert ist, wird die obige Liste deaktiviert und nur die Standard-Post_Typen angezeigt.', 'kleinanzeigen'); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -233,7 +233,7 @@ array(
 		<?php endif; ?>
 
 		<?php if ( is_admin() && !is_network_admin() ): ?>
-		<h3><?php esc_html_e( 'Datumsauswahleinstellungen', $this->text_domain );  ?></h3>
+		<h3><?php esc_html_e( 'Datumsauswahleinstellungen', 'kleinanzeigen' );  ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
@@ -259,27 +259,27 @@ array(
 						}
 						?>
 					</select><br />
-					<span class="description"><?php esc_html_e('Wähle Datumsauswahl Design.', $this->text_domain) ?></span>
+					<span class="description"><?php esc_html_e('Wähle Datumsauswahl Design.', 'kleinanzeigen') ?></span>
 					<br /><br />
 					<div class="pickdate"></div>
 				</td>
 				<td style="vertical-align:top;">
 					<input type="text" id="date_format" name="date_format" size="38" value="<?php echo esc_attr( $date_format ); ?>" onchange="jQuery('.pickdate').datepicker( 'option', 'dateFormat', this.value );"/><br />
-					<span class="description"><?php esc_html_e('Wähle die Option Datumsformat oder gib Deine eigene ein', $this->text_domain) ?></span>
+					<span class="description"><?php esc_html_e('Wähle die Option Datumsformat oder gib Deine eigene ein', 'kleinanzeigen') ?></span>
 					<br /><br />
 					<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
-					<span class="description"><?php esc_html_e('Datumsauswahl Beispiel', $this->text_domain) ?></span>
+					<span class="description"><?php esc_html_e('Datumsauswahl Beispiel', 'kleinanzeigen') ?></span>
 				</td>
 			</tr>
 		</table>
 		<?php endif; ?>
 
 		<?php if ( ( is_super_admin() && is_network_admin() ) || !is_multisite() ): ?>
-		<h3><?php esc_html_e( 'Templatedateien', $this->text_domain ); ?></h3>
+		<h3><?php esc_html_e( 'Templatedateien', 'kleinanzeigen' ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php esc_html_e('Erstelle ein Template für: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Erstelle ein Template für: ', 'kleinanzeigen') ?></label>
 				</th>
 				<td>
 					<?php if ( !empty( $post_types )): ?>
@@ -289,12 +289,12 @@ array(
 					<br />
 					<?php endforeach; ?>
 					<?php else: ?>
-					<span class="description"><strong><?php esc_html_e('Keine benutzerdefinierten Beitragstypen verfügbar', $this->text_domain); ?></strong></span>
+					<span class="description"><strong><?php esc_html_e('Keine benutzerdefinierten Beitragstypen verfügbar', 'kleinanzeigen'); ?></strong></span>
 					<?php endif; ?>
 					<br />
-					<span class="description"><?php esc_html_e('Dadurch wird die Datei "single- [post_type] .php" in Deinem aktiven Themenverzeichnis erstellt, indem Du Deine aktuelle single.php-Vorlage kopierst. Diese Datei ist die benutzerdefinierte Vorlage für Deinen benutzerdefinierten Beitragstyp. Du kannst es dann bearbeiten und anpassen', $this->text_domain); ?></span><br />
-					<span class="description"><?php esc_html_e('In einigen Fällen möchtest Du dies möglicherweise nicht tun. Wenn Du beispielsweise keine Vorlage für Deinen benutzerdefinierten Beitragstyp hast, wird die Standardeinstellung "single.php" verwendet.', $this->text_domain); ?></span><br />
-					<span class="description"><?php esc_html_e('Deine aktiven Themenordnerberechtigungen müssen auf 777 festgelegt sein, damit diese Option funktioniert. Nachdem die Datei erstellt wurde, kannst Du Deine Aktive Theme-Verzeichnisberechtigungen auf 755 zurücksetzen.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Dadurch wird die Datei "single- [post_type] .php" in Deinem aktiven Themenverzeichnis erstellt, indem Du Deine aktuelle single.php-Vorlage kopierst. Diese Datei ist die benutzerdefinierte Vorlage für Deinen benutzerdefinierten Beitragstyp. Du kannst es dann bearbeiten und anpassen', 'kleinanzeigen'); ?></span><br />
+					<span class="description"><?php esc_html_e('In einigen Fällen möchtest Du dies möglicherweise nicht tun. Wenn Du beispielsweise keine Vorlage für Deinen benutzerdefinierten Beitragstyp hast, wird die Standardeinstellung "single.php" verwendet.', 'kleinanzeigen'); ?></span><br />
+					<span class="description"><?php esc_html_e('Deine aktiven Themenordnerberechtigungen müssen auf 777 festgelegt sein, damit diese Option funktioniert. Nachdem die Datei erstellt wurde, kannst Du Deine Aktive Theme-Verzeichnisberechtigungen auf 755 zurücksetzen.', 'kleinanzeigen'); ?></span>
 				</td>
 			</tr>
 		</table>

@@ -131,16 +131,16 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			$menu_callback = 'handle_content_types_page_requests';
 		}
 
-		add_menu_page( __('CustomPress', $this->text_domain), __('CustomPress', $this->text_domain), 'activate_plugins', $menu_slug, array( &$this, $menu_callback ) );
+		add_menu_page( __('CustomPress', 'kleinanzeigen'), __('CustomPress', 'kleinanzeigen'), 'activate_plugins', $menu_slug, array( &$this, $menu_callback ) );
 
 		if ( $this->enable_subsite_content_types || !is_multisite() ) {
-			$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', $this->text_domain ), __( 'Inhaltstypen', $this->text_domain ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
+			$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', 'kleinanzeigen' ), __( 'Inhaltstypen', 'kleinanzeigen' ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
 
 			add_action( 'admin_print_scripts-' . $page_content_types, array( &$this, 'enqueue_scripts' ) );
 		}
 
-		$page_settings = add_submenu_page( $menu_slug, __('Einstellungen', $this->text_domain), __('Einstellungen', $this->text_domain), 'activate_plugins', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
-		$export_settings = add_submenu_page( $menu_slug, __('Export/Import', $this->text_domain), __('Export/Import', $this->text_domain), 'manage_options', 'ct_export', array( &$this, 'handle_export' ) );
+		$page_settings = add_submenu_page( $menu_slug, __('Einstellungen', 'kleinanzeigen'), __('Einstellungen', 'kleinanzeigen'), 'activate_plugins', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
+		$export_settings = add_submenu_page( $menu_slug, __('Export/Import', 'kleinanzeigen'), __('Export/Import', 'kleinanzeigen'), 'manage_options', 'ct_export', array( &$this, 'handle_export' ) );
 
 		add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );
 		add_action( 'admin_print_scripts-' . $export_settings, array( &$this, 'enqueue_scripts' ) );
@@ -154,12 +154,12 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	* @return void
 	*/
 	function network_admin_menu() {
-		add_menu_page( __('CustomPress', $this->text_domain), __('CustomPress', $this->text_domain), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
+		add_menu_page( __('CustomPress', 'kleinanzeigen'), __('CustomPress', 'kleinanzeigen'), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
 
-		$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', $this->text_domain ), __( 'Inhaltstypen', $this->text_domain ), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
-		$page_settings      = add_submenu_page( 'ct_content_types', __('Einstellungen', $this->text_domain), __('Einstellungen', $this->text_domain), 'manage_network', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
+		$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', 'kleinanzeigen' ), __( 'Inhaltstypen', 'kleinanzeigen' ), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
+		$page_settings      = add_submenu_page( 'ct_content_types', __('Einstellungen', 'kleinanzeigen'), __('Einstellungen', 'kleinanzeigen'), 'manage_network', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
 
-		$export_settings = add_submenu_page( 'ct_content_types', __('Export/Import', $this->text_domain), __('Export/Import', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
+		$export_settings = add_submenu_page( 'ct_content_types', __('Export/Import', 'kleinanzeigen'), __('Export/Import', 'kleinanzeigen'), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
 
 		add_action( 'admin_print_scripts-' . $page_content_types, array( &$this, 'enqueue_scripts' ) );
 		add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );
@@ -1059,7 +1059,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		//		if ( $this->display_network_content && !empty($net_custom_fields)) {
 		//			//get the network fields
 		//			$net_post_types = get_site_option('ct_custom_post_types');
-		//			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
+		//			$meta_box_label = __('Default CustomPress Fields', 'kleinanzeigen');
 		//
 		//			//If we have this post type rename the metabox
 		//			if($current_post_type) {
@@ -1083,7 +1083,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
 		if ( ! empty($custom_fields)) {
 			//get the local fields
-			$meta_box_label = __('CustomPress Fields', $this->text_domain);
+			$meta_box_label = __('CustomPress Fields', 'kleinanzeigen');
 
 			//If we have this post type rename the metabox
 			if($current_post_type) {

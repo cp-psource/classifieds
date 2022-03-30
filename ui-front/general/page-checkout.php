@@ -23,13 +23,13 @@ $error = get_query_var('checkout_error');
 $error = (empty($error)) ? '' : $error;
 
 if ( $this->is_full_access() && $step != 'success' && $step != 'api_call_error' ) {
-	_e( 'Du hast bereits Zugriff zum Erstellen von Anzeigen.', $this->text_domain );
+	_e( 'Du hast bereits Zugriff zum Erstellen von Anzeigen.', 'kleinanzeigen' );
 	$step = '';
 }
 
 //STEP = DISABLED
 if ( $step == 'disabled' ): 
-_e( 'Diese Funktion ist derzeit vom Systemadministrator deaktiviert.', $this->text_domain );
+_e( 'Diese Funktion ist derzeit vom Systemadministrator deaktiviert.', 'kleinanzeigen' );
 elseif ( !empty($error) ): ?>
 <div class="invalid-login"><?php echo $error; ?></div>
 <?php endif; 
@@ -40,12 +40,12 @@ if ( $step == 'terms'): ?>
 <!-- Begin Terms -->
 <form action="#" method="post"  class="checkout">
 
-	<strong><?php _e( 'Servicekosten', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Servicekosten', 'kleinanzeigen' ); ?></strong>
 	<table <?php do_action( 'billing_invalid' ); ?>>
 
 		<?php if($this->use_credits && ! $this->is_full_access() ): ?>
 		<tr>
-			<td><label for="billing_type"><?php _e( 'Guthaben kaufen', $this->text_domain ) ?></label></td>
+			<td><label for="billing_type"><?php _e( 'Guthaben kaufen', 'kleinanzeigen' ) ?></label></td>
 			<td>
 				<input type="radio" name="billing_type" value="credits" checked="checked" />
 				<select name="credits">
@@ -75,10 +75,10 @@ if ( $step == 'terms'): ?>
 					<?php
 					$bastr    = empty( $options['payments']['recurring_cost'] ) ? '' : $options['payments']['recurring_cost'] . ' ';
 					$bastr .= $options['payment_types']['paypal']['currency'];
-					$bastr .= __( ' pro ', $this->text_domain );
+					$bastr .= __( ' pro ', 'kleinanzeigen' );
 					$bastr .= ( ! empty( $options['payments']['billing_frequency'] ) && $options['payments']['billing_frequency'] != 1 ) ? $options['payments']['billing_frequency'] . ' ' : '';
 					$bastr .= empty( $options['payments']['billing_period'] ) ? '' : $options['payments']['billing_period'];
-					$bastr .= ($options['payments']['billing_frequency'] > 1) ? __(' Zeitraum', $this->text_domain) : '';
+					$bastr .= ($options['payments']['billing_frequency'] > 1) ? __(' Zeitraum', 'kleinanzeigen') : '';
 					echo $bastr;
 					?>
 				</span>
@@ -102,7 +102,7 @@ if ( $step == 'terms'): ?>
 
 	<?php if(! empty($options['payments']['tos_txt'])): ?>
 
-	<strong><?php _e( 'Nutzungsbedingungen', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Nutzungsbedingungen', 'kleinanzeigen' ); ?></strong>
 	<table>
 		<tr>
 			<td><div class="terms"><?php echo nl2br( $options['payments']['tos_txt'] ); ?></div></td>
@@ -115,7 +115,7 @@ if ( $step == 'terms'): ?>
 			<td>
 				<label for="tos_agree">
 					<input type="checkbox" id="tos_agree" name="tos_agree" value="1" <?php checked( ! empty( $_POST['tos_agree'] ) ); ?> />
-					<?php _e( 'Ich stimme den Nutzungsbedingungen zu', $this->text_domain ); ?>
+					<?php _e( 'Ich stimme den Nutzungsbedingungen zu', 'kleinanzeigen' ); ?>
 				</label>
 			</td>
 		</tr>
@@ -126,7 +126,7 @@ if ( $step == 'terms'): ?>
 	<?php endif; ?>
 
 	<div class="submit">
-		<input type="submit" name="terms_submit" value="<?php _e( 'Fortfahren', $this->text_domain ); ?>" />
+		<input type="submit" name="terms_submit" value="<?php _e( 'Fortfahren', 'kleinanzeigen' ); ?>" />
 	</div>
 </form>
 
@@ -152,11 +152,11 @@ if ( $step == 'terms'): ?>
 <?php else: ?>
 
 <form action="#" method="post"  class="checkout">
-	<strong><?php _e('Choose Payment Method', $this->text_domain ); ?></strong>
+	<strong><?php _e('Choose Payment Method', 'kleinanzeigen' ); ?></strong>
 	<table class="form-table">
 		<?php if( $this->use_paypal ): ?>
 		<tr>
-			<td><label for="payment_method"><?php _e( 'PayPal', $this->text_domain ); ?></label></td>
+			<td><label for="payment_method"><?php _e( 'PayPal', 'kleinanzeigen' ); ?></label></td>
 			<td>
 				<input type="radio" name="payment_method" value="paypal"/>
 				<img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" border="0" alt="Acceptance Mark">
@@ -165,7 +165,7 @@ if ( $step == 'terms'): ?>
 		<?php endif; ?>
 		<?php if( $this->use_authorizenet ): ?>
 		<tr>
-			<td><label for="payment_method"><?php _e( 'Credit Card', $this->text_domain ); ?></label></td>
+			<td><label for="payment_method"><?php _e( 'Credit Card', 'kleinanzeigen' ); ?></label></td>
 			<td>
 				<input type="radio" name="payment_method" value="cc" />
 				<img  src="<?php echo CF_PLUGIN_URL; ?>ui-front/general/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
@@ -175,7 +175,7 @@ if ( $step == 'terms'): ?>
 	</table>
 
 	<div class="submit">
-		<input type="submit" name="payment_method_submit" value="<?php _e( 'Continue', $this->text_domain ); ?>" />
+		<input type="submit" name="payment_method_submit" value="<?php _e( 'Continue', 'kleinanzeigen' ); ?>" />
 	</div>
 </form>
 <?php endif; ?>
@@ -447,39 +447,39 @@ $countries = array (
 
 <form action="#" method="post" class="checkout" id="cfcheckout">
 
-	<strong><?php _e( 'Payment Details', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Payment Details', 'kleinanzeigen' ); ?></strong>
 	<div class="clear"></div>
 	<table class="form-table">
 		<tr>
-			<td><label for="cc_email"><?php _e( 'Email Address for Credit Card', $this->text_domain ); ?>:</label></td>
+			<td><label for="cc_email"><?php _e( 'Email Address for Credit Card', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="cc_email" name="cc_email" value="<?php echo empty($current_user->cc_email) ? esc_attr($current_user->user_email) : esc_attr($current_user->cc_email); ?>" class="required email" /></td>
 		</tr>
 		<tr>
-			<td><label for="first-name"><?php _e( 'First Name', $this->text_domain ); ?>:</label></td>
+			<td><label for="first-name"><?php _e( 'First Name', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="first-name" name="cc_firstname" value="<?php echo empty($current_user->cc_firstname) ? esc_attr($current_user->first_name) : esc_attr($current_user->cc_firstname); ?>" class="required"  /></td>
 		</tr>
 		<tr>
-			<td><label for="last-name"><?php _e( 'Last Name', $this->text_domain ); ?>:</label></td>
+			<td><label for="last-name"><?php _e( 'Last Name', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="last-name" name="cc_lastname" value="<?php echo empty($current_user->cc_lastname) ? esc_attr($current_user->last_name) : esc_attr($current_user->cc_lastname); ?>" class="required"  /></td>
 		</tr>
 		<tr>
-			<td><label for="street"><?php _e( 'Street', $this->text_domain ); ?>:</label></td>
+			<td><label for="street"><?php _e( 'Street', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="street" name="cc_street" value="<?php echo empty($current_user->cc_street) ? '' : esc_attr($current_user->cc_street); ?>" class="required" /></td>
 		</tr>
 		<tr>
-			<td><label for="city"><?php _e( 'City', $this->text_domain ); ?>:</label></td>
+			<td><label for="city"><?php _e( 'City', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="city" name="cc_city" value="<?php echo empty($current_user->cc_city) ? '' : esc_attr($current_user->cc_city); ?>" class="required" /></td>
 		</tr>
 		<tr>
-			<td><label for="state"><?php _e( 'State', $this->text_domain ); ?>:</label></td>
+			<td><label for="state"><?php _e( 'State', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="state" name="cc_state" value="<?php echo empty($current_user->cc_state) ? '' : esc_attr($current_user->cc_state); ?>" class="required" /></td>
 		</tr>
 		<tr>
-			<td><label for="zip"><?php _e( 'Postal Code', $this->text_domain ); ?>:</label></td>
+			<td><label for="zip"><?php _e( 'Postal Code', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" id="zip" name="cc_zip" value="<?php echo empty($current_user->cc_zip) ? '' : esc_attr($current_user->cc_zip); ?>" class="required" /></td>
 		</tr>
 		<tr>
-			<td><label for="country"><?php _e( 'Country', $this->text_domain ); ?>:</label></td>
+			<td><label for="country"><?php _e( 'Country', 'kleinanzeigen' ); ?>:</label></td>
 			<td>
 				<select id="country" name="cc_country_code"  class="required">
 					<?php foreach ( $countries as $key => $value ) : ?>
@@ -492,7 +492,7 @@ $countries = array (
 		<?php if(! $this->use_free): ?>
 
 		<tr>
-			<td><?php _e( 'Total Amount', $this->text_domain ); ?>:</td>
+			<td><?php _e( 'Total Amount', 'kleinanzeigen' ); ?>:</td>
 			<td>
 				<strong><?php echo $_SESSION['cost']; ?> <?php echo (empty($options['payment_types']['paypal']['currency']) ) ? 'USD' : $options['payment_types']['paypal']['currency']; ?></strong>
 				<input type="hidden" name="total_amount" value="<?php echo $_SESSION['cost']; ?>" />
@@ -500,36 +500,36 @@ $countries = array (
 		</tr>
 
 		<tr>
-			<td><label for="cc_type"><?php _e( 'Credit Card Type', $this->text_domain ); ?>:</label></td>
+			<td><label for="cc_type"><?php _e( 'Credit Card Type', 'kleinanzeigen' ); ?>:</label></td>
 			<td>
 				<select name="cc_type">
-					<option><?php _e( 'Visa', $this->text_domain ); ?></option>
-					<option><?php _e( 'MasterCard', $this->text_domain ); ?></option>
-					<option><?php _e( 'Amex', $this->text_domain ); ?></option>
-					<option><?php _e( 'Discover', $this->text_domain ); ?></option>
+					<option><?php _e( 'Visa', 'kleinanzeigen' ); ?></option>
+					<option><?php _e( 'MasterCard', 'kleinanzeigen' ); ?></option>
+					<option><?php _e( 'Amex', 'kleinanzeigen' ); ?></option>
+					<option><?php _e( 'Discover', 'kleinanzeigen' ); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td><label for="cc_number"><?php _e( 'Credit Card Number', $this->text_domain ); ?>:</label></td>
+			<td><label for="cc_number"><?php _e( 'Credit Card Number', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" name="cc_number" class="required creditcard"/></td>
 		</tr>
 		<tr>
-			<td><label for="exp_date"><?php _e( 'Expiration Date', $this->text_domain ); ?>:</label></td>
+			<td><label for="exp_date"><?php _e( 'Expiration Date', 'kleinanzeigen' ); ?>:</label></td>
 			<td>
 				<select name="exp_date_month" id="exp_date" class="required" >
-					<option value="01"><?php _e('01 Jan', $this->text_domain); ?></option>
-					<option value="02"><?php _e('02 Feb', $this->text_domain); ?></option>
-					<option value="03"><?php _e('03 Mar', $this->text_domain); ?></option>
-					<option value="04"><?php _e('04 Apr', $this->text_domain); ?></option>
-					<option value="05"><?php _e('05 May', $this->text_domain); ?></option>
-					<option value="06"><?php _e('06 Jun', $this->text_domain); ?></option>
-					<option value="07"><?php _e('07 Jul', $this->text_domain); ?></option>
-					<option value="08"><?php _e('08 Aug', $this->text_domain); ?></option>
-					<option value="09"><?php _e('09 Sep', $this->text_domain); ?></option>
-					<option value="10"><?php _e('10 Oct', $this->text_domain); ?></option>
-					<option value="11"><?php _e('11 Nov', $this->text_domain); ?></option>
-					<option value="12"><?php _e('12 Dec', $this->text_domain); ?></option>
+					<option value="01"><?php _e('01 Jan', 'kleinanzeigen'); ?></option>
+					<option value="02"><?php _e('02 Feb', 'kleinanzeigen'); ?></option>
+					<option value="03"><?php _e('03 Mar', 'kleinanzeigen'); ?></option>
+					<option value="04"><?php _e('04 Apr', 'kleinanzeigen'); ?></option>
+					<option value="05"><?php _e('05 May', 'kleinanzeigen'); ?></option>
+					<option value="06"><?php _e('06 Jun', 'kleinanzeigen'); ?></option>
+					<option value="07"><?php _e('07 Jul', 'kleinanzeigen'); ?></option>
+					<option value="08"><?php _e('08 Aug', 'kleinanzeigen'); ?></option>
+					<option value="09"><?php _e('09 Sep', 'kleinanzeigen'); ?></option>
+					<option value="10"><?php _e('10 Oct', 'kleinanzeigen'); ?></option>
+					<option value="11"><?php _e('11 Nov', 'kleinanzeigen'); ?></option>
+					<option value="12"><?php _e('12 Dec', 'kleinanzeigen'); ?></option>
 				</select>
 
 				<select name="exp_date_year" class="required" >
@@ -541,12 +541,12 @@ $countries = array (
 		</tr>
 		<!--
 		<tr>
-		<td><label for="exp_date"><?php _e( 'Expiration Date (mm/yy)', $this->text_domain ); ?>:</label></td>
+		<td><label for="exp_date"><?php _e( 'Expiration Date (mm/yy)', 'kleinanzeigen' ); ?>:</label></td>
 		<td><input type="text" name="exp_date" class="required" /></td>
 		</tr>
 		-->
 		<tr>
-			<td><label for="cvv2"><?php _e( 'CVV2', $this->text_domain ); ?>:</label></td>
+			<td><label for="cvv2"><?php _e( 'CVV2', 'kleinanzeigen' ); ?>:</label></td>
 			<td><input type="text" name="cvv2" class="required" /></td>
 		</tr>
 		<?php endif; ?>
@@ -582,41 +582,41 @@ $countries = array (
 	<input type="hidden" name="credits" value="<?php echo (empty($_SESSION['credits']) ) ? 0 : $_SESSION['credits']; ?>" />
 
 
-	<strong><?php _e( 'Confirm Payment', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Confirm Payment', 'kleinanzeigen' ); ?></strong>
 	<table>
 		
 		<?php if( !empty($cc['cc_email']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Email Address', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Email Address', 'kleinanzeigen' ); ?>:</label></td>
 			<td><?php echo $cc['cc_email']; ?></td>
 		</tr>
 		<?php endif; ?>
 		
 		<?php if( !empty($cc['cc_firstname']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Name', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Name', 'kleinanzeigen' ); ?>:</label></td>
 			<td><?php echo $cc['cc_firstname']; ?> <?php echo $cc['cc_lastname']; ?></td>
 		</tr>
 		<?php endif; ?>
 
 		<?php if( !empty($cc['cc_street']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Address', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Address', 'kleinanzeigen' ); ?>:</label></td>
 			<td>
-				<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', $this->text_domain), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
+				<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', 'kleinanzeigen'), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
 			</td>
 		</tr>
 		<?php endif; ?>
 
 		<?php if ( $_SESSION['billing_type'] == 'recurring' ): ?>
 		<tr>
-			<td><label><?php _e( 'Billing Agreement', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Billing Agreement', 'kleinanzeigen' ); ?>:</label></td>
 			<td><?php echo $_SESSION['billing_agreement']; ?></td>
 		</tr>
 
 		<?php endif; ?>
 		<tr>
-			<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
+			<td><label><?php _e('Total Amount', 'kleinanzeigen'); ?>:</label></td>
 			<td>
 				<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $cc['currency_code']; ?></strong>
 			</td>
@@ -658,11 +658,11 @@ $countries = array (
 <?php /* Free Success */ ?>
 <?php elseif ( $step == 'free_success' ): ?>
 
-<div class="dp-submit-txt"><?php _e( 'The registration is completed successfully!', $this->text_domain ); ?></div>
-<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the kleinanzeigen submission page.', $this->text_domain ); ?></span>
+<div class="dp-submit-txt"><?php _e( 'The registration is completed successfully!', 'kleinanzeigen' ); ?></div>
+<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the kleinanzeigen submission page.', 'kleinanzeigen' ); ?></span>
 <br />
 
-<?php echo do_shortcode('[cf_meine_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
+<?php echo do_shortcode('[cf_meine_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', 'kleinanzeigen') . '" view="always"]'); ?>
 
 
 <form id="go-to-profile-su" action="#" method="post">
@@ -691,40 +691,40 @@ $countries = array (
 	<input type="hidden" name="credits" value="<?php echo empty($_SESSION['credits']) ? 0 : $_SESSION['credits']; ?>" />
 
 
-	<strong><?php _e( 'Confirm Payment', $this->text_domain ); ?></strong>
+	<strong><?php _e( 'Confirm Payment', 'kleinanzeigen' ); ?></strong>
 	<table>
 		<?php if( !empty($cc['cc_email']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Email Address', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Email Address', 'kleinanzeigen' ); ?>:</label></td>
 			<td><?php echo empty($cc['cc_email']) ? $current_user->user_email : $cc['cc_email']; ?></td>
 		</tr>
 		<?php endif; ?>
 		
 		<?php if( !empty($cc['cc_firstname']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Name', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Name', 'kleinanzeigen' ); ?>:</label></td>
 			<td><?php echo empty($cc['cc_firstname']) ? $current_user->first_name : $cc['cc_firstname']; ?> <?php echo empty($cc['cc_lastname']) ? $current_user->last_name : $cc['cc_lastname']; ?></td>
 		</tr>
 		<?php endif; ?>
 
 		<?php if( !empty($cc['cc_street']) ): ?>
 		<tr>
-			<td><label><?php _e( 'Address', $this->text_domain ); ?>:</label></td>
+			<td><label><?php _e( 'Address', 'kleinanzeigen' ); ?>:</label></td>
 			<td>
-				<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', $this->text_domain), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
+				<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', 'kleinanzeigen'), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
 			</td>
 		</tr>
 		<?php endif; ?>
 
 		<tr>
-			<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
+			<td><label><?php _e('Total Amount', 'kleinanzeigen'); ?>:</label></td>
 			<td>
 				<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $cc['currency_code']; ?></strong>
 			</td>
 		</tr>
 	</table>
 	<div class="submit">
-		<input type="submit" name="recurring_submit" value="<?php _e( 'Confirm data', $this->text_domain ); ?>" />
+		<input type="submit" name="recurring_submit" value="<?php _e( 'Confirm data', 'kleinanzeigen' ); ?>" />
 	</div>
 
 </form>
@@ -735,11 +735,11 @@ $countries = array (
 
 <?php elseif ( $step == 'success' ): ?>
 <!-- Begin Success -->
-<div class="dp-thank-you"><?php _e( 'Thank you for your business. Transaction processed successfully!', $this->text_domain ); ?></div>
-<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to kleinanzeigen submission page.', $this->text_domain ); ?></span>
+<div class="dp-thank-you"><?php _e( 'Thank you for your business. Transaction processed successfully!', 'kleinanzeigen' ); ?></div>
+<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to kleinanzeigen submission page.', 'kleinanzeigen' ); ?></span>
 <br /><br />
 
-<?php echo do_shortcode('[cf_meine_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', $this->text_domain) . '" view="always"]'); ?>
+<?php echo do_shortcode('[cf_meine_kleinanzeigen_btn text="' . __('Proceed to your Classifieds', 'kleinanzeigen') . '" view="always"]'); ?>
 
 <!-- End Success -->
 <?php endif; ?>

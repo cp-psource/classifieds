@@ -16,14 +16,14 @@ $showitems = ($range * 2) + 1;
 
 	<div class="cf-pagination"><!--begin .cf-pagination-->
 
-		<span><?php echo sprintf( __('Seite %1$d von %2$d',$this->text_domain), $paged, $pages); ?></span>
+		<span><?php echo sprintf( __('Seite %1$d von %2$d','kleinanzeigen'), $paged, $pages); ?></span>
 
 		<?php if($paged > 2 && $paged > $range+1 && $showitems < $pages): ?>
-		<a href="<?php echo get_pagenum_link(1); ?>">&laquo;<?php _e('Erste',$this->text_domain); ?></a>
+		<a href="<?php echo get_pagenum_link(1); ?>">&laquo;<?php _e('Erste','kleinanzeigen'); ?></a>
 		<?php endif; ?>
 
 		<?php if($paged > 1 && $showitems < $pages) : ?>
-		<a href="<?php echo get_pagenum_link($paged - 1); ?>">&lsaquo;<?php _e('Vorherige',$this->text_domain); ?></a>
+		<a href="<?php echo get_pagenum_link($paged - 1); ?>">&lsaquo;<?php _e('Vorherige','kleinanzeigen'); ?></a>
 		<?php endif; ?>
 
 		<?php for ($i=1;$i <= $pages;$i++) :
@@ -33,11 +33,11 @@ $showitems = ($range * 2) + 1;
 		endfor;
 
 		if ($paged < $pages && $showitems < $pages) : ?>
-		<a href="<?php echo get_pagenum_link($paged + 1); ?>"><?php _e('Nächste',$this->text_domain); ?>&rsaquo;</a>
+		<a href="<?php echo get_pagenum_link($paged + 1); ?>"><?php _e('Nächste','kleinanzeigen'); ?>&rsaquo;</a>
 		<?php endif; ?>
 
 		<?php if ($paged < $pages - 1 &&  $paged + $range - 1 < $pages && $showitems < $pages): ?>
-		<a href="<?php echo get_pagenum_link($pages); ?>"><?php _e('Letzte', $this->text_domain); ?>&raquo;</a>
+		<a href="<?php echo get_pagenum_link($pages); ?>"><?php _e('Letzte', 'kleinanzeigen'); ?>&raquo;</a>
 		<?php endif; ?>
 
 	</div> <!--end .cf-pagination-->

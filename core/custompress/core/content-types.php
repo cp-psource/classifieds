@@ -805,7 +805,7 @@ if ( ! class_exists( 'CustomPress_Content_Types' ) ):
 
 			$result = get_the_term_list( $post->ID, $id, $before, $separator, $after );
 
-			$result = ( is_wp_error( $result ) ) ? __( 'Invalid Taxonomy name in [tax ] shortcode', $this->text_domain ) : $result;
+			$result = ( is_wp_error( $result ) ) ? __( 'Invalid Taxonomy name in [tax ] shortcode', 'kleinanzeigen' ) : $result;
 
 			$result = apply_filters( 'tax_shortcode', $result, $atts, $content );
 

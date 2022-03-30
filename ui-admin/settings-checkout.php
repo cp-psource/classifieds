@@ -10,41 +10,41 @@
 	<?php $this->render_admin( 'message' ); ?>
 
 	<form action="#" method="post">
-	<h1><?php _e( 'Kleinanzeigen Kasse', $this->text_domain ); ?></h1>
+	<h1><?php _e( 'Kleinanzeigen Kasse', 'kleinanzeigen' ); ?></h1>
 
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="annual_cost"><?php _e('Jährliche Zahlungsoption', $this->text_domain ) ?></label>
+					<label for="annual_cost"><?php _e('Jährliche Zahlungsoption', 'kleinanzeigen' ) ?></label>
 				</th>
 				<td>
 					<input type="text" id="annual_cost" class="small-text" name="annual_cost" value="<?php if ( isset( $options['annual_cost'] ) ) echo $options['annual_cost']; ?>" />
-					<span class="description"><?php _e( 'Kosten des "Jährlichen" Dienstes.', $this->text_domain ); ?></span>
+					<span class="description"><?php _e( 'Kosten des "Jährlichen" Dienstes.', 'kleinanzeigen' ); ?></span>
 					<br /><br />
 					<input type="text" name="annual_txt" value="<?php if ( isset( $options['annual_txt'] ) ) echo $options['annual_txt']; ?>" />
-					<span class="description"><?php _e( 'Text des "Jährlichen" Dienstes.', $this->text_domain ); ?></span>
+					<span class="description"><?php _e( 'Text des "Jährlichen" Dienstes.', 'kleinanzeigen' ); ?></span>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="one_time_cost"><?php _e( 'Einmalige Zahlungsoption', $this->text_domain ) ?></label>
+					<label for="one_time_cost"><?php _e( 'Einmalige Zahlungsoption', 'kleinanzeigen' ) ?></label>
 				</th>
 				<td>
 					<input type="text" id="one_time_cost" class="small-text" name="one_time_cost" value="<?php if ( isset( $options['one_time_cost'] ) ) echo $options['one_time_cost']; ?>" />
-					<span class="description"><?php _e( 'Kosten für den "Einmaligen" Service.', $this->text_domain ); ?></span>
+					<span class="description"><?php _e( 'Kosten für den "Einmaligen" Service.', 'kleinanzeigen' ); ?></span>
 					<br /><br />
 					<input type="text" name="one_time_txt" value="<?php if ( isset( $options['one_time_txt'] ) ) echo $options['one_time_txt']; ?>" />
-					<span class="description"><?php _e( 'Text des "One Time"-Dienstes.', $this->text_domain ); ?></span>
+					<span class="description"><?php _e( 'Text des "One Time"-Dienstes.', 'kleinanzeigen' ); ?></span>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="tos_txt"><?php _e('Text der Nutzungsbedingungen', $this->text_domain ) ?></label>
+					<label for="tos_txt"><?php _e('Text der Nutzungsbedingungen', 'kleinanzeigen' ) ?></label>
 				</th>
 				<td>
 					<textarea name="tos_txt" id="tos_txt" rows="15" cols="50"><?php if ( isset( $options['tos_txt'] ) ) echo $options['tos_txt']; ?></textarea>
 					<br />
-					<span class="description"><?php _e( 'Text für "Nutzungsbedingungen"', $this->text_domain ); ?></span>
+					<span class="description"><?php _e( 'Text für "Nutzungsbedingungen"', 'kleinanzeigen' ); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -52,7 +52,7 @@
 		<p class="submit">
 			<?php wp_nonce_field('verify'); ?>
 			<input type="hidden" name="key" value="checkout" />
-			<input type="submit" class="button-primary" name="save" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" />
+			<input type="submit" class="button-primary" name="save" value="<?php _e( 'Änderungen speichern', 'kleinanzeigen' ); ?>" />
 		</p>
 
 	</form>

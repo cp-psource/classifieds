@@ -7,20 +7,20 @@
 <div class="wrap">
 	<?php if ( function_exists('screen_icon') ) screen_icon('index'); ?>
 	<h2>
-		<?php _e( 'Kleinanzeigen Dashboard', $this->text_domain ); ?>
-		<a class="button add-new-h2" href="post-new.php?post_type=<?php echo $this->post_type; ?>"><?php _e( 'Neue Anzeige erstellen', $this->text_domain ); ?></a>
+		<?php _e( 'Kleinanzeigen Dashboard', 'kleinanzeigen' ); ?>
+		<a class="button add-new-h2" href="post-new.php?post_type=<?php echo $this->post_type; ?>"><?php _e( 'Neue Anzeige erstellen', 'kleinanzeigen' ); ?></a>
 	</h2>
 
-	<h3><?php _e( 'Aktive Anzeigen', $this->text_domain ); ?></h3>
+	<h3><?php _e( 'Aktive Anzeigen', 'kleinanzeigen' ); ?></h3>
 	<table class="widefat">
 		<thead>
 			<tr>
-				<th><?php _e( 'ID', $this->text_domain ); ?></th>
-				<th><?php _e( 'Titel', $this->text_domain ); ?></th>
-				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
-				<th><?php _e( 'Haltbarkeitsdatum', $this->text_domain ); ?></th>
-				<th><?php _e( 'Bild', $this->text_domain ); ?></th>
-				<th><?php _e( 'Aktionen', $this->text_domain ); ?></th>
+				<th><?php _e( 'ID', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Titel', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Haltbarkeitsdatum', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Bild', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Aktionen', 'kleinanzeigen' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,14 +45,14 @@
 					?>
 				</td>
 				<td>
-				<a href="post.php?post=<?php the_ID(); ?>&amp;action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-				<a href="javascript:kleinanzeigen.toggle_end('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige beenden', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', $this->text_domain ); ?></a>
+				<a href="post.php?post=<?php the_ID(); ?>&amp;action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+				<a href="javascript:kleinanzeigen.toggle_end('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige beenden', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', 'kleinanzeigen' ); ?></a>
 					<form action="#" method="post" id="form-<?php the_ID(); ?>" class="cf-form">
 						<input type="hidden" name="action" value="" />
 						<input type="hidden" name="post_id" value="<?php the_ID(); ?>" />
-						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', $this->text_domain ); ?>" name="confirm" />
-						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
+						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', 'kleinanzeigen' ); ?>" name="confirm" />
+						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', 'kleinanzeigen' ); ?>" onclick="kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
 					</form>
 				</td>
 			</tr>
@@ -63,16 +63,16 @@
 		</tbody>
 	</table>
 
-	<h3><?php _e( 'Gespeicherte Anzeigen', $this->text_domain ); ?></h3>
+	<h3><?php _e( 'Gespeicherte Anzeigen', 'kleinanzeigen' ); ?></h3>
 	<table class="widefat">
 		<thead>
 			<tr>
-				<th><?php _e( 'ID', $this->text_domain ); ?></th>
-				<th><?php _e( 'Titel', $this->text_domain ); ?></th>
-				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
-				<th><?php _e( 'Haltbarkeitsdatum', $this->text_domain ); ?></th>
-				<th><?php _e( 'Bild', $this->text_domain ); ?></th>
-				<th><?php _e( 'Aktionen', $this->text_domain ); ?></th>
+				<th><?php _e( 'ID', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Titel', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Haltbarkeitsdatum', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Bild', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Aktionen', 'kleinanzeigen' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -97,9 +97,9 @@
 					?>
 				</td>
 				<td>
-				<a href="post.php?post=<?php the_ID(); ?>&amp;action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-				<a href="javascript:kleinanzeigen.toggle_publish('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige veröffentlichen', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', $this->text_domain ); ?></a>
+				<a href="post.php?post=<?php the_ID(); ?>&amp;action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+				<a href="javascript:kleinanzeigen.toggle_publish('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige veröffentlichen', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', 'kleinanzeigen' ); ?></a>
 					<form action="#" method="post" id="form-<?php the_ID(); ?>" class="cf-form">
 						<input type="hidden" name="action" value="" />
 						<input type="hidden" name="post_id" value="<?php the_ID(); ?>" />
@@ -117,11 +117,11 @@
 						foreach ( $durations as $key => $field_option ):
 						if( empty($field_option ) ) continue;
 						?>
-						<option value="<?php echo $field_option; ?>"><?php  echo sprintf(__('%s', $this->text_domain), $field_option); ?></option>
+						<option value="<?php echo $field_option; ?>"><?php  echo sprintf(__('%s', 'kleinanzeigen'), $field_option); ?></option>
 						<?php endforeach; ?>
 					</select>
-						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', $this->text_domain ); ?>" name="confirm" />
-						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="javascript:kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
+						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', 'kleinanzeigen' ); ?>" name="confirm" />
+						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', 'kleinanzeigen' ); ?>" onclick="javascript:kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
 					</form>
 				</td>
 			</tr>
@@ -132,16 +132,16 @@
 		</tbody>
 	</table>
 
-	<h3><?php _e( 'Beendete Anzeigen', $this->text_domain ); ?></h3>
+	<h3><?php _e( 'Beendete Anzeigen', 'kleinanzeigen' ); ?></h3>
 	<table class="widefat">
 		<thead>
 			<tr>
-				<th><?php _e( 'ID', $this->text_domain ); ?></th>
-				<th><?php _e( 'Titel', $this->text_domain ); ?></th>
-				<th><?php _e( 'Kategorien', $this->text_domain ); ?></th>
-				<th><?php _e( 'Haltbarkeitsdatum', $this->text_domain ); ?></th>
-				<th><?php _e( 'Bild', $this->text_domain ); ?></th>
-				<th><?php _e( 'Aktionen', $this->text_domain ); ?></th>
+				<th><?php _e( 'ID', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Titel', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Haltbarkeitsdatum', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Bild', 'kleinanzeigen' ); ?></th>
+				<th><?php _e( 'Aktionen', 'kleinanzeigen' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -166,9 +166,9 @@
 					?>
 				</td>
 				<td>
-				<a href="post.php?post=<?php the_ID(); ?>&action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-				<a href="javascript:kleinanzeigen.toggle_publish('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige erneuern', $this->text_domain ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
-					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', $this->text_domain ); ?></a>
+				<a href="post.php?post=<?php the_ID(); ?>&action=edit" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige bearbeiten', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+				<a href="javascript:kleinanzeigen.toggle_publish('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige erneuern', 'kleinanzeigen' ); ?></a> <span class="separators-<?php the_ID(); ?>"> | </span>
+					<a href="javascript:kleinanzeigen.toggle_delete('<?php the_ID(); ?>');" class="action-links-<?php the_ID(); ?>"><?php _e( 'Anzeige löschen', 'kleinanzeigen' ); ?></a>
 					<form action="#" method="post" id="form-<?php the_ID(); ?>" class="cf-form">
 						<input type="hidden" name="action" value="" />
 						<input type="hidden" name="post_id" value="<?php the_ID(); ?>" />
@@ -185,11 +185,11 @@
 						foreach ( $durations as $key => $field_option ):
 						if( empty($field_option ) ) continue;
 						?>
-						<option value="<?php echo $field_option; ?>"><?php  echo sprintf(__('%s', $this->text_domain), $field_option); ?></option>
+						<option value="<?php echo $field_option; ?>"><?php  echo sprintf(__('%s', 'kleinanzeigen'), $field_option); ?></option>
 						<?php endforeach; ?>
 					</select>
-						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', $this->text_domain ); ?>" name="confirm" />
-						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="javascript:kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
+						<input type="submit" class="button confirm" value="<?php _e( 'Bestätige', 'kleinanzeigen' ); ?>" name="confirm" />
+						<input type="submit" class="button cancel"  value="<?php _e( 'Abbrechen', 'kleinanzeigen' ); ?>" onclick="javascript:kleinanzeigen.cancel('<?php the_ID(); ?>'); return false;" />
 					</form>
 				</td>
 			</tr>

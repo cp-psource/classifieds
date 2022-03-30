@@ -48,7 +48,7 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 		 * @return void
 		 */
 		function on_plugins_loaded() {
-			load_plugin_textdomain( $this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages' ) );
+			load_plugin_textdomain( 'kleinanzeigen', false, plugin_basename( $this->plugin_dir . 'languages' ) );
 
 			// maybe check upgrade version here
             $this->maybe_upgrade_version();
@@ -530,7 +530,7 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 				$options = array_merge( $options, array( $params['key'] => $params ) );
 				update_option( $this->options_name, $options );
 			} else {
-				die( __( 'Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain ) );
+				die( __( 'Sicherheitsüberprüfung fehlgeschlagen!', 'kleinanzeigen' ) );
 			}
 		}
 
