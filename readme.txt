@@ -133,6 +133,10 @@ diesem Autor. Wenn Du auf einen benutzerdefinierten Taxonomiebegriff für Katego
 
 == Changelog ==
 
+= 2.4.5 =
+
+* Fix: Deprecated screen_icon
+
 = 2.4.4 =
 
 * Aktuelles CustomPress Integriert
