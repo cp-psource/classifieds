@@ -67,7 +67,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		/** @public string the My Classifieds page slug. Track by ID so the page permalink and slug may be internationalized */
 		public $my_kleinanzeigen_page_slug = '';
 		/** @public string kleinanzeigen_page_name the Classifieds default page name for templates. Track by ID so the page permalink and slug may be internationalized */
-		public $my_kleinanzeigen_page_name = 'my-kleinanzeigen';
+		public $my_kleinanzeigen_page_name = 'meine-kleinanzeigen';
 
 		/** @public int the Checkout default page ID number. Track by ID so the page permalink and slug may be internationalized */
 		public $checkout_page_id = 0;
@@ -2029,7 +2029,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				return $content;
 			}
 			ob_start();
-			require( $this->custom_kleinanzeigen_template( 'my-kleinanzeigen' ) );
+			require( $this->custom_kleinanzeigen_template( 'meine-kleinanzeigen' ) );
 			$new_content = ob_get_contents();
 			ob_end_clean();
 

@@ -121,7 +121,7 @@ Und Informationen zu jeder Anzeige, z.B. "Ablaufdatum"
 
 = Front-End-Kleinanzeigenverwaltung =
 
-Unter [yourdomain.com]/[kleinanzeigen]/[my-kleinanzeigen] findest Du eine Front-End
+Unter [yourdomain.com]/[kleinanzeigen]/[meine-kleinanzeigen] findest Du eine Front-End
 UI zur Verwaltung Deinerer Kleinanzeigen. Du kannst Dein verfügbares Guthaben anzeigen, Du kannst
 [Anzeige bearbeiten]/[Anzeige beenden/erneuern][Anzeige löschen].
 
