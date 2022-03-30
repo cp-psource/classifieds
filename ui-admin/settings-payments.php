@@ -49,7 +49,7 @@
 						<td>
 							<select id="billing_period" name="billing_period"  >
 								<option value="Day" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Day' ); ?>><?php _e( 'Tag', $this->text_domain ); ?></option>
-								<option value="Week" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ); ?>><?php _e( 'Woche', $this->text_domain ); ?></option>
+								<option value="Woche" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Woche' ); ?>><?php _e( 'Woche', $this->text_domain ); ?></option>
 <!--
 								<option value="SemiMonth" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ); ?>><?php _e( 'Halb-monatlich', $this->text_domain ); ?></option>
 -->
