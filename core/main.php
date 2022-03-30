@@ -67,7 +67,7 @@ if (!class_exists('Classifieds_Core_Main')):
         {
 
             //Manage Classifieds
-            if (is_page($this->my_kleinanzeigen_page_id)) {
+            if (is_page($this->meine_kleinanzeigen_page_id)) {
                 // If confirm button is pressed
                 if (isset($_POST['confirm'])) {
                     // Verify _wpnonce field
@@ -250,11 +250,11 @@ if (!class_exists('Classifieds_Core_Main')):
                 add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
                 $this->is_kleinanzeigen_page = true;
             } //My Classifieds page
-            elseif (is_page($this->my_kleinanzeigen_page_id)) {
+            elseif (is_page($this->meine_kleinanzeigen_page_id)) {
                 $templates = array('page-meine-kleinanzeigen.php');
                 if (!$this->kleinanzeigen_template = locate_template($templates)) {
                     $this->kleinanzeigen_template = $page_template;
-                    add_filter('the_content', array(&$this, 'my_kleinanzeigen_content'));
+                    add_filter('the_content', array(&$this, 'meine_kleinanzeigen_content'));
                 }
                 add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
                 $this->is_kleinanzeigen_page = true;
@@ -268,8 +268,8 @@ if (!class_exists('Classifieds_Core_Main')):
                 add_filter('template_include', array(&$this, 'custom_kleinanzeigen_template'));
                 $this->is_kleinanzeigen_page = true;
             } /* If user wants to go to My Classifieds main page  */
-            elseif (isset($_POST['go_my_kleinanzeigen'])) {
-                wp_redirect(get_permalink($this->my_kleinanzeigen_page_id));
+            elseif (isset($_POST['go_meine_kleinanzeigen'])) {
+                wp_redirect(get_permalink($this->meine_kleinanzeigen_page_id));
             } /* If user wants to go to checkout page  */
             elseif (isset($_POST['purchase'])) {
                 wp_redirect(get_permalink($this->checkout_page_id));

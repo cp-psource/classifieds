@@ -233,7 +233,7 @@ wp_enqueue_script('set-post-thumbnail');
 			<?php wp_nonce_field( 'verify' ); ?>
 			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_kleinanzeige">
 
-			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_kleinanzeigen_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->meine_kleinanzeigen_page_id); ?>'">
 		</div>
 	</form>
 </div><!-- .cf_update_form -->

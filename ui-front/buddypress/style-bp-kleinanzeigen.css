@@ -185,9 +185,9 @@ ul.button-nav li {
 }
 
 .cf-ad-info th {
-    width: 20%;
+    width: 30%;
     vertical-align: top;
-    text-align: right;
+    text-align: left;
     border: 1px solid #eaeaea;
     padding: 0 1em;
 }

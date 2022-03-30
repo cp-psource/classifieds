@@ -63,11 +63,11 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		public $kleinanzeigen_page_name = 'kleinanzeigen';
 
 		/** @public int the My Classifieds default page ID number. Track by ID so the page permalink and slug may be internationalized */
-		public $my_kleinanzeigen_page_id = 0;
+		public $meine_kleinanzeigen_page_id = 0;
 		/** @public string the My Classifieds page slug. Track by ID so the page permalink and slug may be internationalized */
-		public $my_kleinanzeigen_page_slug = '';
+		public $meine_kleinanzeigen_page_slug = '';
 		/** @public string kleinanzeigen_page_name the Classifieds default page name for templates. Track by ID so the page permalink and slug may be internationalized */
-		public $my_kleinanzeigen_page_name = 'meine-kleinanzeigen';
+		public $meine_kleinanzeigen_page_name = 'meine-kleinanzeigen';
 
 		/** @public int the Checkout default page ID number. Track by ID so the page permalink and slug may be internationalized */
 		public $checkout_page_id = 0;
@@ -179,7 +179,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			add_shortcode( 'cf_edit_kleinanzeige_btn', array( &$this, 'edit_kleinanzeige_btn_sc' ) );
 			add_shortcode( 'cf_checkout_btn', array( &$this, 'checkout_btn_sc' ) );
 			add_shortcode( 'cf_my_credits_btn', array( &$this, 'my_credits_btn_sc' ) );
-			add_shortcode( 'cf_my_kleinanzeigen_btn', array( &$this, 'my_kleinanzeigen_btn_sc' ) );
+			add_shortcode( 'cf_meine_kleinanzeigen_btn', array( &$this, 'meine_kleinanzeigen_btn_sc' ) );
 			add_shortcode( 'cf_profile_btn', array( &$this, 'profile_btn_sc' ) );
 			add_shortcode( 'cf_logout_btn', array( &$this, 'logout_btn_sc' ) );
 			add_shortcode( 'cf_signin_btn', array( &$this, 'signin_btn_sc' ) );
@@ -417,7 +417,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				if ( ! is_user_logged_in() ) {
 					if ( @is_page( $this->add_kleinanzeige_page_id )
 					     || @is_page( $this->edit_kleinanzeige_page_id )
-					     || @is_page( $this->my_kleinanzeigen_page_id )
+					     || @is_page( $this->meine_kleinanzeigen_page_id )
 					     || @is_page( $this->my_credits_page_id )
 					     || @is_page( $this->checkout_page_id )
 					) {
@@ -438,7 +438,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				//Are are we managing credits?
 				if ( ! $this->use_credits ) {
 					if ( @is_page( $this->my_credits_page_id ) ) {
-						wp_redirect( get_permalink( $this->my_kleinanzeigen_page_id ) );
+						wp_redirect( get_permalink( $this->meine_kleinanzeigen_page_id ) );
 						exit;
 					}
 				}
@@ -446,7 +446,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				//Are we adding a kleinanzeige?
 				if ( ! ( current_user_can( 'create_kleinanzeigen' ) && current_user_can( 'publish_kleinanzeigen' ) ) ) {
 					if ( @is_page( $this->add_kleinanzeige_page_id ) ) {
-						wp_redirect( get_permalink( $this->my_kleinanzeigen_page_id ) );
+						wp_redirect( get_permalink( $this->meine_kleinanzeigen_page_id ) );
 						exit;
 					}
 				}
@@ -455,7 +455,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				//Can the user edit kleinanzeigen?
 				if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_kleinanzeige', $_REQUEST['post_id'] ) ) {
 					if ( @is_page( $this->edit_kleinanzeige_page_id ) ) {
-						wp_redirect( get_permalink( $this->my_kleinanzeigen_page_id ) );
+						wp_redirect( get_permalink( $this->meine_kleinanzeigen_page_id ) );
 						exit;
 					}
 				}
@@ -588,7 +588,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			$this->kleinanzeigen_page_slug = $kleinanzeigen_page->post_name; //Remember the slug
 
 			//My Classifieds
-			$kleinanzeigen_page = $this->get_page_by_meta( 'my_kleinanzeigen' );
+			$kleinanzeigen_page = $this->get_page_by_meta( 'meine_kleinanzeigen' );
 			$page_id          = ( $kleinanzeigen_page && $kleinanzeigen_page->ID > 0 ) ? $kleinanzeigen_page->ID : 0;
 
 			if ( empty( $page_id ) ) {
@@ -606,11 +606,11 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				);
 				$page_id          = wp_insert_post( $args );
 				$kleinanzeigen_page = get_post( $page_id );
-				add_post_meta( $page_id, "kleinanzeigen_type", 'my_kleinanzeigen' );
+				add_post_meta( $page_id, "kleinanzeigen_type", 'meine_kleinanzeigen' );
 			}
 
-			$this->my_kleinanzeigen_page_id   = $page_id; // Remember the number
-			$this->my_kleinanzeigen_page_slug = $kleinanzeigen_page->post_name; //Remember the slug
+			$this->meine_kleinanzeigen_page_id   = $page_id; // Remember the number
+			$this->meine_kleinanzeigen_page_slug = $kleinanzeigen_page->post_name; //Remember the slug
 
 			//Classifieds Checkout
 			$kleinanzeigen_page = $this->get_page_by_meta( 'checkout_kleinanzeige' );
@@ -764,7 +764,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			echo "cf_kleinanzeigen = '" . esc_attr( get_permalink( $this->kleinanzeigen_page_id ) ) . "';\n";
 			echo "cf_add = '" . esc_attr( get_permalink( $this->add_kleinanzeige_page_id ) ) . "';\n";
 			echo "cf_edit = '" . esc_attr( get_permalink( $this->edit_kleinanzeige_page_id ) ) . "';\n";
-			echo "cf_my = '" . esc_attr( get_permalink( $this->my_kleinanzeigen_page_id ) ) . "';\n";
+			echo "cf_my = '" . esc_attr( get_permalink( $this->meine_kleinanzeigen_page_id ) ) . "';\n";
 			echo "cf_credits = '" . esc_attr( get_permalink( $this->my_credits_page_id ) ) . "';\n";
 			echo "cf_checkout = '" . esc_attr( get_permalink( $this->checkout_page_id ) ) . "';\n";
 			echo "cf_signin = '" . esc_attr( get_permalink( $this->signin_page_id ) ) . "';\n";
@@ -1436,8 +1436,8 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			if ( $post->ID == $this->kleinanzeigen_page_id ) {
 				$name = $this->kleinanzeigen_page_name;
 			}
-			if ( $post->ID == $this->my_kleinanzeigen_page_id ) {
-				$name = $this->my_kleinanzeigen_page_name;
+			if ( $post->ID == $this->meine_kleinanzeigen_page_id ) {
+				$name = $this->meine_kleinanzeigen_page_name;
 			}
 			if ( $post->ID == $this->checkout_page_id ) {
 				$name = $this->checkout_page_name;
@@ -1771,7 +1771,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			return $result;
 		}
 
-		function my_kleinanzeigen_btn_sc( $atts, $content = null ) {
+		function meine_kleinanzeigen_btn_sc( $atts, $content = null ) {
 			extract( shortcode_atts( array(
 				'text' => __( 'Meine Kleinanzeigen', $this->text_domain ),
 				'view' => 'loggedin', //loggedin, loggedout, both
@@ -1789,8 +1789,8 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 			$content = ( empty( $content ) ) ? $text : $content;
 			ob_start();
 			?>
-			<button class="cf_button my_kleinanzeige_btn" type="button"
-			        onclick="window.location.href='<?php echo get_permalink( $this->my_kleinanzeigen_page_id ); ?>';"><?php echo $content; ?></button>
+			<button class="cf_button meine_kleinanzeige_btn" type="button"
+			        onclick="window.location.href='<?php echo get_permalink( $this->meine_kleinanzeigen_page_id ); ?>';"><?php echo $content; ?></button>
 			<?php
 			$result = ob_get_contents();
 			ob_end_clean();
@@ -2024,7 +2024,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		 *
 		 * @return void
 		 **/
-		function my_kleinanzeigen_content( $content = null ) {
+		function meine_kleinanzeigen_content( $content = null ) {
 			if ( ! in_the_loop() ) {
 				return $content;
 			}

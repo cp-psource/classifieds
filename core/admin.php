@@ -146,7 +146,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function redirect_add(){
 		echo '<script>window.location = "' . get_permalink($this->add_kleinanzeige_page_id) . '";</script>';
-		//wp_redirect(get_permalink($this->my_kleinanzeigen_page_id) ); exit;
+		//wp_redirect(get_permalink($this->meine_kleinanzeigen_page_id) ); exit;
 	}
 
 

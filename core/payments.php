@@ -404,7 +404,7 @@ class CF_Payments{
 		elseif ( isset( $_REQUEST['token'])
 		&& $this->use_paypal
 		&& !isset( $_POST['confirm_payment_submit'] )
-		&& !isset( $_POST['redirect_my_kleinanzeigen'] ) ) {
+		&& !isset( $_POST['redirect_meine_kleinanzeigen'] ) ) {
 
 			$_SESSION['token'] = $_REQUEST['token'];
 
@@ -668,7 +668,7 @@ class CF_Payments{
 				$transactions->billing_type = 'recurring';
 				$transactions->paypal = array('key' => $key);
 
-				$on_payment_url = empty($options['payment_types']['paypal']['payment_url']) ? get_permalink($Classifieds_Core->my_kleinanzeigen_page_id) : $options['payment_types']['paypal']['payment_url'];
+				$on_payment_url = empty($options['payment_types']['paypal']['payment_url']) ? get_permalink($Classifieds_Core->meine_kleinanzeigen_page_id) : $options['payment_types']['paypal']['payment_url'];
 				$on_cancel_url = empty($options['payment_types']['paypal']['cancel_url']) ? get_option( 'siteurl' ) : $options['payment_types']['paypal']['cancel_url'];
 
 				$custom .= $this->session_string($_SESSION);

@@ -51,11 +51,11 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
         function fix_menu_page_links($link, $postID, $sample)
         {
             global $bp;
-            $my_kleinanzeigen_page = get_post($this->my_kleinanzeigen_page_id);
-            if ($postID == $this->my_kleinanzeigen_page_id) {
+            $meine_kleinanzeigen_page = get_post($this->meine_kleinanzeigen_page_id);
+            if ($postID == $this->meine_kleinanzeigen_page_id) {
                 if (is_user_logged_in()) {
                     $user_domain = (!empty($bp->displayed_user->domain)) ? $bp->displayed_user->domain : $bp->loggedin_user->domain;
-                    $link = $user_domain . $bp->kleinanzeigen->slug . '/' . $my_kleinanzeigen_page->post_name . '/';
+                    $link = $user_domain . $bp->kleinanzeigen->slug . '/' . $meine_kleinanzeigen_page->post_name . '/';
                 } else {
                     $link = bp_get_signup_page();
                 }
@@ -79,8 +79,8 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             }
 
             $kleinanzeigen_page = get_post($this->kleinanzeigen_page_id);
-            $my_kleinanzeigen_page = get_post($this->my_kleinanzeigen_page_id);
-            $default_sub_slug = bp_is_my_profile() ? $my_kleinanzeigen_page->post_name : 'all';
+            $meine_kleinanzeigen_page = get_post($this->meine_kleinanzeigen_page_id);
+            $default_sub_slug = bp_is_my_profile() ? $meine_kleinanzeigen_page->post_name : 'all';
 
             if (!@is_object($bp->kleinanzeigen)) {
                 $bp->kleinanzeigen = new stdClass;
@@ -107,14 +107,14 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
 
             if (bp_is_my_profile()) {
 
-                if (0 < $my_kleinanzeigen_page->ID)
-                    $nav_title = $my_kleinanzeigen_page->post_title;
+                if (0 < $meine_kleinanzeigen_page->ID)
+                    $nav_title = $meine_kleinanzeigen_page->post_title;
                 else
                     $nav_title = 'Meine Kleinanzeigen';
 
                 bp_core_new_subnav_item(array(
                     'name' => __($nav_title, $this->text_domain),
-                    'slug' => $my_kleinanzeigen_page->post_name,
+                    'slug' => $meine_kleinanzeigen_page->post_name,
                     'parent_url' => $parent_url,
                     'parent_slug' => $bp->kleinanzeigen->slug,
                     'screen_function' => array(&$this, 'load_template'),
@@ -184,7 +184,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             global $bp;
 
             //Component meine-kleinanzeigen page
-            if ($bp->current_component == $this->kleinanzeigen_page_slug && $bp->current_action == $this->my_kleinanzeigen_page_slug) {
+            if ($bp->current_component == $this->kleinanzeigen_page_slug && $bp->current_action == $this->meine_kleinanzeigen_page_slug) {
 
                 if (isset($_POST['edit'])) {
                     if (wp_verify_nonce($_POST['_wpnonce'], 'verify'))
@@ -273,14 +273,14 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                             if ($this->transactions->billing_type == 'one_time') $this->transactions->status = 'used';
                         }
 
-                        $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->my_kleinanzeigen_page_slug);
+                        $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->meine_kleinanzeigen_page_slug);
 
                     } else {
                         //save ad if have not credits but select draft
                         if (isset($_POST['status']) && 'draft' == $_POST['status']) {
                             /* Create ad */
                             $post_id = $this->update_ad($_POST);
-                            $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->my_kleinanzeigen_page_slug);
+                            $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->meine_kleinanzeigen_page_slug);
                         } else {
                             $this->render_front('update-kleinanzeige', array('cl_credits_error' => '1'));
                         }
@@ -305,7 +305,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             } //default for kleinanzeigen page
             elseif ($bp->current_component == $this->kleinanzeigen_page_slug) {
                 if (bp_is_my_profile()) {
-                    $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->my_kleinanzeigen_page_slug);
+                    $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->kleinanzeigen_page_slug . '/' . $this->meine_kleinanzeigen_page_slug);
                 } else {
                     $this->js_redirect(trailingslashit($bp->displayed_user->domain) . $this->kleinanzeigen_page_slug . '/' . 'all');
                 }
@@ -338,9 +338,9 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
             } elseif ($bp->current_component == $this->kleinanzeigen_page_slug && $bp->current_action == '') {
                 $this->process_page_requests();
                 return;
-            } elseif (is_page($this->my_kleinanzeigen_page_id)) {
+            } elseif (is_page($this->meine_kleinanzeigen_page_id)) {
                 /* Set the proper step which will be loaded by "page-meine-kleinanzeigen.php" */
-                $this->js_redirect($logged_url . $this->my_kleinanzeigen_page_slug . '/active', true);
+                $this->js_redirect($logged_url . $this->meine_kleinanzeigen_page_slug . '/active', true);
             } elseif (is_post_type_archive('kleinanzeigen')) {
                 /* Set the proper step which will be loaded by "page-meine-kleinanzeigen.php" */
                 $templates = array('page-kleinanzeigen.php');
@@ -403,8 +403,8 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
                 wp_redirect($logged_url . 'create-new/?' . http_build_query($_GET));
                 exit;
             } /* If user wants to go to My Classifieds main page  */
-            elseif (isset($_POST['go_my_kleinanzeigen'])) {
-                wp_redirect(get_permalink($this->my_kleinanzeigen_page_id));
+            elseif (isset($_POST['go_meine_kleinanzeigen'])) {
+                wp_redirect(get_permalink($this->meine_kleinanzeigen_page_id));
             } /* If user wants to go to My Classifieds main page  */
             elseif (isset($_POST['purchase'])) {
                 wp_redirect(get_permalink($this->checkout_page_id));
@@ -456,7 +456,7 @@ if (!class_exists('Classifieds_Core_BuddyPress')):
          *
          * @return void
          **/
-        function my_kleinanzeigen_content($content = null)
+        function meine_kleinanzeigen_content($content = null)
         {
             if (!in_the_loop()) return $content;
             ob_start();

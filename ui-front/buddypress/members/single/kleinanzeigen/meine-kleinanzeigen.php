@@ -17,7 +17,7 @@ global $bp, $wp_query, $paged;
 
 $options = $this->get_options( 'general' );
 
-$cf_path = $bp->displayed_user->domain . $this->kleinanzeigen_page_slug .'/' . $this->my_kleinanzeigen_page_slug;
+$cf_path = $bp->displayed_user->domain . $this->kleinanzeigen_page_slug .'/' . $this->meine_kleinanzeigen_page_slug;
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 

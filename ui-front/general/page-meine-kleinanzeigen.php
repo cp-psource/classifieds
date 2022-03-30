@@ -37,9 +37,9 @@ if(isset($_GET['saved']) ) {
 
 query_posts($query_args);
 
-$cf_path = get_permalink($this->my_kleinanzeigen_page_id);
+$cf_path = get_permalink($this->meine_kleinanzeigen_page_id);
 
-remove_filter('the_content', array(&$this, 'my_kleinanzeigen_content'));
+remove_filter('the_content', array(&$this, 'meine_kleinanzeigen_content'));
 
 ?>
 

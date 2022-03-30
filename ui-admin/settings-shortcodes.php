@@ -39,8 +39,8 @@
 				<tr>
 					<th scope="row"><?php _e( 'Schaltfläche "Meine Kleinanzeigen":', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[cf_my_kleinanzeigen_btn text="<?php _e('Meine Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
-						<br /><code><strong>[cf_my_kleinanzeigen_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Meine Kleinanzeigen', $this->text_domain);?>[/cf_my_kleinanzeigen_btn]</strong></code>
+						<code><strong>[cf_meine_kleinanzeigen_btn text="<?php _e('Meine Kleinanzeigen', $this->text_domain);?>" view="loggedin | loggedout | both"]</strong></code> or
+						<br /><code><strong>[cf_meine_kleinanzeigen_btn view="loggedin | loggedout | both"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Meine Kleinanzeigen', $this->text_domain);?>[/cf_meine_kleinanzeigen_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links zur Seite „Meine Kleinanzeigen“. Erzeugt eine Schaltfläche (&lt;button&gt; &lt;/button&gt;) mit den Inhalten, die Du definierst.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
