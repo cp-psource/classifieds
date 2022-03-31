@@ -50,9 +50,9 @@ $cf_options = $cf->get_options( 'general' );
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 <div id="post-0" class="post error404 not-found">
-	<h1 class="entry-title"><?php _e( 'Nicht gefunden', CF_TEXT_DOMAIN ); ?></h1>
+	<h1 class="entry-title"><?php _e( 'Nicht gefunden', 'kleinanzeigen' ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Entschuldigung, aber für die angeforderten Kleinanzeigen wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche, eine verwandte Rubrik zu finden.', CF_TEXT_DOMAIN ); ?></p>
+		<p><?php _e( 'Entschuldigung, aber für die angeforderten Kleinanzeigen wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche, eine verwandte Rubrik zu finden.', 'kleinanzeigen' ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->
@@ -93,13 +93,13 @@ $cf_options = $cf->get_options( 'general' );
 			<div class="cf-info">
 				<table>
 					<tr>
-						<th><?php _e( 'Titel', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Titel', 'kleinanzeigen' ); ?></th>
 						<td>
 							<a href="<?php the_permalink(); ?>"><?php echo $post->post_title; ?></a>
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Anbieter', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Anbieter', 'kleinanzeigen' ); ?></th>
 
 						<td>
 							<?php echo the_author_posts_link(); ?>
@@ -116,7 +116,7 @@ $cf_options = $cf->get_options( 'general' );
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Kategorien', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
 						<td>
 							<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 							<?php foreach ( $taxonomies as $taxonomy ): ?>
@@ -125,7 +125,7 @@ $cf_options = $cf->get_options( 'general' );
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Läuft ab', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Läuft ab', 'kleinanzeigen' ); ?></th>
 						<td><?php echo $cf->get_expiration_date( get_the_ID() ); ?></td>
 					</tr>
 				</table>

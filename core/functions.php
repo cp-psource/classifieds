@@ -64,7 +64,7 @@ function the_cf_categories_home($echo = true, $atts = null)
 
         $output .= sprintf('<h2><a href="%s" title="%s %s" >%s%s</a></h2>',
             get_term_link($category),
-            esc_html__('Alle Kleinanzeigen anzeigen in ', CF_TEXT_DOMAIN),
+            esc_html__('Alle Kleinanzeigen anzeigen in ', 'kleinanzeigen'),
             $category->name,
             $category->name,
             $parent_count);
@@ -87,7 +87,7 @@ function the_cf_categories_home($echo = true, $atts = null)
             'exclude_tree' => '',
             'hierarchical' => true,
             'title_li' => '',
-            'show_option_none' => '', //sprintf('<span class="cf-empty">%s</span>', __('No categories', CF_TEXT_DOMAIN ) ),
+            'show_option_none' => '', //sprintf('<span class="cf-empty">%s</span>', __('No categories', 'kleinanzeigen' ) ),
             'number' => $sub_cat_num,
             'echo' => 0,
             'depth' => 1,
@@ -133,10 +133,10 @@ function the_cf_breadcrumbs()
     foreach ($category_parent_ids as $category_parent_id) {
         $category_parent = get_term($category_parent_id, $category->taxonomy);
 
-        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', CF_TEXT_DOMAIN), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
+        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', 'kleinanzeigen'), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
     }
 
-    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', CF_TEXT_DOMAIN), $category->name) . '" >' . $category->name . '</a>';
+    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', 'kleinanzeigen'), $category->name) . '" >' . $category->name . '</a>';
 
     echo $output;
 }
@@ -232,12 +232,12 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
             $expires_date = (empty($expires)) ? '' : date_i18n(get_option('date_format'), $expires);
             if (empty($expires_date)) {
                 $result = preg_replace('#</option>#',
-                    __('Wie lange ist diese Anzeige ab heute geöffnet?</option>', CF_TEXT_DOMAIN),
+                    __('Wie lange ist diese Anzeige ab heute geöffnet?</option>', 'kleinanzeigen'),
                     $result, 1);
             } else {
                 $result = preg_replace('#value=""#', 'value="0"', $result, 1); //Give it zero value so it will validate but not change anything.
                 $result = preg_replace('#</option>#',
-                    sprintf('%s %s</option>', __('Läuft ab', CF_TEXT_DOMAIN),
+                    sprintf('%s %s</option>', __('Läuft ab', 'kleinanzeigen'),
                         $expires_date),
                     $result, 1);
             }

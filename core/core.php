@@ -17,7 +17,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		/** @public string $plugin_dir Path to plugin directory */
 		public $plugin_dir = CF_PLUGIN_DIR;
 		/** @public string $text_domain The text domain for strings localization */
-		public $text_domain = CF_TEXT_DOMAIN;
+		public $text_domain = 'kleinanzeigen';
 		/** @public string $options_name The name of the plugin options entry in DB */
 		public $options_name = CF_OPTIONS_NAME;
 
@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		function get_credits_from_duration( $duration ) {
 
 			if ( empty( $duration ) ) {
-				$duration = '1 Woche';
+				$duration = '1 Week';
 			}
 			$options = $this->get_options( 'payments' );
 
@@ -1037,9 +1037,9 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 
 			$now      = time();
 			$interval = strtotime( "+{$duration}", $now ) - $now;
-			$wochen    = $interval / ( 60 * 60 * 24 * 7 ); // Wochen
+			$weeks    = $interval / ( 60 * 60 * 24 * 7 ); // Weeks
 
-			return round( $wochen * $options['credits_per_week'] );
+			return round( $weeks * $options['credits_per_week'] );
 		}
 
 
@@ -1179,7 +1179,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		 * Calculate the Unix time stamp of the modified posts
 		 *
 		 * @param int|string $post_id
-		 * @param string $duration Valid value: "1 Woche", "2 Wochen" ... etc
+		 * @param string $duration Valid value: "1 Week", "2 Weeks" ... etc
 		 *
 		 * @return int Unix timestamp
 		 **/
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 				return post_type_archive_title( '', false );
 			}
 			if ( '' != get_query_var( 'cf_author_name' ) || isset( $_REQUEST['cf_author'] ) && '' != $_REQUEST['cf_author'] ) {
-				$title = sprintf( __( '%s Kleinanzeigen', CF_TEXT_DOMAIN ), get_query_var( 'cf_author_name' ) );
+				$title = sprintf( __( '%s Kleinanzeigen', 'kleinanzeigen' ), get_query_var( 'cf_author_name' ) );
 			}
 
 			return $title;

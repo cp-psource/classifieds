@@ -35,9 +35,9 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 <div id="post-0" class="post error404 not-found">
-	<h1 class="entry-title"><?php _e( 'Nicht gefunden', CF_TEXT_DOMAIN ); ?></h1>
+	<h1 class="entry-title"><?php _e( 'Nicht gefunden', 'kleinanzeigen' ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Entschuldigung, aber für die angeforderten Kleinanzeigen wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche, eine verwandte Rubrik zu finden.', CF_TEXT_DOMAIN ); ?></p>
+		<p><?php _e( 'Entschuldigung, aber für die angeforderten Kleinanzeigen wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche, eine verwandte Rubrik zu finden.', 'kleinanzeigen' ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->
@@ -62,7 +62,7 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 
 <?php
 $cost = do_shortcode('[ct id="_ct_text_4cfeb3eac6f1f"]');
-$cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
+$cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost;
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -83,14 +83,14 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 			<div class="cf-info">
 				<table>
 					<tr>
-						<th><?php _e( 'Titel', CF_TEXT_DOMAIN ); ?></th>
+						<th style="width:25%"><?php _e( 'Anzeige:', 'kleinanzeigen' ); ?></th>
 						<td>
 							<span class="cf-title"><a href="<?php the_permalink(); ?>"><?php echo $post->post_title; ?></a></span>
 							<span class="cf-price"><?php echo $cost; ?></span>
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Anbieter', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Anbieter', 'kleinanzeigen' ); ?></th>
 
 						<td>
 
@@ -99,7 +99,7 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Kategorien', CF_TEXT_DOMAIN ); ?></th>
+						<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
 						<td><span class="cf-terms">
 							<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
 							<?php foreach ( $taxonomies as $taxonomy ): ?>
@@ -109,12 +109,11 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Läuft ab', CF_TEXT_DOMAIN ); ?></th>
+					<th><?php _e( 'Läuft ab', 'kleinanzeigen' ); ?></th>
 					<td><span class="cf-expires"><?php echo $cf->get_expiration_date( get_the_ID() ); ?></span></td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Kurzbeschreibung', CF_TEXT_DOMAIN ); ?></th>
-					<td><span class="cf-excerpt"><?php wp_kses(the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
+					<td colspan="2"><span class="cf-excerpt"><?php wp_kses(the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
 				</tr>
 			</table>
 		</div>

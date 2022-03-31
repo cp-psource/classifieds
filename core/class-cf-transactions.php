@@ -2,7 +2,7 @@
 
 class CF_Transactions{
 
-	public $text_domain = CF_TEXT_DOMAIN;
+	public $text_domain = 'kleinanzeigen';
 	public $options_name = CF_OPTIONS_NAME;
 	public $plugin_dir = CF_PLUGIN_DIR;
 	public $plugin_url = CF_PLUGIN_URL;

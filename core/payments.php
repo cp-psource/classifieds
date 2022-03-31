@@ -19,7 +19,7 @@ class CF_Payments{
 	// @private object The AuthorizeNet API Module object see __get
 	private $_authorizenet_gateway=null;
 
-	public $text_domain = CF_TEXT_DOMAIN;
+	public $text_domain = 'kleinanzeigen';
 	public $options_name = CF_OPTIONS_NAME;
 	public $plugin_dir = CF_PLUGIN_DIR;
 	public $plugin_url = CF_PLUGIN_URL;
@@ -542,7 +542,7 @@ class CF_Payments{
 
 							switch ($_SESSION['billing_period']) {
 								case 'Day' : $length = $_SESSION['billing_frequency']; $unit = 'days'; break;
-								case 'Woche' : $length = (7 * $_SESSION['billing_frequency']);  $unit = 'days'; break;
+								case 'Week' : $length = (7 * $_SESSION['billing_frequency']);  $unit = 'days'; break;
 								case 'Month' : $length = $_SESSION['billing_frequency'];  $unit = 'months'; break;
 								case 'Year' : $length = (12 * $_SESSION['billing_frequency']);  $unit = 'months'; break;
 							}

@@ -411,7 +411,7 @@ $.extend( $.validator, {
 				.on( "focusin.validate focusout.validate keyup.validate",
 					":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
 					"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
-					"[type='woche'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
+					"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
 					"[type='radio'], [type='checkbox'], [contenteditable]", delegate )
 
 				// Support: Chrome, oldIE
@@ -1409,7 +1409,7 @@ $.extend( $.validator, {
 				notSupported = type && !re.test( supportedTypes.join() );
 
 			// Works only for text, number and range input types
-			// TODO find a way to support input types date, datetime, datetime-local, month, time and woche
+			// TODO find a way to support input types date, datetime, datetime-local, month, time and week
 			if ( notSupported ) {
 				throw new Error( errorMessage );
 			}
