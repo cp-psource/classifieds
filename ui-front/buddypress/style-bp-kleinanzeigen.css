@@ -66,7 +66,6 @@ ul.cf_tabs li.cf_active a {
 -------------------------------------------------------------- */
 
 .cf-ad {
-    width: 96%;
     overflow: hidden;
     margin: 0 5px 5px 0;
     border: 1px solid #eaeaea;
@@ -106,7 +105,7 @@ ul.cf_tabs li.cf_active a {
 }
 
 .cf-info {
-    margin-left: 160px;
+    
 }
 
 .cf-info table {
