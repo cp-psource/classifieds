@@ -75,7 +75,7 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 					if ( isset( $cf_options['field_image_def'] ) && '' != $cf_options['field_image_def'] )
 					echo '<img width="150" height="150" title="no image" alt="no image" class="cf-no-image wp-post-image" src="' . $field_image . '">';
 				} else {
-					echo get_the_post_thumbnail( get_the_ID(), array( 200, 150 ) );
+					echo get_the_post_thumbnail( get_the_ID(), 'medium' );
 				}
 
 				?>
@@ -113,7 +113,8 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 					<td><span class="cf-expires"><?php echo $cf->get_expiration_date( get_the_ID() ); ?></span></td>
 				</tr>
 				<tr>
-					<td colspan="2"><span class="cf-excerpt"><?php wp_kses(get_the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
+					<th><?php _e( 'Kurzbeschreibung', CF_TEXT_DOMAIN ); ?></th>
+					<td><span class="cf-excerpt"><?php wp_kses(the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
 				</tr>
 			</table>
 		</div>

@@ -96,7 +96,7 @@ echo do_shortcode('[cf_checkout_btn text="' . __('Anzeigen kaufen', 'kleinanzeig
 						if ( ! empty( $options_general['field_image_def'] ) )
 						echo '<img width="150" height="150" title="no image" alt="no image" class="cf-no-image wp-post-image" src="' . $options_general['field_image_def'] . '">';
 					} else {
-						echo get_the_post_thumbnail( get_the_ID(), array( 200, 150 ) );
+						echo get_the_post_thumbnail( get_the_ID(), 'medium' );
 					}
 					?>
 				</div>
