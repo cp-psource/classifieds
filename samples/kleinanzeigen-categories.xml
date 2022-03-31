@@ -25,14 +25,14 @@
 	xmlns:wp="http://wordpress.org/export/1.2/">
 
 	<channel>
-		<title>Classifieds Plugin</title>
-		<link>http://premium.wpmudev.org/</link>
-		<description>Sample top level Classifieds Categories</description>
+		<title>Kleinanzeigen Plugin</title>
+		<link>https://n3rds.work/</link>
+		<description>Beispiele für Kleinanzeigenkategorien der obersten Ebene</description>
 		<pubDate>Sat, 01 Sep 2012 17:36:32 +0000</pubDate>
-		<language>en-US</language>
+		<language>de-DE</language>
 		<wp:wxr_version>1.2</wp:wxr_version>
-		<wp:base_site_url>http://premium.wpmudev.org/</wp:base_site_url>
-		<wp:base_blog_url>http://premium.wpmudev.org/</wp:base_blog_url>
+		<wp:base_site_url>https://n3rds.work/</wp:base_site_url>
+		<wp:base_blog_url>https://n3rds.work/</wp:base_blog_url>
 
 
 		<wp:term><wp:term_id>1</wp:term_id><wp:term_taxonomy>kleinanzeigen_categories</wp:term_taxonomy><wp:term_slug>cars-and-vehicles</wp:term_slug><wp:term_parent></wp:term_parent><wp:term_name><![CDATA[Cars and Vehicles]]></wp:term_name></wp:term>
