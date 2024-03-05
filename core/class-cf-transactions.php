@@ -2,7 +2,7 @@
 
 class CF_Transactions{
 
-	public $text_domain = 'kleinanzeigen';
+	public $text_domain = CF_TEXT_DOMAIN;
 	public $options_name = CF_OPTIONS_NAME;
 	public $plugin_dir = CF_PLUGIN_DIR;
 	public $plugin_url = CF_PLUGIN_URL;
@@ -28,7 +28,7 @@ class CF_Transactions{
 	//credits_log - array of credit purchases.
 	'credits_log' => array(),
 
-	//order- Information about the last successful order. Use expires and status to decide wheter user can add kleinanzeigen.
+	//order- Information about the last successful order. Use expires and status to decide wheter user can add classifieds.
 	'order' => array('billing_type' => '', 'billing_frequency' => '', 'billing_period' => '','payment_method' => '', 'status' => '', 'expires' => 0, 'order_info' => array() ),
 
 	//paypal - list of successful transaction numbers and subscription ids.
@@ -247,7 +247,7 @@ class CF_Transactions{
 
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'kleinanzeigen_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
 
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];
@@ -323,7 +323,7 @@ class CF_Transactions{
 
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'kleinanzeigen_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
 
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];

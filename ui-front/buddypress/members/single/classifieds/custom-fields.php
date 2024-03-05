@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
+<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
 /**
@@ -26,7 +26,7 @@ $output = false;
 
 if (is_array($custom_field['object_type'])){
 	foreach ( $custom_field['object_type'] as $custom_field_object_type ){
-		if ( $custom_field_object_type == 'kleinanzeigen' ){
+		if ( $custom_field_object_type == 'classifieds' ){
 			$output = true; break;
 		}
 	}

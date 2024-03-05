@@ -9,9 +9,9 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 	/** @var string $hook The hook for the current admin page */
 	var $hook;
 	/** @var string $menu_slug The main menu slug */
-	var $menu_slug        = 'kleinanzeigen';
+	var $menu_slug        = 'classifieds';
 	/** @var string $sub_menu_slug Submenu slug @todo better way of handling this */
-	var $sub_menu_slug    = 'kleinanzeigen_credits';
+	var $sub_menu_slug    = 'classifieds_credits';
 
 	/** @var string $message Return message after save settings operation */
 	var $message  = '';
@@ -47,12 +47,12 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 			add_action( 'wp_ajax_cf_save', array( &$this, 'ajax_save' ) );
 
 			//IPN script for Paypal
-			add_action( 'wp_ajax_nopriv_kleinanzeigen_ipn', array( &$this, 'ajax_kleinanzeigen_ipn' ) );
-			add_action( 'wp_ajax_kleinanzeigen_ipn', array( &$this, 'ajax_kleinanzeigen_ipn' ) );
+			add_action( 'wp_ajax_nopriv_classifieds_ipn', array( &$this, 'ajax_classifieds_ipn' ) );
+			add_action( 'wp_ajax_classifieds_ipn', array( &$this, 'ajax_classifieds_ipn' ) );
 
 			//Silent Post script for Authorizenet
-			add_action( 'wp_ajax_nopriv_kleinanzeigen_sp', array( &$this, 'ajax_kleinanzeigen_silent_post' ) );
-			add_action( 'wp_ajax_kleinanzeigen_sp', array( &$this, 'ajax_kleinanzeigen_silent_post' ) );
+			add_action( 'wp_ajax_nopriv_classifieds_sp', array( &$this, 'ajax_classifieds_silent_post' ) );
+			add_action( 'wp_ajax_classifieds_sp', array( &$this, 'ajax_classifieds_silent_post' ) );
 
 			add_action('admin_init', array($this, 'tutorial_script') );
 			add_action('admin_print_footer_scripts', array($this, 'print_tutorial_script') );
@@ -71,8 +71,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function tutorial_script(){
 
-		if(file_exists($this->plugin_dir . 'tutorial/kleinanzeigen-tutorial.js') ){
-			$this->tutorial_script = file_get_contents($this->plugin_dir . 'tutorial/kleinanzeigen-tutorial.js');
+		if(file_exists($this->plugin_dir . 'tutorial/classifieds-tutorial.js') ){
+			$this->tutorial_script = file_get_contents($this->plugin_dir . 'tutorial/classifieds-tutorial.js');
 
 			preg_match('/data-kera-tutorial="(.+)">/', $this->tutorial_script, $matches);
 
@@ -84,7 +84,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function launch_tutorial(){
 		?>
-		<h2>Kleinanzeigen Tutorial</h2>
+		<h2>Classifieds Tutorial</h2>
 		<a href="#" data-kera-tutorial="<?php echo $this->tutorial_id; ?>">Launch Tutorial</a>
 		<?php
 	}
@@ -97,56 +97,56 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 	function admin_menu() {
 
 		if ( ! current_user_can('unfiltered_html') ) {
-			remove_submenu_page('edit.php?post_type=kleinanzeigen', 'post-new.php?post_type=kleinanzeigen' );
+			remove_submenu_page('edit.php?post_type=classifieds', 'post-new.php?post_type=classifieds' );
 			add_submenu_page(
-			'edit.php?post_type=kleinanzeigen',
-			__( 'Neue hinzufügen', 'kleinanzeigen' ),
-			__( 'Neue hinzufügen', 'kleinanzeigen' ),
-			'create_kleinanzeigen',
-			'kleinanzeigen_add',
+			'edit.php?post_type=classifieds',
+			__( 'Add New', $this->text_domain ),
+			__( 'Add New', $this->text_domain ),
+			'create_classifieds',
+			'classifieds_add',
 			array( &$this, 'redirect_add' ) );
 		}
 
-		//add_menu_page( __( 'Classifieds', 'kleinanzeigen' ), __( 'Classifieds', 'kleinanzeigen' ), 'read', $this->menu_slug, array( &$this, 'handle_admin_requests' ) );
+		//add_menu_page( __( 'Classifieds', $this->text_domain ), __( 'Classifieds', $this->text_domain ), 'read', $this->menu_slug, array( &$this, 'handle_admin_requests' ) );
 		add_submenu_page(
-		'edit.php?post_type=kleinanzeigen',
-		__( 'Dashboard', 'kleinanzeigen' ),
-		__( 'Dashboard', 'kleinanzeigen' ),
+		'edit.php?post_type=classifieds',
+		__( 'Dashboard', $this->text_domain ),
+		__( 'Dashboard', $this->text_domain ),
 		'read',
 		$this->menu_slug,
 		array( &$this, 'handle_admin_requests' ) );
 
 		$settings_page = add_submenu_page(
-		'edit.php?post_type=kleinanzeigen',
-		__( 'Kleinanzeigen Einstellungen', 'kleinanzeigen' ),
-		__( 'Einstellungen', 'kleinanzeigen' ),
+		'edit.php?post_type=classifieds',
+		__( 'Classifieds Settings', $this->text_domain ),
+		__( 'Settings', $this->text_domain ),
 		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
-		'kleinanzeigen_settings',
+		'classifieds_settings',
 		array( &$this, 'handle_admin_requests' ) );
 
 		add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_scripts' ) );
 
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			$settings_page = add_submenu_page(
-			'edit.php?post_type=kleinanzeigen',
-			__( 'Kleinanzeigen-Guthaben', 'kleinanzeigen' ),
-			__( 'Guthaben', 'kleinanzeigen' ),
+			'edit.php?post_type=classifieds',
+			__( 'Classifieds Credits', $this->text_domain ),
+			__( 'Credits', $this->text_domain ),
 			'read',
-			'kleinanzeigen_credits',
+			'classifieds_credits',
 			array( &$this, 'handle_credits_requests' ) );
 
 			add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_scripts' ) );
 		}
 
-		if(file_exists($this->plugin_dir . 'tutorial/kleinanzeigen-tutorial.js') ){
-			add_submenu_page( 'edit.php?post_type=kleinanzeigen', __( 'Tutorial', 'kleinanzeigen' ), __( 'Tutorial', 'kleinanzeigen' ), 'read', 'kleinanzeigen_tutorial', array( &$this, 'launch_tutorial' ) );
+		if(file_exists($this->plugin_dir . 'tutorial/classifieds-tutorial.js') ){
+			add_submenu_page( 'edit.php?post_type=classifieds', __( 'Tutorial', $this->text_domain ), __( 'Tutorial', $this->text_domain ), 'read', 'classifieds_tutorial', array( &$this, 'launch_tutorial' ) );
 		}
 	}
 
 
 	function redirect_add(){
-		echo '<script>window.location = "' . get_permalink($this->add_kleinanzeige_page_id) . '";</script>';
-		//wp_redirect(get_permalink($this->meine_kleinanzeigen_page_id) ); exit;
+		echo '<script>window.location = "' . get_permalink($this->add_classified_page_id) . '";</script>';
+		//wp_redirect(get_permalink($this->my_classifieds_page_id) ); exit;
 	}
 
 
@@ -211,7 +211,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 				$this->render_admin( 'dashboard' );
 			}
 		}
-		elseif ( $page == 'kleinanzeigen_settings' ) {
+		elseif ( $page == 'classifieds_settings' ) {
 			$tab = (empty($_GET['tab'])) ? 'general' : $_GET['tab']; //default tab
 			if ( in_array( $tab, $valid_tabs)) {
 				/* Save options */
@@ -220,14 +220,14 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					$name = sanitize_file_name($params['new_role']);
 					$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 					$result = add_role($slug, $name, array('read' => true) );
-					if (empty($result) ) $this->message = __('ROLLE BESTEHT BEREITS' , 'kleinanzeigen');
-					else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , 'kleinanzeigen'), $name);
+					if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
+					else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
 				}
 				if ( isset( $params['remove_role'] ) ) {
 					check_admin_referer('verify');
 					$name = $params['delete_role'];
 					remove_role($name);
-					$this->message = sprintf(__('Rolle "%s" entfernt' , 'kleinanzeigen'), $name);
+					$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
 				}
 				if ( isset( $params['save'] ) ) {
 					check_admin_referer('verify');
@@ -238,7 +238,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					);
 
 					$this->save_options( $params );
-					$this->message = __( 'Einstellungen gespeichert.', 'kleinanzeigen' );
+					$this->message = __( 'Settings Saved.', $this->text_domain );
 				}
 				/* Render admin template */
 				$this->render_admin( "settings-{$tab}" );
@@ -263,7 +263,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
 		$tab = (empty($_GET['tab'])) ? 'my-credits' : $_GET['tab']; //default tab
 
-		if($page == 'kleinanzeigen_credits' && in_array($tab, $valid_tabs) ) {
+		if($page == 'classifieds_credits' && in_array($tab, $valid_tabs) ) {
 			if ( $tab == 'send-credits' ) {
 				if(!empty($params)) check_admin_referer('verify');
 				$send_to = ( empty($params['manage_credits'])) ? '' : $params['manage_credits'];
@@ -280,10 +280,10 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction = new CF_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('Benutzer "%s" hat %s Credits auf das Kleinanzeigenkonto des Mitglieds erhalten','kleinanzeigen'), $send_to_user, $credits);
+						$this->message = sprintf(__('User "%s" received %s credits to member\'s Classifieds account',$this->text_domain), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('Benutzer "%s" nicht gefunden oder kein Kleinanzeigen-Mitglied','kleinanzeigen'), $send_to_user);
+						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this->text_domain), $send_to_user);
 					}
 				}
 
@@ -296,7 +296,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('Allen Benutzern wurden "%s" Credits zu ihren Konten hinzugefügt.','kleinanzeigen'), $credits);
+					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this->text_domain), $credits);
 
 				}
 			} else {
@@ -345,7 +345,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		jQuery(document).ready(function($) {
 			$('form.cf-form').hide();
 		});
-		var kleinanzeigen = {
+		var classifieds = {
 			toggle_end: function(key) {
 				jQuery('#form-'+key).show();
 				jQuery('.action-links-'+key).hide();
@@ -455,8 +455,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 	*
 	* @return void
 	*/
-	function ajax_kleinanzeigen_ipn() {
-		// debug mode for IPN script (please open plugin dir (kleinanzeigen) for writing)
+	function ajax_classifieds_ipn() {
+		// debug mode for IPN script (please open plugin dir (classifieds) for writing)
 		$debug_ipn = 0;
 		if ( 1 == $debug_ipn ) {
 			$this->write_to_log(
@@ -522,7 +522,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 			if ( "subscr_payment" == $_POST['txn_type'] ) {
 
-				$key = md5( $_POST['mc_currency'] . "kleinanzeigen_123" . $_POST['mc_gross'] );
+				$key = md5( $_POST['mc_currency'] . "classifieds_123" . $_POST['mc_gross'] );
 
 				//checking hash keys
 				if ( $key != $transactions->paypal['key']) {
@@ -567,9 +567,9 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 	*
 	* @return void
 	*/
-	function ajax_kleinanzeigen_silent_post() {
+	function ajax_classifieds_silent_post() {
 
-		// debug mode for Silent Post script (please open plugin dir (kleinanzeigen) for writing)
+		// debug mode for Silent Post script (please open plugin dir (classifieds) for writing)
 		$debug_sp = 0;
 		if ( 1 == $debug_sp ) {
 			$this->write_to_log(
@@ -596,7 +596,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 				} else {
 
-					if ( 1 == $debug_sp ) $this->write_to_log('Abonnement-ID stimmt nicht überein: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['profile_id'] , 'debug_sp');
+					if ( 1 == $debug_sp ) $this->write_to_log('Subscription ID mismatch Post: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['profile_id'] , 'debug_sp');
 
 				}
 			} else{
@@ -609,8 +609,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function on_restrict_manage_posts() {
 		global $typenow;
-		$taxonomy = 'kleinanzeigen_categories';
-		if( $typenow == "kleinanzeigen" ){
+		$taxonomy = 'classifieds_categories';
+		if( $typenow == "classifieds" ){
 
 			$filters = array($taxonomy);
 			foreach ($filters as $tax_slug) {
@@ -637,7 +637,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
         if (!is_admin()) {
             return $data;
         }
-        if (!in_array('publish_kleinanzeigen', $cap)) {
+        if (!in_array('publish_classifieds', $cap)) {
             return $data;
         }
         global $current_user;
@@ -648,7 +648,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
             $options = $Classifieds_Core->get_options();
             if (!isset($options['moderation']['publish'])) {
                 //no publish allowed, we will remove the publish classifield cap, admin only
-                unset($data['publish_kleinanzeigen']);
+                unset($data['publish_classifieds']);
             }
         }
 

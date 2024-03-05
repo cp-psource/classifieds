@@ -9,7 +9,7 @@ function cf_supports_taxonomy($taxonomy = '')
     global $wp_taxonomies;
 
     if (empty($taxonomy)) return false;
-    return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('kleinanzeigen', $wp_taxonomies[$taxonomy]->object_type) : false;
+    return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('classifieds', $wp_taxonomies[$taxonomy]->object_type) : false;
 }
 
 function the_cf_categories_home($echo = true, $atts = null)
@@ -27,7 +27,7 @@ function the_cf_categories_home($echo = true, $atts = null)
     $sub_cat_num = (isset($options['general']['count_sub_cat']) && is_numeric($options['general']['count_sub_cat']) && 0 < $options['general']['count_sub_cat']) ? $options['general']['count_sub_cat'] : 5;
     $hide_empty_sub_cat = (isset($options['general']['hide_empty_sub_cat']) && is_numeric($options['general']['hide_empty_sub_cat']) && 0 < $options['general']['hide_empty_sub_cat']) ? $options['general']['hide_empty_sub_cat'] : 0;
 
-    $taxonomies = array_values(get_taxonomies(array('object_type' => array('kleinanzeigen'), 'hierarchical' => 1)));
+    $taxonomies = array_values(get_taxonomies(array('object_type' => array('classifieds'), 'hierarchical' => 1)));
 
     $args = array(
         //'parent' => 0,
@@ -64,7 +64,7 @@ function the_cf_categories_home($echo = true, $atts = null)
 
         $output .= sprintf('<h2><a href="%s" title="%s %s" >%s%s</a></h2>',
             get_term_link($category),
-            esc_html__('Alle Kleinanzeigen anzeigen in ', 'kleinanzeigen'),
+            esc_html__('View all posts in ', CF_TEXT_DOMAIN),
             $category->name,
             $category->name,
             $parent_count);
@@ -87,7 +87,7 @@ function the_cf_categories_home($echo = true, $atts = null)
             'exclude_tree' => '',
             'hierarchical' => true,
             'title_li' => '',
-            'show_option_none' => '', //sprintf('<span class="cf-empty">%s</span>', __('No categories', 'kleinanzeigen' ) ),
+            'show_option_none' => '', //sprintf('<span class="cf-empty">%s</span>', __('No categories', CF_TEXT_DOMAIN ) ),
             'number' => $sub_cat_num,
             'echo' => 0,
             'depth' => 1,
@@ -133,10 +133,10 @@ function the_cf_breadcrumbs()
     foreach ($category_parent_ids as $category_parent_id) {
         $category_parent = get_term($category_parent_id, $category->taxonomy);
 
-        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', 'kleinanzeigen'), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
+        $output .= '<a href="' . get_term_link($category_parent) . '" title="' . sprintf(__('View all posts in %s', CF_TEXT_DOMAIN), $category_parent->name) . '" >' . $category_parent->name . '</a> / ';
     }
 
-    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('Alle Kleinanzeigen in %s anzeigen', 'kleinanzeigen'), $category->name) . '" >' . $category->name . '</a>';
+    $output .= '<a href="' . get_term_link($category) . '" title="' . sprintf(__('View all posts in %s', CF_TEXT_DOMAIN), $category->name) . '" >' . $category->name . '</a>';
 
     echo $output;
 }
@@ -148,22 +148,22 @@ function the_cf_breadcrumbs()
  * @uses $wp_rewrite WP_Rewrite
  * @return string The URL to the author's page.
  */
-function get_author_kleinanzeigen_url($author_id, $author_nicename = '')
+function get_author_classifieds_url($author_id, $author_nicename = '')
 {
     global $wp_rewrite, $bp, $blog_id;
     $auth_ID = (int)$author_id;
     $link = $wp_rewrite->get_author_permastruct();
 
-    $kleinanzeigen_obj = get_post_type_object('kleinanzeigen');
+    $classifieds_obj = get_post_type_object('classifieds');
 
-    if (is_object($kleinanzeigen_obj)) {
-        $slug = $kleinanzeigen_obj->has_archive;
-        if (!is_string($slug)) $slug = 'kleinanzeigen';
+    if (is_object($classifieds_obj)) {
+        $slug = $classifieds_obj->has_archive;
+        if (!is_string($slug)) $slug = 'classifieds';
     }
 
     if (isset($bp) && $bp->root_blog_id == $blog_id) {
         $link = trailingslashit(bp_core_get_user_domain($author_id) . $slug);
-        $link .= ($author_id == bp_loggedin_user_id()) ? 'meine-kleinanzeigen' : 'all';
+        $link .= ($author_id == bp_loggedin_user_id()) ? 'my-classifieds' : 'all';
     } else {
         if (empty($link)) {
             $file = home_url('/');
@@ -189,13 +189,13 @@ function get_author_kleinanzeigen_url($author_id, $author_nicename = '')
      * @param int $author_id The author's id.
      * @param string $author_nicename The author's nice name.
      */
-    $link = apply_filters('author_kleinanzeigen_link', $link, $author_id, $author_nicename);
+    $link = apply_filters('author_classifieds_link', $link, $author_id, $author_nicename);
 
     return $link;
 }
 
 
-function the_author_kleinanzeigen_link()
+function the_author_classifieds_link()
 {
 
     global $authordata;
@@ -205,8 +205,8 @@ function the_author_kleinanzeigen_link()
 
     $link = sprintf(
         '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
-        esc_url(get_author_kleinanzeigen_url($authordata->ID, $authordata->user_nicename)),
-        esc_attr(sprintf(__('Kleinanzeigen von %s'), get_the_author())),
+        esc_url(get_author_classifieds_url($authordata->ID, $authordata->user_nicename)),
+        esc_attr(sprintf(__('Posts by %s'), get_the_author())),
         get_the_author()
     );
     return $link;
@@ -232,12 +232,12 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
             $expires_date = (empty($expires)) ? '' : date_i18n(get_option('date_format'), $expires);
             if (empty($expires_date)) {
                 $result = preg_replace('#</option>#',
-                    __('Wie lange ist diese Anzeige ab heute geöffnet?</option>', 'kleinanzeigen'),
+                    __('How long is this Ad open from today?</option>', CF_TEXT_DOMAIN),
                     $result, 1);
             } else {
                 $result = preg_replace('#value=""#', 'value="0"', $result, 1); //Give it zero value so it will validate but not change anything.
                 $result = preg_replace('#</option>#',
-                    sprintf('%s %s</option>', __('Läuft ab', 'kleinanzeigen'),
+                    sprintf('%s %s</option>', __('Expires on', CF_TEXT_DOMAIN),
                         $expires_date),
                     $result, 1);
             }
@@ -246,14 +246,14 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
     return $result;
 }
 
-//function allow_kleinanzeigen_filter($allow = false){
+//function allow_classifieds_filter($allow = false){
 //
 //  //Whatever logic to decide whether they should have access.
 //  if(false ) $allow = true;
 //
 //  return $allow;
 //}
-//add_filter('kleinanzeigen_full_access', 'allow_kleinanzeigen_filter');
+//add_filter('classifieds_full_access', 'allow_classifieds_filter');
 
 
 //function sort_alpha($query){
@@ -271,7 +271,7 @@ function duration_input_fix($result = '', $atts = array(), $content = null)
 add_action( 'admin_footer', function() {
         global $post;
         if( ! isset( $post ) ) return;
-        if( 'kleinanzeigen' != $post->post_type ) return;
+        if( 'classifieds' != $post->post_type ) return;
         ?>
         <script type="text/javascript">
         jQuery(function($){
@@ -279,7 +279,7 @@ add_action( 'admin_footer', function() {
                         $('.cf-error').remove();
                         var val = $('.ct-field.ct-selectbox').val();
                         if( val == '' ){
-                                $('.ct-field.ct-selectbox').next('br').next('span').after('<div class="cf-error" style="color:red; font-size: 12px;">Bitte wähle eine Dauer</div>');
+                                $('.ct-field.ct-selectbox').next('br').next('span').after('<div class="cf-error" style="color:red; font-size: 12px;">Please select a duration</div>');
                                 $('html,body').animate({
                                         scrollTop: $(".ct-field.ct-selectbox").offset().top - 50},
                                         'slow');

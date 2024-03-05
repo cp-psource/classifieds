@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 $options = $this->get_options('checkout');
 $options = (empty($options) ) ? array() : $options;
@@ -7,22 +7,22 @@ $transactions = new CF_Transactions;
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'kleinanzeigen_credits','tab' => 'my-credits' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'classifieds_credits','tab' => 'my-credits' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-	<h1><?php _e( 'Mein Kleinanzeigen-Guthaben', 'kleinanzeigen' ); ?></h1>
+	<h1><?php _e( 'My Classifieds Credits', $this->text_domain ); ?></h1>
 
 	<form action="#" method="post">
 
-		<h3><?php _e( 'Verfügbares Guthaben', 'kleinanzeigen' ); ?></h3>
+		<h3><?php _e( 'Available Credits', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="available_credits"><?php _e('Verfügbares Guthaben', 'kleinanzeigen' ) ?></label>
+					<label for="available_credits"><?php _e('Available Credits', $this->text_domain ) ?></label>
 				</th>
 				<td>
 					<input type="text" id="available_credits" class="small-text" name="available_credits" value="<?php echo $transactions->credits; ?>" disabled="disabled" />
-					<span class="description"><?php _e( 'All Dein derzeit verfügbares Guthaben.', 'kleinanzeigen' ); ?></span>
+					<span class="description"><?php _e( 'All of your currently available credits.', $this->text_domain ); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -30,16 +30,16 @@ $transactions = new CF_Transactions;
 	</form>
 
 	<form action="#" method="post" class="purchase_credits" >
-		<h3><?php _e( 'Kaufe zusätzliches Guthaben', 'kleinanzeigen' ); ?></h3>
+		<h3><?php _e( 'Purchase Additional Credits', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="purchase_credits"><?php _e('Kaufe zusätzliches Guthaben', 'kleinanzeigen' ) ?></label>
+					<label for="purchase_credits"><?php _e('Purchase Additional Credits', $this->text_domain ) ?></label>
 				</th>
 				<td>
 					<p class="submit">
 						<?php wp_nonce_field('verify'); ?>
-						<input type="submit" class="button-secondary" name="purchase" value="<?php _e( 'Kaufen', 'kleinanzeigen' ); ?>" />
+						<input type="submit" class="button-secondary" name="purchase" value="<?php _e( 'Purchase', $this->text_domain ); ?>" />
 					</p>
 				</td>
 			</tr>
@@ -48,20 +48,20 @@ $transactions = new CF_Transactions;
 	</form>
 
 	<?php $credits_log = $transactions->credits_log; ?>
-	<h3><?php _e( 'Kaufhistorie', 'kleinanzeigen' ); ?></h3>
+	<h3><?php _e( 'Purchase History', $this->text_domain ); ?></h3>
 	<table class="form-table">
 		<?php if ( is_array( $credits_log ) ): ?>
 		<?php foreach ( $credits_log as $log ): ?>
 		<tr>
 			<th>
-				<label for="available_credits"><?php _e('Date:', 'kleinanzeigen' ) ?> <?php echo $this->format_date( $log['date'] ); ?></label>
+				<label for="available_credits"><?php _e('Date:', $this->text_domain ) ?> <?php echo $this->format_date( $log['date'] ); ?></label>
 			</th>
 			<td>
 				<input type="text" id="available_credits" class="small-text" name="available_credits" value="<?php echo $log['credits']; ?>" disabled="disabled" />
 				<?php if($log['credits'] < 0): ?> 
-				<span class="description"><?php _e( 'Kleinanzeigen Guthaben ausgegeben.', 'kleinanzeigen' ); ?></span>
+				<span class="description"><?php _e( 'Classifieds Credits spent.', $this->text_domain ); ?></span>
 				<?php else: ?>
-				<span class="description"><?php _e( 'Kleinanzeigen Guthaben gekauft.', 'kleinanzeigen' ); ?></span>
+				<span class="description"><?php _e( 'Classifieds Credits purchased.', $this->text_domain ); ?></span>
 				<?php endif; ?>
 			</td>
 		</tr>

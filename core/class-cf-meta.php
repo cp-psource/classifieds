@@ -6,7 +6,7 @@ if(! class_exists('CF_Meta')) {
 		protected $_meta = null;
 
 		public $post_id = 0;
-		public $text_domain = 'kleinanzeigen';
+		public $text_domain = CF_TEXT_DOMAIN;
 		public $options_name = CF_OPTIONS_NAME;
 		public $plugin_dir = CF_PLUGIN_DIR;
 		public $plugin_url = CF_PLUGIN_URL;

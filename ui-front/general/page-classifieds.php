@@ -15,12 +15,12 @@ $options = $this->get_options( 'general' );
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 remove_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
-remove_filter('the_content', array(&$this, 'kleinanzeigen_content'));
+remove_filter('the_content', array(&$this, 'classifieds_content'));
 
 $query_args = array(
 'paged' => $paged,
 'post_status' => 'publish',
-'post_type' => 'kleinanzeigen',
+'post_type' => 'classifieds',
 //'author' => get_query_var('author'),
 );
 
@@ -41,6 +41,6 @@ if ( in_array($tax_key, $taxonomies) ) {
 query_posts($query_args);
 
 
-load_template( $this->custom_kleinanzeigen_template( 'loop-taxonomy' ) );
+load_template( $this->custom_classifieds_template( 'loop-taxonomy' ) );
 
 if(is_object($wp_query)) $wp_query->post_count = 0; 

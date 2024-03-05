@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
+<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
 /**
@@ -20,45 +20,45 @@ $options = $this->get_options('payments');
 
 	<div class="my-credits">
 
-		<h3><?php _e( 'Verfügbares Kleinanzeigen-Guthaben', 'kleinanzeigen' ); ?></h3>
+		<h3><?php _e( 'Available Classifieds Credits', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="available_credits"><?php _e('Verfügbares Guthaben', 'kleinanzeigen' ) ?></label>
+					<label for="available_credits"><?php _e('Available Credits', $this->text_domain ) ?></label>
 				</th>
 				<td>
 					<input type="text" id="available_credits" size="5" class="small-text" name="available_credits" value="<?php echo $this->transactions->credits; ?>" disabled="disabled" />
-					<span class="description"><?php _e( 'Dein derzeit verfügbares Guthaben.', 'kleinanzeigen' ); ?></span>
+					<span class="description"><?php _e( 'All of your currently available credits.', $this->text_domain ); ?></span>
 				</td>
 			</tr>
 		</table>
 
-		<h3><?php _e( 'Kaufe zusätzliches Kleinanzeigen-Guthaben', 'kleinanzeigen' ); ?></h3>
+		<h3><?php _e( 'Purchase Additional Classifieds Credits', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('Kaufe zusätzliches Kleinanzeigen-Guthaben', 'kleinanzeigen' ) ?></label>
+					<label><?php _e('Purchase Additional Classifieds Credits', $this->text_domain ) ?></label>
 				</th>
 				<td>
 					<p class="submit">
-						<?php echo do_shortcode('[cf_checkout_btn text="' . __('Kleinanzeigen-Guthaben kaufen', 'kleinanzeigen') . '" ]'); ?>
+						<?php echo do_shortcode('[cf_checkout_btn text="' . __('Purchase Classifieds Credits', $this->text_domain) . '" ]'); ?>
 					</p>
 				</td>
 			</tr>
 		</table>
 
 		<?php $credits_log = $this->transactions->credits_log; ?>
-		<h3><?php _e( 'Kaufhistorie', 'kleinanzeigen' ); ?></h3>
+		<h3><?php _e( 'Purchase History', $this->text_domain ); ?></h3>
 		<?php if ( is_array( $credits_log ) ): ?>
 		<table class="form-table">
 			<?php foreach ( $credits_log as $log ): ?>
 			<tr>
 				<th>
-					<label for="available_credits"><?php _e('Kaufdatum:', 'kleinanzeigen' ) ?> <?php echo $this->format_date( $log['date'] ); ?></label>
+					<label for="available_credits"><?php _e('Purchase Date:', $this->text_domain ) ?> <?php echo $this->format_date( $log['date'] ); ?></label>
 				</th>
 				<td>
 					<input type="text" id="available_credits" size="5" class="small-text" name="available_credits" value="<?php echo $log['credits']; ?>" disabled="disabled" />
-					<span class="description"><?php _e( 'Kleinanzeigen Guthaben gekauft.', 'kleinanzeigen' ); ?></span>
+					<span class="description"><?php _e( 'Classifieds Credits purchased.', $this->text_domain ); ?></span>
 				</td>
 			</tr>
 			<?php endforeach; ?>

@@ -30,7 +30,7 @@ get_header();
 			*/
 			if ( have_posts() ) the_post(); ?>
 
-			<h1 class="page-title"><?php _e( 'Kleinanzeigen', 'kleinanzeigen' ); ?> / <?php echo get_query_var('taxonomy'); ?> / <?php echo get_query_var('term'); ?></h1>
+			<h1 class="page-title"><?php _e( 'Classifieds', CF_TEXT_DOMAIN ); ?> / <?php echo get_query_var('taxonomy'); ?> / <?php echo get_query_var('term'); ?></h1>
 
 			<?php
 			/* Since we called the_post() above, we need to
@@ -43,7 +43,7 @@ get_header();
 			* If you want to overload this in a child theme then include a file
 			* called loop-archives.php and that will be used instead.
 			*/
-			load_template( $this->custom_kleinanzeigen_template( 'loop-taxonomy' ) );?>
+			load_template( $this->custom_classifieds_template( 'loop-taxonomy' ) );?>
 
 			<?php /* For BuddyPress compatibility */ ?>
 			<?php if ( isset( $bp ) ): ?>

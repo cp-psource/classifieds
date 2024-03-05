@@ -27,7 +27,7 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 
 ?>
 
-<?php if(! is_post_type_archive('kleinanzeigen') ) the_cf_breadcrumbs(); ?>
+<?php if(! is_post_type_archive('classifieds') ) the_cf_breadcrumbs(); ?>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php echo $cf->pagination( $cf->pagination_top ); ?>
@@ -35,9 +35,9 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 <div id="post-0" class="post error404 not-found">
-	<h1 class="entry-title"><?php _e( 'Nicht gefunden', 'kleinanzeigen' ); ?></h1>
+	<h1 class="entry-title"><?php _e( 'Not Found', CF_TEXT_DOMAIN ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Entschuldigung, aber für die angeforderten Kleinanzeigen wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche, eine verwandte Rubrik zu finden.', 'kleinanzeigen' ); ?></p>
+		<p><?php _e( 'Apologies, but no results were found for the requested classifieds. Perhaps searching will help find a related classified.', CF_TEXT_DOMAIN ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->
@@ -62,7 +62,7 @@ $field_image = (empty($cf_options['field_image_def'])) ? $cf->plugin_url . 'ui-f
 
 <?php
 $cost = do_shortcode('[ct id="_ct_text_4cfeb3eac6f1f"]');
-$cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost;
+$cost = is_numeric($cost) ? sprintf(__('%01.2f',CF_TEXT_DOMAIN), $cost) : $cost;
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -75,7 +75,7 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost
 					if ( isset( $cf_options['field_image_def'] ) && '' != $cf_options['field_image_def'] )
 					echo '<img width="150" height="150" title="no image" alt="no image" class="cf-no-image wp-post-image" src="' . $field_image . '">';
 				} else {
-					echo get_the_post_thumbnail( get_the_ID(), 'medium' );
+					echo get_the_post_thumbnail( get_the_ID(), array( 200, 150 ) );
 				}
 
 				?>
@@ -83,14 +83,14 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost
 			<div class="cf-info">
 				<table>
 					<tr>
-						<th style="width:25%"><?php _e( 'Anzeige:', 'kleinanzeigen' ); ?></th>
+						<th><?php _e( 'Title', CF_TEXT_DOMAIN ); ?></th>
 						<td>
 							<span class="cf-title"><a href="<?php the_permalink(); ?>"><?php echo $post->post_title; ?></a></span>
 							<span class="cf-price"><?php echo $cost; ?></span>
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Anbieter', 'kleinanzeigen' ); ?></th>
+						<th><?php _e( 'Posted By', CF_TEXT_DOMAIN ); ?></th>
 
 						<td>
 
@@ -99,9 +99,9 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Kategorien', 'kleinanzeigen' ); ?></th>
+						<th><?php _e( 'Categories', CF_TEXT_DOMAIN ); ?></th>
 						<td><span class="cf-terms">
-							<?php $taxonomies = get_object_taxonomies( 'kleinanzeigen', 'names' ); ?>
+							<?php $taxonomies = get_object_taxonomies( 'classifieds', 'names' ); ?>
 							<?php foreach ( $taxonomies as $taxonomy ): ?>
 							<?php echo get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) . ' '; ?>
 							<?php endforeach; ?>
@@ -109,11 +109,11 @@ $cost = is_numeric($cost) ? sprintf(__('%01.2f','kleinanzeigen'), $cost) : $cost
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Läuft ab', 'kleinanzeigen' ); ?></th>
+					<th><?php _e( 'Expires', CF_TEXT_DOMAIN ); ?></th>
 					<td><span class="cf-expires"><?php echo $cf->get_expiration_date( get_the_ID() ); ?></span></td>
 				</tr>
 				<tr>
-					<td colspan="2"><span class="cf-excerpt"><?php wp_kses(the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
+					<td colspan="2"><span class="cf-excerpt"><?php wp_kses(get_the_excerpt(), cf_wp_kses_allowed_html()); ?></span></td>
 				</tr>
 			</table>
 		</div>
