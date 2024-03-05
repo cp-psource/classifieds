@@ -30,11 +30,11 @@ Dank der vollständigen PayPal-Integration des Plugins legst Du die Preise fest 
 Kleinanzeigen verwendet einen benutzerdefinierten Beitragstyp, der mit PS CustomPress erstellt wurde. Die Verwendung von PS CustomPress ist keine Voraussetzung für die Verwendung von Kleinanzeigen. 
 Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Felder für Deine Einträge erstellen und den benutzerdefinierten Posttyp für Kleinanzeigen anpassen kannst.
 
-[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
+[POWERED BY PSOURCE](https://github.com/cp-psource)
 
 = Hilfe und Support =
 
-[Projektseite](https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/)
+[Projektseite](https://cp-psource.github.io/kleinanzeigen/)
 [GitHub](https://github.com/piestingtal-source/kleinanzeigen)
 
 == Kurzanleitung ==
@@ -63,7 +63,7 @@ Link unten, um die benutzerdefinierten Felder zu bearbeiten (weitere Information
 
 = Lies das verdammte Handbuch =
 
-Bitte lies erst das [Kleinanzeigen Plugin Handbuch](https://n3rds.work/docs/kleinanzeigen-handbuch/).
+Bitte lies erst das [Kleinanzeigen Plugin Handbuch](https://cp-psource.github.io/kleinanzeigen/).
 Wir geben Dir hier nur eine rudimentäre Anleitung.
 
 = Allgemein =

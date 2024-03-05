@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Kleinanzeigen
-Plugin URI: https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/
+Plugin URI: https://cp-psource.github.io/kleinanzeigen/
 Description: Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 Version: 2.4.4
 Author: PSOURCE
