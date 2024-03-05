@@ -34,8 +34,8 @@ Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Fe
 
 = Hilfe und Support =
 
-[Projektseite](https://cp-psource.github.io/kleinanzeigen/)
-[GitHub](https://github.com/piestingtal-source/kleinanzeigen)
+[Projektseite](https://cp-psource.github.io/classifieds)
+[GitHub](https://github.com/piestingtal-source/classifieds)
 
 == Kurzanleitung ==
 
@@ -63,7 +63,7 @@ Link unten, um die benutzerdefinierten Felder zu bearbeiten (weitere Information
 
 = Lies das verdammte Handbuch =
 
-Bitte lies erst das [Kleinanzeigen Plugin Handbuch](https://cp-psource.github.io/kleinanzeigen/).
+Bitte lies erst das [Kleinanzeigen Plugin Handbuch](https://cp-psource.github.io/classifieds).
 Wir geben Dir hier nur eine rudimentäre Anleitung.
 
 = Allgemein =
