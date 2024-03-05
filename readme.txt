@@ -1,6 +1,5 @@
 === Kleinanzeigen ===
 Contributors: DerN3rd (WMS N@W)
-Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
 Tags: post types, taxonomies, custom fields, kleinanzeigen, ads, paypal, payments
 Requires at least: 3.0
 Tested up to: 5.8.0
@@ -36,26 +35,7 @@ Es bietet nur einige zusätzliche Funktionen, mit denen Du benutzerdefinierte Fe
 = Hilfe und Support =
 
 [Projektseite](https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/)
-[Handbuch](https://n3rds.work/docs/kleinanzeigen-handbuch/)
-[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/kleinanzeigen-plugin-supportforum/)
 [GitHub](https://github.com/piestingtal-source/kleinanzeigen)
-
-== Mehr PSOURCE ==
-
-Erweitere die Möglichkeiten von Kleinanzeigen mit kompatiblen PSOURCE Plugins und Themes
-
-[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
-
-== Hilf uns ==
-
-Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
-Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
-
-= Unterstütze uns =
-
-Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
-
-[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
 == Kurzanleitung ==
 

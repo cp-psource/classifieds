@@ -4,8 +4,8 @@ Plugin Name: Kleinanzeigen
 Plugin URI: https://n3rds.work/piestingtal_source/kleinanzeigen-plugin/
 Description: Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.
 Version: 2.4.4
-Author: DerN3rd (WMS N@W)
-Author URI: https://n3rds.work
+Author: PSOURCE
+Author URI: https://github.com/cp-psource
 License: GNU General Public License (Version 2 - GPLv2)
 Text Domain: kleinanzeigen
 Domain Path: /languages
@@ -15,7 +15,7 @@ Network: false
 $plugin_header_translate = array(
 __('Kleinanzeigen - Füge Kleinanzeigen zu Deinem Blog, Netzwerk oder Deiner BuddyPress-Seite hinzu. Erstelle und verwalte Anzeigen, lade Bilder hoch, sende E-Mails, aktiviere das Kreditsystem und berechne Deinen Benutzern die Platzierung von Anzeigen in Deinem Netzwerk oder auf der BuddyPress-Seite.', 'kleinanzeigen'),
 __('DerN3rd', 'kleinanzeigen'),
-__('https://n3rds.work', 'kleinanzeigen'),
+__('https://github.com/cp-psource', 'kleinanzeigen'),
 __('Kleinanzeigen', 'kleinanzeigen'),
 );
 
@@ -23,7 +23,7 @@ __('Kleinanzeigen', 'kleinanzeigen'),
 Authors - DerN3rd
 
 
-Copyright 2012-2021 WMS N@W (https://n3rds.work)
+Copyright 2012-2024 PSOURCE (https://github.com/cp-psource)
 
 
 This program is free software; you can redistribute it and/or modify
@@ -40,12 +40,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
-require 'psource/plugin-update-checker/plugin-update-checker.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=kleinanzeigen', 
-	__FILE__, 
-	'kleinanzeigen' 
+/**
+ * @@@@@@@@@@@@@@@@@ PS UPDATER 1.3 @@@@@@@@@@@
+ **/
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/kleinanzeigen',
+	__FILE__,
+	'kleinanzeigen'
 );
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
+/**
+ * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
+ **/
 
 /* Define plugin version */
 define ( 'CF_VERSION', '2.4.2' );

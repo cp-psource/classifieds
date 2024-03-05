@@ -4,8 +4,8 @@
  * CustomPress_Content_Types
  *
  * @uses CustomPress_Core
- * @copyright WMS N@W 2020 {@link https://n3rds.work}
- * @author DerN3rd (WMS N@W)
+ * @copyright PSOURCE 2020 {@link https://n3rds.work}
+ * @author DerN3rd (PSOURCE)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
@@ -805,7 +805,7 @@ if ( ! class_exists( 'CustomPress_Content_Types' ) ):
 
 			$result = get_the_term_list( $post->ID, $id, $before, $separator, $after );
 
-			$result = ( is_wp_error( $result ) ) ? __( 'Invalid Taxonomy name in [tax ] shortcode', 'kleinanzeigen' ) : $result;
+			$result = ( is_wp_error( $result ) ) ? __( 'Invalid Taxonomy name in [tax ] shortcode', $this->text_domain ) : $result;
 
 			$result = apply_filters( 'tax_shortcode', $result, $atts, $content );
 

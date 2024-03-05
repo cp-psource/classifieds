@@ -3,8 +3,8 @@
 /**
  * CustomPress_Core
  *
- * @copyright WMS N@W 2020 {@link https://n3rds.work}
- * @author DerN3rd (WMS N@W)
+ * @copyright PSOURCE 2020 {@link https://n3rds.work}
+ * @author DerN3rd (PSOURCE)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 		 * @return void
 		 */
 		function on_plugins_loaded() {
-			load_plugin_textdomain( 'kleinanzeigen', false, plugin_basename( $this->plugin_dir . 'languages' ) );
+			load_plugin_textdomain( $this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages' ) );
 
 			// maybe check upgrade version here
             $this->maybe_upgrade_version();
@@ -287,7 +287,7 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 			wp_register_script( 'dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), 'CP-' . CPT_VERSION );
 			//wp_enqueue_script('dynamic-css');
 
-			wp_register_script( 'jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array( 'jquery' ), '1.8.18' );
+			wp_register_script( 'jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.js", array( 'jquery' ), '1.8.18' );
 
 			wp_register_script( 'jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array( 'jquery' ), '1.8.18' );
 
@@ -530,7 +530,7 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 				$options = array_merge( $options, array( $params['key'] => $params ) );
 				update_option( $this->options_name, $options );
 			} else {
-				die( __( 'Sicherheitsüberprüfung fehlgeschlagen!', 'kleinanzeigen' ) );
+				die( __( 'Sicherheitsüberprüfung fehlgeschlagen!', $this->text_domain ) );
 			}
 		}
 

@@ -7,6 +7,16 @@ global $Classifieds_Core;
 
 if ( ! class_exists( 'Classifieds_Core' ) ):
 	class Classifieds_Core {
+		// Definiere Klassenvariablen für veraltete dynamische Eigenschaften
+		public $capability_map;
+		public $add_kleinanzeige_page_id;
+		public $add_kleinanzeige_page_page_slug;
+		public $edit_kleinanzeige_page_id;
+		public $edit_kleinanzeige_page_slug;
+		public $my_credits_page_slug;
+		public $signin_page_id;
+		public $signin_page_slug;
+		public $kleinanzeigen_template;
 
 		/** @public plugin version */
 		public $plugin_version = CF_VERSION;
@@ -77,6 +87,9 @@ if ( ! class_exists( 'Classifieds_Core' ) ):
 		public $checkout_page_name = 'checkout';
 
 		public $is_kleinanzeigen_page = false;
+
+		/** @public int My credits page ID */
+		public $my_credits_page_id = 0;
 
 		public $use_credits = false;
 		public $use_paypal = false;

@@ -3,7 +3,6 @@
 <?php $options = $this->get_options('checkout'); ?>
 
 <div class="wrap">
-	<?php if ( function_exists('screen_icon') ) screen_icon('options-general'); ?>
 
 	<?php $this->render_admin( 'navigation', array( 'sub' => 'checkout' ) ); ?>
 

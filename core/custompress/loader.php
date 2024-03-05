@@ -1,26 +1,37 @@
 <?php
 /*
 Plugin Name: CustomPress
-Plugin URI: https://n3rds.work/piestingtal_source/psource-custompress-plugin/
+Plugin URI: https://cp-psource.github.io/custompress/
 Description: CustomPress - Benutzerdefinierter Post-, Taxonomie- und Feldmanager.
-Version: 1.4.1
-Author: WMS N@W
-Author URI: https://n3rds.work
+Version: 1.4.3
+Author: PSOURCE
+Author URI: https://github.com/cp-psource
 Text Domain: custompress
 Domain Path: languages
 License: GNU General Public License (Version 2 - GPLv2)
 Network: false
 */
 
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/custompress',
+	__FILE__,
+	'custompress'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
 
 $plugin_header_translate = array(
 __('CustomPress - Benutzerdefinierter Post-, Taxonomie- und Feldmanager.', 'custompress'),
-__('DerN3rd (WMS N@W)', 'custompress'),
-__('https://n3rds.work', 'custompress'),
+__('DerN3rd (PSOURCE)', 'custompress'),
+__('https://github.com/cp-psource', 'custompress'),
 __('CustomPress', 'custompress'));
 
 /*
-Copyright 2020 WMS N@W, (https://n3rds.work)
+Copyright 2020-2024 PSOURCE, (https://github.com/cp-psource)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -38,7 +49,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 /* Define plugin version */
-if( !defined('CPT_VERSION') ) define ( 'CPT_VERSION', '1.4.1' );
+if( !defined('CPT_VERSION') ) define ( 'CPT_VERSION', '1.4.3' );
 /* define the plugin folder url */
 if( !defined('CPT_PLUGIN_URL') ) define ( 'CPT_PLUGIN_URL', plugin_dir_url(__FILE__) );
 /* define the plugin folder dir */
