@@ -43,7 +43,7 @@ $user_display = ( $user_data->display_name ) ? $user_data->display_name : $user_
 		<h2 class="page-title author">
 			<?php 
 				printf( "%s <span class='vcard'><a class='url fn n' href='%s' title='%s' rel='me'>%s</a></span>",
-					__( 'Classifieds By: ', CF_TEXT_DOMAIN ),
+					__( 'Kleinanzeigen von: ', CF_TEXT_DOMAIN ),
 					get_option( 'siteurl' ) . $cf_author_url,
 					$user_display,
 					$user_display

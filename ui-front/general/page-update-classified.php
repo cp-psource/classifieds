@@ -87,9 +87,9 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<?php if(post_type_supports('classifieds','title') ): ?>
 		<div class="editfield">
-			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label>
+			<label for="title"><?php _e( 'Titel', $this->text_domain ); ?></label>
 			<input class="required" type="text" id="title" name="classified_data[post_title]" value="<?php echo ( empty( $classified_data['post_title'] ) ) ? '' : esc_attr($classified_data['post_title']); ?>" />
-			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Titel ein.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -99,13 +99,13 @@ wp_enqueue_script('set-post-thumbnail');
 			<?php if(empty($options['media_manager']) ): ?>
 
 			<?php if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?><br />
-			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Feature Image Chosen", $this->text_domain); ?>';</script>
+			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Kleinanzeigen-Bild ausgewählt", $this->text_domain); ?>';</script>
 			<span class="upload-button">
 
 				<?php $class = ( empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
 
 				<input type="file" name="feature_image" size="1" id="image" class="<?php echo $class; ?>" />
-				<button type="button" class="button"><?php _e('Set Feature Image', $this->text_domain); ?></button>
+				<button type="button" class="button"><?php _e('Kleinanzeigen-Bild festlegen', $this->text_domain); ?></button>
 			</span>
 			<br />
 
@@ -125,18 +125,18 @@ wp_enqueue_script('set-post-thumbnail');
 		<?php endif; ?>
 
 		<?php if(post_type_supports('classifieds','editor') ): ?>
-		<label for="classifiedcontent"><?php _e( 'Content', $this->text_domain ); ?></label>
+		<label for="classifiedcontent"><?php _e( 'Deine Kleinanzeige', $this->text_domain ); ?></label>
 
 		<?php wp_editor( $classified_content, 'classifiedcontent', $editor_settings); ?>
 
-		<p class="description"><?php _e( 'The content of your classified.', $this->text_domain ); ?></p>
+		<p class="description"><?php _e( 'Beschreibe Deine Kleinanzeige im Detail.', $this->text_domain ); ?></p>
 		<?php endif; ?>
 
 		<?php if(post_type_supports('classifieds','excerpt') ): ?>
 		<div class="editfield alt">
-			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label>
+			<label for="excerpt"><?php _e( 'Auszug', $this->text_domain ); ?></label>
 			<textarea id="excerpt" name="classified_data[post_excerpt]" rows="2" ><?php echo (empty( $classified_data['post_excerpt'] ) ) ? '' : esc_textarea($classified_data['post_excerpt']); ?></textarea>
-			<p class="description"><?php _e( 'A short excerpt of your classified.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Ein kurzer Auszug aus Deiner Kleinanzeige.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -190,7 +190,7 @@ wp_enqueue_script('set-post-thumbnail');
 				<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 			</div>
 
-			<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("add a tag", $this->text_domain); ?>'}); </script>
+			<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("Füge einen Tag hinzu", $this->text_domain); ?>'}); </script>
 		</div>
 		<?php endforeach; ?>
 
@@ -208,7 +208,7 @@ wp_enqueue_script('set-post-thumbnail');
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<p class="description"><?php _e( 'Select a status for your classified.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Wähle einen Status für Deine Kleinanzeige.', $this->text_domain ); ?></p>
 		</div>
 
 		<?php if ( isset( $CustomPress_Core ) ) : ?>
@@ -221,15 +221,15 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
-			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_classified">
+			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_classified">
 
-			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_classifieds_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_classifieds_page_id); ?>'">
 		</div>
 	</form>
 </div><!-- .cf_update_form -->
 <!-- End Update Classifieds -->
 <script type="text/javascript">
-	jQuery('input[name="update_classified"]').mousedown( function() {
+	jQuery(document).on('mousedown', 'input[name="update_classified"]', function() {
 		tinyMCE.triggerSave();
 	});
 </script>

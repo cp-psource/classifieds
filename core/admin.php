@@ -59,7 +59,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
             /**
              * @since 2.3.6.7
-             * @author hoang
+             * @author DerN3rd
              */
             add_filter('user_has_cap', array(&$this,'determine_backend_cap'), 10, 3);
 		}
@@ -100,14 +100,13 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 			remove_submenu_page('edit.php?post_type=classifieds', 'post-new.php?post_type=classifieds' );
 			add_submenu_page(
 			'edit.php?post_type=classifieds',
-			__( 'Add New', $this->text_domain ),
-			__( 'Add New', $this->text_domain ),
+			__( 'Neue hinzufügen', $this->text_domain ),
+			__( 'Neue hinzufügen', $this->text_domain ),
 			'create_classifieds',
 			'classifieds_add',
 			array( &$this, 'redirect_add' ) );
 		}
 
-		//add_menu_page( __( 'Classifieds', $this->text_domain ), __( 'Classifieds', $this->text_domain ), 'read', $this->menu_slug, array( &$this, 'handle_admin_requests' ) );
 		add_submenu_page(
 		'edit.php?post_type=classifieds',
 		__( 'Dashboard', $this->text_domain ),
@@ -118,8 +117,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 		$settings_page = add_submenu_page(
 		'edit.php?post_type=classifieds',
-		__( 'Classifieds Settings', $this->text_domain ),
-		__( 'Settings', $this->text_domain ),
+		__( 'Kleinanzeigen-Einstellungen', $this->text_domain ),
+		__( 'Einstellungen', $this->text_domain ),
 		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
 		'classifieds_settings',
 		array( &$this, 'handle_admin_requests' ) );
@@ -129,7 +128,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			$settings_page = add_submenu_page(
 			'edit.php?post_type=classifieds',
-			__( 'Classifieds Credits', $this->text_domain ),
+			__( 'Kleinanzeigen-Credits', $this->text_domain ),
 			__( 'Credits', $this->text_domain ),
 			'read',
 			'classifieds_credits',
@@ -146,7 +145,6 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 
 	function redirect_add(){
 		echo '<script>window.location = "' . get_permalink($this->add_classified_page_id) . '";</script>';
-		//wp_redirect(get_permalink($this->my_classifieds_page_id) ); exit;
 	}
 
 
@@ -168,9 +166,8 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
 		include "{$this->plugin_dir}ui-admin/{$name}.php";
 		else
-		echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
+		echo "<p>Das Rendern der Admin-Vorlage {$this->plugin_dir}ui-admin/{$name}.php ist fehlgeschlagen</p>";
 	}
-
 
 	/**
 	* Flow of a typical admin page request.
@@ -220,14 +217,14 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					$name = sanitize_file_name($params['new_role']);
 					$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 					$result = add_role($slug, $name, array('read' => true) );
-					if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
-					else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
+					if (empty($result) ) $this->message = __('ROLLE EXISTIERT BEREITS' , $this->text_domain);
+					else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , $this->text_domain), $name);
 				}
 				if ( isset( $params['remove_role'] ) ) {
 					check_admin_referer('verify');
 					$name = $params['delete_role'];
 					remove_role($name);
-					$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
+					$this->message = sprintf(__('Rolle "%s" entfernt' , $this->text_domain), $name);
 				}
 				if ( isset( $params['save'] ) ) {
 					check_admin_referer('verify');
@@ -238,7 +235,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 					);
 
 					$this->save_options( $params );
-					$this->message = __( 'Settings Saved.', $this->text_domain );
+					$this->message = __( 'Einstellungen gespeichert.', $this->text_domain );
 				}
 				/* Render admin template */
 				$this->render_admin( "settings-{$tab}" );
@@ -280,10 +277,10 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction = new CF_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('User "%s" received %s credits to member\'s Classifieds account',$this->text_domain), $send_to_user, $credits);
+						$this->message = sprintf(__('Benutzer "%s" hat %s Guthaben auf sein Kleinanzeigen-Konto erhalten',$this->text_domain), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this->text_domain), $send_to_user);
+						$this->message = sprintf(__('Benutzer "%s" wurde nicht gefunden oder ist kein Kleinanzeigen-Mitglied',$this->text_domain), $send_to_user);
 					}
 				}
 
@@ -296,7 +293,7 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this->text_domain), $credits);
+					$this->message = sprintf(__('Allen Benutzern wurde "%s" Guthaben zu ihren Konten hinzugefügt.',$this->text_domain), $credits);
 
 				}
 			} else {
@@ -337,41 +334,41 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 	}
 
 	/**
-	* Print document scripts
-	*/
+	 * Print document scripts
+	 */
 	function admin_print_scripts() {
 		?>
 		<script type="text/javascript">//<![CDATA[
-		jQuery(document).ready(function($) {
-			$('form.cf-form').hide();
-		});
-		var classifieds = {
-			toggle_end: function(key) {
-				jQuery('#form-'+key).show();
-				jQuery('.action-links-'+key).hide();
-				jQuery('.separators-'+key).hide();
-				jQuery('input[name="action"]').val('end');
-			},
-			toggle_publish: function(key) {
-				jQuery('#form-'+key).show();
-				jQuery('#form-'+key+' select').show();
-				jQuery('.action-links-'+key).hide();
-				jQuery('.separators-'+key).hide();
-				jQuery('input[name="action"]').val('publish');
-			},
-			toggle_delete: function(key) {
-				jQuery('#form-'+key).show();
-				jQuery('#form-'+key+' select').hide();
-				jQuery('.action-links-'+key).hide();
-				jQuery('.separators-'+key).hide();
-				jQuery('input[name="action"]').val('delete');
-			},
-			cancel: function(key) {
-				jQuery('#form-'+key).hide();
-				jQuery('.action-links-'+key).show();
-				jQuery('.separators-'+key).show();
-			}
-		};
+			jQuery(document).ready(function($) {
+				$('form.cf-form').hide();
+			});
+			var classifieds = {
+				toggle_end: function(key) {
+					$('#form-' + key).show();
+					$('.action-links-' + key).hide();
+					$('.separators-' + key).hide();
+					$('input[name="action"]').val('end');
+				},
+				toggle_publish: function(key) {
+					$('#form-' + key).show();
+					$('#form-' + key + ' select').show();
+					$('.action-links-' + key).hide();
+					$('.separators-' + key).hide();
+					$('input[name="action"]').val('publish');
+				},
+				toggle_delete: function(key) {
+					$('#form-' + key).show();
+					$('#form-' + key + ' select').hide();
+					$('.action-links-' + key).hide();
+					$('.separators-' + key).hide();
+					$('input[name="action"]').val('delete');
+				},
+				cancel: function(key) {
+					$('#form-' + key).hide();
+					$('.action-links-' + key).show();
+					$('.separators-' + key).show();
+				}
+			};
 		//]]>
 		</script>
 		<?php
@@ -436,7 +433,6 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		die(1);
 	}
 
-
 	function write_to_log($error, $log = 'error') {
 
 		//create filename for each month
@@ -448,7 +444,6 @@ class Classifieds_Core_Admin extends Classifieds_Core {
 		//write to file
 		file_put_contents($filename, $message . "\n", FILE_APPEND);
 	}
-
 
 	/**
 	* IPN script for change user role when Paypal Recurring Payment changed status

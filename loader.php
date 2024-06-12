@@ -22,9 +22,7 @@ __('Kleinanzeigen', 'classifieds'),
 /*
 Authors - DerN3rd
 
-
 Copyright 2012-2024 PSOURCE (https://github.com/cp-psource)
-
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
